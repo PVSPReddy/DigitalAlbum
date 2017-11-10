@@ -1,12 +1,19 @@
 ﻿<Properties StartupConfiguration="{0F91EA85-D7BC-4672-977D-997B6F7A28D9}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DigitalAlbum/Views/HomePage.xaml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DigitalAlbum/CustomControls/CustomTimePicker.cs">
     <Files>
       <File FileName="DigitalAlbum/ViewModels/HomePageViewModel.cs" Line="8" Column="35" />
       <File FileName="DigitalAlbum/ViewModels/BaseViewModel.cs" Line="14" Column="56" />
       <File FileName="DigitalAlbum/Views/HomePage.xaml.cs" Line="1" Column="1" />
-      <File FileName="DigitalAlbum/Views/HomePage.xaml" Line="30" Column="37" />
+      <File FileName="DigitalAlbum/Views/HomePage.xaml" Line="56" Column="6" />
       <File FileName="DigitalAlbum/App.xaml.cs" Line="11" Column="12" />
-      <File FileName="DigitalAlbum/obj/Debug/DigitalAlbum.Views.HomePage.xaml.g.cs" Line="23" Column="1" />
+      <File FileName="Droid/CustomControls/CustomImageRender.cs" Line="41" Column="17" />
+      <File FileName="iOS/CustomControls/CustomImageRender.cs" Line="24" Column="49" />
+      <File FileName="DigitalAlbum/CustomControls/CustomImage.cs" Line="22" Column="1" />
+      <File FileName="DigitalAlbum/CustomControls/CustomDatePicker.cs" Line="21" Column="1" />
+      <File FileName="DigitalAlbum/CustomControls/CustomEntry.cs" Line="18" Column="51" />
+      <File FileName="DigitalAlbum/CustomControls/CustomLabel.cs" Line="18" Column="45" />
+      <File FileName="DigitalAlbum/CustomControls/CustomPicker.cs" Line="9" Column="34" />
+      <File FileName="DigitalAlbum/CustomControls/CustomTimePicker.cs" Line="5" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

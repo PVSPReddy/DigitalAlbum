@@ -92,6 +92,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomControls\CustomLabelRender.cs" />
+    <Compile Include="CustomControls\CustomImageRender.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
