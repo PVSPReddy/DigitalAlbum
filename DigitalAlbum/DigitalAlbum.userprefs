@@ -1,0 +1,19 @@
+﻿<Properties StartupConfiguration="{0F91EA85-D7BC-4672-977D-997B6F7A28D9}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DigitalAlbum/Views/HomePage.xaml">
+    <Files>
+      <File FileName="DigitalAlbum/ViewModels/HomePageViewModel.cs" Line="8" Column="35" />
+      <File FileName="DigitalAlbum/ViewModels/BaseViewModel.cs" Line="14" Column="56" />
+      <File FileName="DigitalAlbum/Views/HomePage.xaml.cs" Line="1" Column="1" />
+      <File FileName="DigitalAlbum/Views/HomePage.xaml" Line="30" Column="37" />
+      <File FileName="DigitalAlbum/App.xaml.cs" Line="11" Column="12" />
+      <File FileName="DigitalAlbum/obj/Debug/DigitalAlbum.Views.HomePage.xaml.g.cs" Line="23" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.DigitalAlbum.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.181B3DA1-30B6-4A59-9D79-331C3C344171" />
+  <MultiItemStartupConfigurations />
+</Properties>
