@@ -5,12 +5,12 @@ using Xamarin.Forms;
 
 namespace DigitalAlbum
 {
-    public partial class HomePage : ContentPage
+    public partial class CreateMemory : ContentPage
     {
-        public HomePage()
+        public CreateMemory()
         {
             InitializeComponent();
-            BindingContext = new HomePageViewModel(Navigation);
+            BindingContext = new CreateMemoryViewModel(Navigation);
         }
     }
 }

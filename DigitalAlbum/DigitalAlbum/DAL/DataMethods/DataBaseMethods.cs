@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 using SQLite.Net;
 using Xamarin.Forms;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace DigitalAlbum
 {
@@ -12,11 +15,12 @@ namespace DigitalAlbum
             #region Tables creation
             sqliteconnection = DependencyService.Get<ISQLite>().GetConnection();
             sqliteconnection.CreateTable<UserProfileInfo>();
+            sqliteconnection.CreateTable<MemoriesTable>();
 
             #endregion
         }
 
-        #region IDisposable Support
+        #region  to save, get, update and delete User info details
         public void DeleteUserInfo()
         {
             try
@@ -92,6 +96,199 @@ namespace DigitalAlbum
                 UserInfo.UserMobile = objUserInfo.UserMobile;
                 UserInfo.UserEmail = objUserInfo.UserEmail;
                 sqliteconnection.Update(UserInfo);
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+        }
+        #endregion
+
+
+
+
+        #region  to save, get, update and delete Companion info details
+        public void SaveCompanionInfo(MemorySharedCompanion CompanionInfo)
+        {
+            try
+            {
+                sqliteconnection.Insert(new MemorySharedCompanion
+                {
+                    MemoryWith = CompanionInfo.MemoryWith,
+                    isLockedMemories = CompanionInfo.isLockedMemories
+                });
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+        }
+
+        public MemorySharedCompanion GetCompanionInfo(string CompanionName)
+        {
+            try
+            {
+                var allCompanions = sqliteconnection.Table<MemorySharedCompanion>().ToList();
+                var companionInfo = allCompanions.Where(X => X.MemoryWith == CompanionName) as MemorySharedCompanion;
+                if (companionInfo != null)
+                {
+                    MemorySharedCompanion companion_Info = new MemorySharedCompanion()
+                    {
+                        MemoryWith = companionInfo.MemoryWith,
+                        isLockedMemories = companionInfo.isLockedMemories
+                    };
+                    return companion_Info;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+                return null;
+            }
+        }
+
+        public void UpdateCompanionInfo(MemorySharedCompanion companionInfo)
+        {
+            try
+            {
+                var allCompanions = sqliteconnection.Table<MemorySharedCompanion>().ToList();
+                var comapnion_Info = allCompanions.Where(X => X.MemoryWith == companionInfo.MemoryWith) as MemorySharedCompanion;
+                if (comapnion_Info == null)
+                {
+
+                }
+                else
+                {
+                    comapnion_Info.MemoryWith = companionInfo.MemoryWith;
+                    comapnion_Info.isLockedMemories = companionInfo.isLockedMemories;
+                    sqliteconnection.Update(comapnion_Info);
+                }
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+        }
+
+        public void DeleteCompanionInfo()
+        {
+            try
+            { }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+        }
+        #endregion
+
+        #region  to save, get, update and delete Memory info details
+        public void SaveMemory(MemoriesTable MemoryInfo)
+        {
+            try
+            {
+                sqliteconnection.Insert(new MemoriesTable
+                {
+                    MemoryId = MemoryInfo.MemoryId,
+                    MemoryWith = MemoryInfo.MemoryWith,
+                    MemoryDate = MemoryInfo.MemoryDate,
+                    MemoryImage = MemoryInfo.MemoryImage,
+                    MemoryTime = MemoryInfo.MemoryTime,
+                    MemoryDescription = MemoryInfo.MemoryDescription,
+                    MemoryLocation = MemoryInfo.MemoryLocation,
+                    MemoryType = MemoryInfo.MemoryType
+                });
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+        }
+
+        public async Task<List<MemoriesTable>> GetMemories(string memoryWith)
+        {
+            try
+            {
+                var memoryInfo = sqliteconnection.Table<MemoriesTable>().ToList();
+                if (memoryInfo != null)
+                {
+                    var memoryInfoResponse = memoryInfo.Where(x => x.MemoryWith == memoryWith).ToList();
+                    return memoryInfoResponse;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+                return null;
+            }
+        }
+
+        public void UpdateMemory(MemoriesTable objMemoryInfo)
+        {
+            try
+            {
+                var allMemories = sqliteconnection.Table<MemoriesTable>().ToList();
+                var memoryInfo = allMemories.Where(X => X.MemoryId == objMemoryInfo.MemoryId) as MemoriesTable;
+                if (memoryInfo == null)
+                {
+                    sqliteconnection.Insert(objMemoryInfo);
+                }
+                else
+                {
+                    memoryInfo.MemoryId = objMemoryInfo.MemoryId;
+                    memoryInfo.MemoryWith = objMemoryInfo.MemoryWith;
+                    memoryInfo.MemoryImage = objMemoryInfo.MemoryImage;
+                    memoryInfo.MemoryDate = objMemoryInfo.MemoryDate;
+                    memoryInfo.MemoryTime = objMemoryInfo.MemoryTime;
+                    memoryInfo.MemoryDescription = objMemoryInfo.MemoryDescription;
+                    memoryInfo.MemoryLocation = objMemoryInfo.MemoryLocation;
+                    memoryInfo.MemoryType = objMemoryInfo.MemoryType;
+                    sqliteconnection.Update(memoryInfo);
+                }
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+        }
+
+        public void DeleteThisMemory(string memoryId)
+        {
+            try
+            {
+                //var allMemories = sqliteconnection.Table<MemoriesTable>().ToList();
+                //var memoryInfo = allMemories.Where(X => X.MemoryId == memoryId) as MemoriesTable;
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+        }
+
+        public void DeleteAllParticularMemories(string memoryWith)
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+        }
+
+        public void DeleteAllMemories()
+        {
+            try
+            {
+                sqliteconnection.Query<UserProfileInfo>("delete from MemoriesTable");
             }
             catch (Exception ex)
             {
@@ -399,7 +596,6 @@ namespace DigitalAlbum
         }
         */
         #endregion
-
 
 
         #region IDisposable Support
