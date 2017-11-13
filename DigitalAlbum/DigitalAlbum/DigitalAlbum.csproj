@@ -57,6 +57,10 @@
     <Compile Include="ViewModels\HomePageViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="CustomControls\CustomImage.cs" />
+    <Compile Include="CustomControls\CustomWebView.cs" />
+    <Compile Include="CustomControls\GradientStackLayout.cs" />
+    <Compile Include="CustomControls\AddView.cs" />
+    <Compile Include="CustomControls\CustomBoxView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

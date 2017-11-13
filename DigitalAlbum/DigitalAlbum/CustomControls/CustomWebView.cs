@@ -4,9 +4,9 @@ using Xamarin.Forms;
 
 namespace DigitalAlbum
 {
-    public class CustomButton : Button
+    public class CustomWebView : WebView
     {
-        public CustomButton() { }
+        public CustomWebView() { }
     }
 }
 

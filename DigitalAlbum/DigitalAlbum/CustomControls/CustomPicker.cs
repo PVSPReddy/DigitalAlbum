@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace DigitalAlbum
 {
-    public class CustomPicker : ContentPage
+    public class CustomPicker : Picker
     {
         public CustomPicker() { }
 

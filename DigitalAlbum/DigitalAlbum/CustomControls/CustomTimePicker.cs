@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace DigitalAlbum
 {
-    public class CustomTimePicker : ContentPage
+    public class CustomTimePicker : TimePicker
     {
         public CustomTimePicker() { }
 

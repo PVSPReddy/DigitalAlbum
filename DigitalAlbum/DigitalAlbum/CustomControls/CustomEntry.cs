@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace DigitalAlbum
 {
-    public class CustomEntry : ContentPage
+    public class CustomEntry : Entry
     {
         public CustomEntry() { }
 
@@ -16,6 +16,18 @@ namespace DigitalAlbum
 
         public static readonly BindableProperty IsCustomPasswordProperty = BindableProperty.Create(propertyName: "IsCustomPassword", returnType: typeof(bool), declaringType: typeof(CustomEntry), defaultValue: false);
         public bool IsCustomPassword { get; set; }
+
+        public static readonly BindableProperty IsPhoneProperty = BindableProperty.Create(propertyName: "IsPhoneNumber", returnType: typeof(bool), declaringType: typeof(CustomEntry), defaultValue: false);
+        public bool IsPhoneNumber { get; set; }
+
+        public static readonly BindableProperty IsNumericProperty = BindableProperty.Create(propertyName: "IsNumeric", returnType: typeof(bool), declaringType: typeof(CustomEntry), defaultValue: false);
+        public bool IsNumeric { get; set; }
+
+        public static readonly BindableProperty IsEmailProperty = BindableProperty.Create(propertyName: "IsEmail", returnType: typeof(bool), declaringType: typeof(CustomEntry), defaultValue: false);
+        public bool IsEmail { get; set; }
+
+        public static readonly BindableProperty BorderColorsProperty = BindableProperty.Create(propertyName: "BorderColors", returnType: typeof(string), declaringType: typeof(CustomEntry), defaultValue: "#000000");
+        public string BorderColors { get; set; }
     }
 }
 

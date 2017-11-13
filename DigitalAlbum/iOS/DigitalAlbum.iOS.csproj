@@ -122,6 +122,18 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="CustomControls\CustomLabelRender.cs" />
+    <Compile Include="CustomControls\CustomImageRender.cs" />
+    <Compile Include="CustomControls\CustomButtonRender.cs" />
+    <Compile Include="CustomControls\CustomDatePickerRender.cs" />
+    <Compile Include="CustomControls\CustomPickerRender.cs" />
+    <Compile Include="CustomControls\CustomTimePickerRender.cs" />
+    <Compile Include="CustomControls\CustomEntryRender.cs" />
+    <Compile Include="CustomControls\CustomEditorRender.cs" />
+    <Compile Include="CustomControls\CustomListViewRender.cs" />
+    <Compile Include="CustomControls\CustomWebViewRender.cs" />
+    <Compile Include="CustomControls\GradientStackLayoutRender.cs" />
+    <Compile Include="CustomControls\AdvViewRender.cs" />
+    <Compile Include="CustomControls\CustomBoxViewRender.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

@@ -4,16 +4,23 @@ using Xamarin.Forms;
 
 namespace DigitalAlbum
 {
-    public class CustomEditor : ContentPage
+    public class CustomEditor : Editor
     {
-        public CustomEditor()
+        public CustomEditor() { }
+
+        public static readonly BindableProperty PlaceholderProperty = BindableProperty.Create<CustomEditor, string>(view => view.Placeholder, String.Empty);
+
+        public string Placeholder
         {
-            Content = new StackLayout
+            get
             {
-                Children = {
-                    new Label { Text = "Hello ContentPage" }
-                }
-            };
+                return (string)GetValue(PlaceholderProperty);
+            }
+
+            set
+            {
+                SetValue(PlaceholderProperty, value);
+            }
         }
     }
 }
