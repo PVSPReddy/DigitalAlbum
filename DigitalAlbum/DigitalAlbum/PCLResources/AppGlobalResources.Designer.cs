@@ -46,5 +46,11 @@ namespace DigitalAlbum.PCLResources {
                 resourceCulture = value;
             }
         }
+        
+        internal static string EmailEmptyError {
+            get {
+                return ResourceManager.GetString("EmailEmptyError", resourceCulture);
+            }
+        }
     }
 }
