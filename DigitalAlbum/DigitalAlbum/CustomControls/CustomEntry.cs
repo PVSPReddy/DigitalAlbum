@@ -28,6 +28,13 @@ namespace DigitalAlbum
 
         public static readonly BindableProperty BorderColorsProperty = BindableProperty.Create(propertyName: "BorderColors", returnType: typeof(string), declaringType: typeof(CustomEntry), defaultValue: "#000000");
         public string BorderColors { get; set; }
+
+        //for ios as the customcontrol takes any margin if not set in the render itself.
+        public static readonly BindableProperty IsRequiredMarginProperty = BindableProperty.Create(propertyName: "IsRequiredMargin", returnType: typeof(bool), declaringType: typeof(CustomEntry), defaultValue: false);
+        public bool IsRequiredMargin { get; set; }
+
+        public enum BorderType { Rectangle, RectangleWithRoundCorners, SingleLine, None }
+        public BorderType BorderTypes { get; set; }
     }
 }
 

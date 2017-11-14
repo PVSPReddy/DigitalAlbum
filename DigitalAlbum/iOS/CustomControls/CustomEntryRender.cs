@@ -50,11 +50,18 @@ namespace DigitalAlbum.iOS
 
 
                     //to set margin on the leftside of the entry
-                    Control.LeftViewMode = UITextFieldViewMode.Always;
-                    Control.LeftView = new UIView(new CGRect(0, 0, 15, 0));
-                    Control.LeftViewMode = UITextFieldViewMode.Always;
-                    Control.RightView = new UIView(new CGRect(0, 0, 15, 0));
-                    Control.RightViewMode = UITextFieldViewMode.Always;
+                    if (element.IsRequiredMargin == true)
+                    {
+                        Control.LeftViewMode = UITextFieldViewMode.Always;
+                        Control.LeftView = new UIView(new CGRect(0, 0, 15, 0));
+                        Control.LeftViewMode = UITextFieldViewMode.Always;
+                        Control.RightView = new UIView(new CGRect(0, 0, 15, 0));
+                        Control.RightViewMode = UITextFieldViewMode.Always;
+                    }
+                    else
+                    {
+
+                    }
 
 
                     if (element.BorderColors == "#ff0000")
@@ -68,6 +75,10 @@ namespace DigitalAlbum.iOS
                     else if (element.BorderColors == "#FFFFFF")
                     {
                         Control.Layer.BorderColor = Color.White.ToCGColor();
+                    }
+                    else
+                    {
+                        Control.Layer.BorderColor = Color.Transparent.ToCGColor();
                     }
 
 
@@ -141,12 +152,18 @@ namespace DigitalAlbum.iOS
 
 
                     //to set margin on the leftside of the entry
-                    Control.LeftViewMode = UITextFieldViewMode.Always;
-                    Control.LeftView = new UIView(new CGRect(0, 0, 15, 0));
-                    Control.LeftViewMode = UITextFieldViewMode.Always;
-                    Control.RightView = new UIView(new CGRect(0, 0, 15, 0));
-                    Control.RightViewMode = UITextFieldViewMode.Always;
+                    if (element.IsRequiredMargin == true)
+                    {
+                        Control.LeftViewMode = UITextFieldViewMode.Always;
+                        Control.LeftView = new UIView(new CGRect(0, 0, 15, 0));
+                        Control.LeftViewMode = UITextFieldViewMode.Always;
+                        Control.RightView = new UIView(new CGRect(0, 0, 15, 0));
+                        Control.RightViewMode = UITextFieldViewMode.Always;
+                    }
+                    else
+                    {
 
+                    }
 
                     if (element.BorderColors == "#ff0000")
                     {

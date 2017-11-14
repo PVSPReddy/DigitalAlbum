@@ -32,12 +32,7 @@ namespace DigitalAlbum.Droid
                 {
                     element = e.OldElement as CustomEntry;
                 }
-                if (element.IsCustomPassword == true)
-                {
-                    Control.TransformationMethod = PasswordTransformationMethod.Instance;
-                    //Control.InputType = InputTypes.TextVariationPassword;
-                    //Control.InputType = InputTypes.TextVariationPassword | InputTypes.ClassText;
-                }
+
                 if (Control != null)
                 {
                     //var element = Element as CustomEntry;
@@ -95,7 +90,7 @@ namespace DigitalAlbum.Droid
 
                     }
 
-                    if (element.IsCustomPassword == true)
+                    if (element.IsPassword == true)
                     {
                         Control.TransformationMethod = PasswordTransformationMethod.Instance;
                         //Control.InputType = InputTypes.TextVariationPassword;

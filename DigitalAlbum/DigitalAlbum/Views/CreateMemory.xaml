@@ -1,5 +1,126 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DigitalAlbum.CreateMemory">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+    xmlns:local="clr-namespace:DigitalAlbum;assembly=DigitalAlbum"
+	x:Class="DigitalAlbum.CreateMemory">
+
+
+	<ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PageBackgroundColor">Yellow</Color>
+            <Color x:Key="TextColor">Black</Color>
+            <Color x:Key="NormalTextColor">Blue</Color>
+            <Style x:Key="LabelPageHeadingStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            </Style>
+			<Style x:Key="LabelInputData" TargetType="Label">
+				<Setter Property="FontSize" Value="Small" />
+				<Setter Property="IsVisible" Value="true" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="VerticalTextAlignment" Value="Start" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            </Style>
+			<Style x:Key="EntryInputData" TargetType="Entry">
+                <Setter Property="HorizontalOptions" Value="Start" />
+				<Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            </Style>
+			<Style x:Key="BoxULineInputData" TargetType="BoxView">
+				<Setter Property="HeightRequest" Value="1" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="Color" Value="{StaticResource TextColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <!--<OnPlatform x:TypeArguments="Thickness"
+                iOS="10,0,0,0"
+                Android="10,0,0,0"
+            WinPhone="8,0,0,0" />-->
+            <OnPlatform.Platforms>
+                <On Platform="iOS" Value="0, 20, 0, 0" />
+                <On Platform="Android" Value="0, 0, 0, 0" />
+                <On Platform="UWP" Value="0, 0, 0, 0" /> 
+            </OnPlatform.Platforms>
+        </OnPlatform>
+    </ContentPage.Padding>
+
+	
     <ContentPage.Content>
+		<AbsoluteLayout BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+			<StackLayout AbsoluteLayout.LayoutBounds="0,0,1,0.1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label Text="Memories" TextColor="Black" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+
+			<StackLayout AbsoluteLayout.LayoutBounds="1,1,1,0.9" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Padding="20,30,20,0">
+
+					<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" >
+                        <local:CustomImage x:Name="imageMemory" Style="{StaticResource EntryInputData}" ></local:CustomImage>
+                        <local:CustomLabel Text="AddMore"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+							<Label.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>
+						</local:CustomLabel>
+                    </StackLayout>
+                    <Grid x:Name="gridEntryHolder" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="1*" />
+							<RowDefinition Height="1.5*" />
+							<RowDefinition Height="1*" />
+							<RowDefinition Height="1*" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="7*" />
+							<ColumnDefinition Width="1*" />
+						</Grid.ColumnDefinitions>
+
+                        <local:CustomEntry x:Name="entryCompanionName" Placeholder="Enter Companion Name" IsRequiredMargin="false" BorderColors="#00000000" Style="{StaticResource EntryInputData}" Grid.Row="0" Grid.Column="0" ></local:CustomEntry>
+                        <local:CustomLabel x:Name="lblCompanionName" Text="Enter Companion Name" Style="{StaticResource LabelInputData}" Grid.Row="0" Grid.Column="0"  ></local:CustomLabel>
+						<local:CustomLabel Text="+"  Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+							<Label.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>
+						</local:CustomLabel>
+                        <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" ></BoxView>
+
+						<StackLayout Spacing="0" BackgroundColor="Transparent" Padding="0,0,0,0" Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+							<local:CustomLabel x:Name="lblMemoryText" Text="Enter Memory Description" Style="{StaticResource LabelInputData}" ></local:CustomLabel>
+                            <local:CustomEditor x:Name="editorMemoryText" Margin="0,0,0,0" BackgroundColor="Transparent" TextColor="{StaticResource TextColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ></local:CustomEditor>
+						</StackLayout>
+						<local:CustomLabel Text="+"  Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+							<Label.GestureRecognizers>
+								<TapGestureRecognizer NumberOfTapsRequired="1" />
+							</Label.GestureRecognizers>
+						</local:CustomLabel>
+                        <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ></BoxView>
+
+						<local:CustomDatePicker x:Name="dateMemoryDate" Style="{StaticResource EntryInputData}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ></local:CustomDatePicker>
+                        <local:CustomLabel x:Name="lblMemoryDate" Text="Enter Date of Memory" Style="{StaticResource LabelInputData}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ></local:CustomLabel>
+                        <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ></BoxView>
+
+						<local:CustomTimePicker x:Name="timeMemoryTime" Style="{StaticResource EntryInputData}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" ></local:CustomTimePicker>
+                        <local:CustomLabel x:Name="lblMemoryTime" Text="Enter Time of Memory" Style="{StaticResource LabelInputData}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" ></local:CustomLabel>
+                        <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  ></BoxView>
+
+					</Grid>
+					<Button Text="Submit">
+					</Button>
+                </StackLayout>
+			</StackLayout>
+			
+		</AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
