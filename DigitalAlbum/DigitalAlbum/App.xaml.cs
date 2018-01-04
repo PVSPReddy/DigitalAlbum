@@ -8,7 +8,7 @@ namespace DigitalAlbum
         {
             InitializeComponent();
 
-            MainPage = new HomePage();
+            MainPage = new CreateMemory();
         }
 
         protected override void OnStart()
