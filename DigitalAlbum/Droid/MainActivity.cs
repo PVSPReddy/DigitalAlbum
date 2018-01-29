@@ -36,7 +36,14 @@ namespace DigitalAlbum.Droid
             BaseContentPage.screenHeight = (int)dps;
             #endregion
 
-            LoadApplication(new App());
+            try
+            {
+                LoadApplication(new App());
+            }
+            catch(Exception ex)
+            {
+                var msg = ex.Message;
+            }
         }
     }
 }

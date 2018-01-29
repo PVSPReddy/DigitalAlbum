@@ -42,6 +42,7 @@ namespace DigitalAlbum.Droid
                     //gd.SetStroke(2, global::Android.Graphics.Color.Gray);
                     this.Control.SetBackgroundDrawable(gd);
                     this.Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
+                    Control.Gravity = global::Android.Views.GravityFlags.CenterVertical;
                     if (!string.IsNullOrWhiteSpace(element.EnterText))
                     {
                         Control.Text = element.EnterText;
@@ -92,6 +93,7 @@ namespace DigitalAlbum.Droid
                     //gd.SetStroke(2, global::Android.Graphics.Color.Gray);
                     this.Control.SetBackgroundDrawable(gd);
                     this.Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
+                    Control.Gravity = global::Android.Views.GravityFlags.CenterVertical;
                     if (!string.IsNullOrWhiteSpace(element.EnterText))
                     {
                         //Control.Text = element.EnterText;

@@ -3,6 +3,7 @@
 	xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
     xmlns:local="clr-namespace:DigitalAlbum;assembly=DigitalAlbum"
+    xmlns:converter="clr-namespace:DigitalAlbum.ValueConverters;assembly=DigitalAlbum"
 	x:Class="DigitalAlbum.CreateMemory">
 
 
@@ -26,11 +27,21 @@
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
             </Style>
 			<Style x:Key="EntryInputData" TargetType="Entry">
-                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
 				<Setter Property="VerticalOptions" Value="End" />
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
             </Style>
-			<Style x:Key="BoxULineInputData" TargetType="BoxView">
+            <Style x:Key="DatePickerInputData" TargetType="DatePicker">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="StartAndExpand" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            </Style>
+            <Style x:Key="TimePickerInputData" TargetType="TimePicker">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="EndAndExpand" />
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            </Style>
+            <Style x:Key="BoxULineInputData" TargetType="BoxView">
 				<Setter Property="HeightRequest" Value="1" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="VerticalOptions" Value="End" />
@@ -68,14 +79,14 @@
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Padding="20,30,20,0">
 
 					<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" >
-                        <local:CustomImage x:Name="imageMemory" Style="{StaticResource EntryInputData}" ></local:CustomImage>
-                        <local:CustomLabel Text="AddMore"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <local:CustomImage x:Name="imageMemory" HeightRequest="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=25 }"  WidthRequest="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=25 }" ></local:CustomImage>
+                        <local:CustomLabel Text="AddMore" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 							<Label.GestureRecognizers>
                                 <TapGestureRecognizer NumberOfTapsRequired="1" />
                             </Label.GestureRecognizers>
 						</local:CustomLabel>
                     </StackLayout>
-                    <Grid x:Name="gridEntryHolder" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                    <Grid x:Name="gridEntryHolder" HeightRequest="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=45 }" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
 						<Grid.RowDefinitions>
 							<RowDefinition Height="1*" />
 							<RowDefinition Height="1.5*" />
@@ -87,7 +98,7 @@
 							<ColumnDefinition Width="1*" />
 						</Grid.ColumnDefinitions>
 
-                        <local:CustomEntry x:Name="entryCompanionName" Placeholder="Enter Companion Name" IsRequiredMargin="false" BorderColors="#00000000" Style="{StaticResource EntryInputData}" Grid.Row="0" Grid.Column="0" ></local:CustomEntry>
+                        <local:CustomEntry x:Name="entryCompanionName" Placeholder="Enter Companion Name" BackgroundColor="Aqua" IsRequiredMargin="false" BorderColors="#00000000" Style="{StaticResource EntryInputData}" Grid.Row="0" Grid.Column="0" ></local:CustomEntry>
                         <local:CustomLabel x:Name="lblCompanionName" Text="Enter Companion Name" Style="{StaticResource LabelInputData}" Grid.Row="0" Grid.Column="0"  ></local:CustomLabel>
 						<local:CustomLabel Text="+"  Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
 							<Label.GestureRecognizers>
@@ -107,16 +118,16 @@
 						</local:CustomLabel>
                         <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ></BoxView>
 
-						<local:CustomDatePicker x:Name="dateMemoryDate" Style="{StaticResource EntryInputData}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ></local:CustomDatePicker>
-                        <local:CustomLabel x:Name="lblMemoryDate" Text="Enter Date of Memory" Style="{StaticResource LabelInputData}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ></local:CustomLabel>
+                        <local:CustomDatePicker x:Name="dateMemoryDate" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource DatePickerInputData}" ></local:CustomDatePicker>
+                        <local:CustomLabel x:Name="lblMemoryDate" Text="Enter Date of Memory" Style="{StaticResource LabelInputData}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" ></local:CustomLabel>
                         <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ></BoxView>
 
-						<local:CustomTimePicker x:Name="timeMemoryTime" Style="{StaticResource EntryInputData}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" ></local:CustomTimePicker>
-                        <local:CustomLabel x:Name="lblMemoryTime" Text="Enter Time of Memory" Style="{StaticResource LabelInputData}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" ></local:CustomLabel>
+                        <local:CustomLabel x:Name="lblMemoryTime" Text="Enter Time of Memory" Style="{StaticResource LabelInputData}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" ></local:CustomLabel>
+                        <local:CustomTimePicker x:Name="timeMemoryTime" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource TimePickerInputData}" ></local:CustomTimePicker>
                         <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  ></BoxView>
-
-					</Grid>
-					<Button Text="Submit">
+                        
+                    </Grid>
+                    <Button Text="Submit" Command="{Binding SubmitClickedCommand}">
 					</Button>
                 </StackLayout>
 			</StackLayout>

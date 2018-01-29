@@ -17,13 +17,14 @@ namespace DigitalAlbum.Droid
     {
         public CustomEntryRender() { }
 
+        CustomEntry element;
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             base.OnElementChanged(e);
 
             try
             {
-                CustomEntry element = Element as CustomEntry;
+                element = Element as CustomEntry;
                 if (e.NewElement != null)
                 {
                     element = Element as CustomEntry;
@@ -32,7 +33,7 @@ namespace DigitalAlbum.Droid
                 {
                     element = e.OldElement as CustomEntry;
                 }
-
+                
                 if (Control != null)
                 {
                     //var element = Element as CustomEntry;
@@ -40,17 +41,20 @@ namespace DigitalAlbum.Droid
 
                     GradientDrawable gradientDrawable = new GradientDrawable();
                     gradientDrawable.SetColor(global::Android.Graphics.Color.Transparent);
-                    gradientDrawable.SetStroke(2, global::Android.Graphics.Color.ParseColor(element.BorderColors));
+                    if (element.BorderColors != null)
+                    {
+                        gradientDrawable.SetStroke(2, global::Android.Graphics.Color.ParseColor(element.BorderColors));
+                    }
                     //gradientDrawable.SetCornerRadius(45); // increase or decrease to changes the corner look
                     this.Control.SetBackgroundDrawable(gradientDrawable);
                     this.Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
+                    //Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.Black));//for placeholder  
+                    //this.Control.InputType = InputTypes.TextVariationPassword;
                     Control.Gravity = global::Android.Views.GravityFlags.CenterVertical;
                     Control.SetPadding(30, 0, 30, 0);
-
-
+                    
                     //Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.Black));//for placeholder  
-
-
+                    
                     if (element.CustomFontSize != 0.0)
                     {
                         Control.SetTextSize(ComplexUnitType.Dip, element.CustomFontSize);
@@ -114,24 +118,26 @@ namespace DigitalAlbum.Droid
 
             try
             {
-                CustomEntry element = Element as CustomEntry;
-
                 if (Control != null)
                 {
                     //var element = Element as CustomEntry;
 
+
                     GradientDrawable gradientDrawable = new GradientDrawable();
                     gradientDrawable.SetColor(global::Android.Graphics.Color.Transparent);
-                    gradientDrawable.SetStroke(2, global::Android.Graphics.Color.ParseColor(element.BorderColors));
+                    if (element.BorderColors != null)
+                    {
+                        gradientDrawable.SetStroke(2, global::Android.Graphics.Color.ParseColor(element.BorderColors));
+                    }
                     //gradientDrawable.SetCornerRadius(45); // increase or decrease to changes the corner look
                     this.Control.SetBackgroundDrawable(gradientDrawable);
                     this.Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
+                    //Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.Black));//for placeholder  
+                    //this.Control.InputType = InputTypes.TextVariationPassword;
                     Control.Gravity = global::Android.Views.GravityFlags.CenterVertical;
                     Control.SetPadding(30, 0, 30, 0);
 
-
                     //Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.Black));//for placeholder  
-
 
                     if (element.CustomFontSize != 0.0)
                     {
@@ -172,7 +178,7 @@ namespace DigitalAlbum.Droid
 
                     }
 
-                    if (element.IsCustomPassword == true)
+                    if (element.IsPassword == true)
                     {
                         Control.TransformationMethod = PasswordTransformationMethod.Instance;
                         //Control.InputType = InputTypes.TextVariationPassword;
@@ -191,4 +197,3 @@ namespace DigitalAlbum.Droid
         }
     }
 }
-
