@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DigitalAlbum.ValueConverters;
+using System;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
@@ -10,7 +11,14 @@ namespace DigitalAlbum
         public CreateMemory()
         {
             BindingContext = new CreateMemoryViewModel(Navigation);
-            InitializeComponent();    
+            InitializeComponent();
+
+            dateMemoryDate.SetBinding(CustomDatePicker.CustomFontSizeProperty, new Binding(".", BindingMode.Default, new WidthConverter(), 3, null));
+            dateMemoryDate.CustomFontSize = 10;
+
+            timeMemoryTime.SetBinding(CustomDatePicker.CustomFontSizeProperty, new Binding(".", BindingMode.Default, new WidthConverter(), 3, null));
+            timeMemoryTime.CustomFontSize = 5;
+
         }
     }
 }
