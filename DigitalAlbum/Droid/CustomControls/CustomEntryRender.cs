@@ -139,10 +139,22 @@ namespace DigitalAlbum.Droid
 
                     //Control.SetHintTextColor(ColorStateList.ValueOf(global::Android.Graphics.Color.Black));//for placeholder  
 
-                    if (element.CustomFontSize != 0.0)
+                    try
                     {
-                        Control.SetTextSize(ComplexUnitType.Dip, element.CustomFontSize);
+                        if (element.CustomFontSize != 0.0)
+                        {
+                            Control.SetTextSize(ComplexUnitType.Dip, element.CustomFontSize);
+                        }
+                        if (element.FontSize != 0)
+                        {
+                            Control.SetTextSize(ComplexUnitType.Dip, (float)element.FontSize);
+                        }
                     }
+                    catch(Exception ex)
+                    {
+                        var msg = ex.Message;
+                    }
+
                     if (element.CustomFontFamily == "Avenir65")
                     {
                         Graphicss.Typeface font = Graphicss.Typeface.CreateFromAsset(Forms.Context.Assets, "AvenirLTStd-Medium.ttf");

@@ -25,23 +25,24 @@
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
             </Style>
             <Style x:Key="LabelInputData" TargetType="Label">
-                <Setter Property="FontSize" Value="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=3}" />
+                <Setter Property="FontSize" Value="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=2}" />
 				<Setter Property="IsVisible" Value="true" />
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="VerticalTextAlignment" Value="Start" />
                 <Setter Property="HorizontalOptions" Value="Start" />
-                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="StartAndExpand" />
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
             </Style>
             <Style x:Key="EntryInputData" TargetType="Entry">
                 <Setter Property="FontSize" Value="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=3}" />
+                <Setter Property="HeightRequest" Value="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=6}" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-				<Setter Property="VerticalOptions" Value="End" />
+                <Setter Property="VerticalOptions" Value="EndAndExpand" />
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
             </Style>
             <Style x:Key="DatePickerInputData" TargetType="DatePicker">
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-                <Setter Property="VerticalOptions" Value="StartAndExpand" />
+                <Setter Property="VerticalOptions" Value="EndAndExpand" />
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
             </Style>
             <Style x:Key="TimePickerInputData" TargetType="TimePicker">
@@ -116,7 +117,7 @@
                         <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" ></BoxView>
 
 						<StackLayout Spacing="0" BackgroundColor="Transparent" Padding="0,0,0,0" Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-							<local:CustomLabel x:Name="lblMemoryText" Text="Enter Memory Description" Style="{StaticResource LabelInputData}" ></local:CustomLabel>
+                            <local:CustomLabel x:Name="lblMemoryText" Text="Enter Memory Description" Style="{StaticResource LabelInputData}" ></local:CustomLabel>
                             <local:CustomEditor x:Name="editorMemoryText" Margin="0,0,0,0" BackgroundColor="Transparent" TextColor="{StaticResource TextColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ></local:CustomEditor>
 						</StackLayout>
 						<local:CustomLabel Text="+"  Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
@@ -127,11 +128,11 @@
                         <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" ></BoxView>
 
                         <local:CustomLabel x:Name="lblMemoryDate" Text="Enter Date of Memory" Style="{StaticResource LabelInputData}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" ></local:CustomLabel>
-                        <local:CustomDatePicker x:Name="dateMemoryDate" BackgroundColor="Aqua" CustomFontSize="10" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource DatePickerInputData}" ></local:CustomDatePicker>
+                        <local:CustomDatePicker x:Name="dateMemoryDate" BackgroundColor="Aqua" CustomFontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=7}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource DatePickerInputData}" ></local:CustomDatePicker>
                         <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ></BoxView>
 
                         <local:CustomLabel x:Name="lblMemoryTime" Text="Enter Time of Memory" Style="{StaticResource LabelInputData}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" ></local:CustomLabel>
-                        <local:CustomTimePicker x:Name="timeMemoryTime" BackgroundColor="Green" CustomFontSize="5" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource TimePickerInputData}" ></local:CustomTimePicker>
+                        <local:CustomTimePicker x:Name="timeMemoryTime" BackgroundColor="Green" CustomFontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=7}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource TimePickerInputData}" ></local:CustomTimePicker>
                         <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  ></BoxView>
                         
                     </Grid>
