@@ -12,6 +12,8 @@
             <Color x:Key="PageBackgroundColor">Yellow</Color>
             <Color x:Key="TextColor">Black</Color>
             <Color x:Key="NormalTextColor">Blue</Color>
+            <x:Int32 x:Key="InputDataFontSize">3</x:Int32>
+            <x:Int32 x:Key="InputDataHeight">6</x:Int32>
             <!--{Binding Converter={StaticResource WidthConverter}, ConverterParameter=15 }-->
             <Style x:Key="LabelPageHeadingStyle" TargetType="Label">
                 <!--<Setter Property="FontSize">
@@ -35,20 +37,22 @@
             </Style>
             <Style x:Key="EntryInputData" TargetType="Entry">
                 <Setter Property="FontSize" Value="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=3}" />
-                <Setter Property="HeightRequest" Value="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=6}" />
+                <Setter Property="HeightRequest" Value="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=InputDataHeight}" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="VerticalOptions" Value="EndAndExpand" />
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
             </Style>
             <Style x:Key="DatePickerInputData" TargetType="DatePicker">
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="HeightRequest" Value="{Binding Converter={StaticResource HeightConverter}, ConverterParameter={StaticResource InputDataHeight}}" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="VerticalOptions" Value="EndAndExpand" />
-                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
             </Style>
             <Style x:Key="TimePickerInputData" TargetType="TimePicker">
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="HeightRequest" Value="{Binding Converter={StaticResource HeightConverter}, ConverterParameter={StaticResource InputDataHeight}}" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="VerticalOptions" Value="EndAndExpand" />
-                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
             </Style>
             <Style x:Key="BoxULineInputData" TargetType="BoxView">
 				<Setter Property="HeightRequest" Value="1" />
@@ -86,7 +90,8 @@
             </StackLayout>
 
 			<StackLayout AbsoluteLayout.LayoutBounds="1,1,1,0.9" AbsoluteLayout.LayoutFlags="All">
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" Padding="20,30,20,0">
+                    <ScrollView BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20,30,20,0">
 
 					<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" >
                         <local:CustomImage x:Name="imageMemory" HeightRequest="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=15 }"  WidthRequest="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=15 }" ></local:CustomImage>
@@ -137,9 +142,10 @@
                         <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  ></BoxView>
                         
                     </Grid>
-                    <Button Text="Submit" Command="{Binding SubmitClickedCommand}">
+                    <Button Text="Submit" Command="{Binding SubmitClickedCommand}" VerticalOptions="EndAndExpand">
 					</Button>
                 </StackLayout>
+                        </ScrollView>
 			</StackLayout>
 			
 		</AbsoluteLayout>

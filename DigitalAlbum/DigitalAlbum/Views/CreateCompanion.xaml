@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
@@ -11,6 +11,8 @@
             <Color x:Key="PageBackgroundColor">Yellow</Color>
             <Color x:Key="TextColor">Black</Color>
             <Color x:Key="NormalTextColor">Blue</Color>
+            <x:Int32 x:Key="InputDataFontSize">3</x:Int32>
+            <x:Int32 x:Key="InputDataHeight">6</x:Int32>
             <!--{Binding Converter={StaticResource WidthConverter}, ConverterParameter=15 }-->
             <Style x:Key="LabelPageHeadingStyle" TargetType="Label">
                 <!--<Setter Property="FontSize">
@@ -34,10 +36,16 @@
             </Style>
             <Style x:Key="EntryInputData" TargetType="Entry">
                 <Setter Property="FontSize" Value="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=3}" />
-                <Setter Property="HeightRequest" Value="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=6}" />
+                <Setter Property="HeightRequest" Value="{Binding Converter={StaticResource HeightConverter}, ConverterParameter={StaticResource InputDataHeight}}" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />
                 <Setter Property="VerticalOptions" Value="EndAndExpand" />
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+            </Style>
+            <Style x:Key="DatePickerInputData" TargetType="DatePicker">
+                <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+                <Setter Property="HeightRequest" Value="{Binding Converter={StaticResource HeightConverter}, ConverterParameter={StaticResource InputDataHeight}}" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="EndAndExpand" />
             </Style>
             <Style x:Key="BoxULineInputData" TargetType="BoxView">
                 <Setter Property="HeightRequest" Value="1" />
@@ -63,72 +71,83 @@
     </ContentPage.Padding>
 
     <ContentPage.Content>
-        <ScrollView BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+<!--        <ScrollView BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">-->
             <AbsoluteLayout HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=100 }" WidthRequest="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=100 }" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 
                 <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,0.1" AbsoluteLayout.LayoutFlags="All">
-                    <Grid HeightRequest="FillAndExpand" WidthRequest="FillAndExpand">
+                    <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*" />
-                            <RowDefinition Height="3*" />
                             <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
-                        <local:CustomLabel Text="Add Companion" Grid.Row="0" Grid.Column="1" WidthRequest="FillAndExpand" HeightRequest="FillAndExpand">                            
-                        </local:CustomLabel>
+                        <Label Text="Add Companion" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">                            
+                        </Label>
                     </Grid>
                 </StackLayout>
 
                 <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,0.9" AbsoluteLayout.LayoutFlags="All">
-                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" >
-                            <local:CustomImage x:Name="imageMemory" HeightRequest="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=15 }"  WidthRequest="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=15 }" ></local:CustomImage>
-                            <local:CustomLabel Text="AddMore" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer NumberOfTapsRequired="1" />
-                                </Label.GestureRecognizers>
-                            </local:CustomLabel>
+                <ScrollView BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                    <StackLayout Padding="20,0,20,10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" >
+                            <local:CustomImage x:Name="imageMemory" Source="icon.png" HeightRequest="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=15 }"  WidthRequest="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=15 }" >
+                            </local:CustomImage>
                         </StackLayout>
-                        <Grid x:Name="gridEntryHolder" HeightRequest="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=45 }" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+<!--                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">-->
+                        <Grid x:Name="gridEntryHolder" HeightRequest="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=55 }" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
                                 <RowDefinition Height="1.5*" />
-                                <RowDefinition Height="1*" />
-                                <RowDefinition Height="1*" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <!--<ColumnDefinition Width="7*" />-->
                                 <ColumnDefinition Width="1*" />
                             </Grid.ColumnDefinitions>
 
-                            <local:CustomLabel x:Name="lblCompanionName" Text="Enter Companion Name" Style="{StaticResource LabelInputData}" Grid.Row="0" Grid.Column="0"  ></local:CustomLabel>
-                            <local:CustomEntry x:Name="entryCompanionName" Placeholder="Enter Companion Name" BackgroundColor="Aqua" IsRequiredMargin="false" BorderColors="#00000000" Style="{StaticResource EntryInputData}" Grid.Row="0" Grid.Column="0" ></local:CustomEntry>
+                            <local:CustomLabel x:Name="lblCompanionNickName" Text="Enter Companion Nick Name" Style="{StaticResource LabelInputData}" Grid.Row="0" Grid.Column="0"  ></local:CustomLabel>
+                            <local:CustomEntry x:Name="entryCompanionNickName" Placeholder="Enter Companion Nick Name" IsRequiredMargin="false" BorderColors="#00000000" Style="{StaticResource EntryInputData}" Grid.Row="0" Grid.Column="0" ></local:CustomEntry>
                             <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="0" Grid.Column="0" ></BoxView>
+                            
+                            <local:CustomLabel x:Name="lblCompanionName" Text="Enter Companion Name" Style="{StaticResource LabelInputData}" Grid.Row="1" Grid.Column="0"  ></local:CustomLabel>
+                            <local:CustomEntry x:Name="entryCompanionName" Placeholder="Enter Companion Name" IsRequiredMargin="false" BorderColors="#00000000" Style="{StaticResource EntryInputData}" Grid.Row="1" Grid.Column="0" ></local:CustomEntry>
+                            <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="1" Grid.Column="0" ></BoxView>
 
-                            <StackLayout Spacing="0" BackgroundColor="Transparent" Padding="0,0,0,0" Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                            <local:CustomLabel x:Name="lblCompanionMobileNo" Text="Enter Companion Mobile No" Style="{StaticResource LabelInputData}" Grid.Row="2" Grid.Column="0"  ></local:CustomLabel>
+                            <local:CustomEntry x:Name="entryCompanionMobileNo" Placeholder="Enter Companion Mobile No" IsRequiredMargin="false" BorderColors="#00000000" Style="{StaticResource EntryInputData}" Grid.Row="2" Grid.Column="0" ></local:CustomEntry>
+                            <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="2" Grid.Column="0" ></BoxView>
+
+                            <local:CustomLabel x:Name="lblCompanionEmailId" Text="Enter Companion Email" Style="{StaticResource LabelInputData}" Grid.Row="3" Grid.Column="0"  ></local:CustomLabel>
+                            <local:CustomEntry x:Name="entryCompanionEmailId" Placeholder="Enter Companion Email" IsRequiredMargin="false" BorderColors="#00000000" Style="{StaticResource EntryInputData}" Grid.Row="3" Grid.Column="0" ></local:CustomEntry>
+                            <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="3" Grid.Column="0" ></BoxView>
+
+                            <local:CustomLabel x:Name="lblCompanionDOB" Text="Enter Date of Birth" Style="{StaticResource LabelInputData}" Grid.Row="4" Grid.Column="0" ></local:CustomLabel>
+                            <local:CustomDatePicker x:Name="dateCompanionDOB" CustomFontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=7}" Grid.Row="4" Grid.Column="0" Style="{StaticResource DatePickerInputData}" ></local:CustomDatePicker>
+                            <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="4" Grid.Column="0" ></BoxView>
+                            
+                            <StackLayout Spacing="0" BackgroundColor="Transparent" Padding="0,0,0,0" Grid.Row="5" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                                 <local:CustomLabel x:Name="lblMemoryText" Text="Enter Memory Description" Style="{StaticResource LabelInputData}" ></local:CustomLabel>
                                 <local:CustomEditor x:Name="editorMemoryText" Margin="0,0,0,0" BackgroundColor="Transparent" TextColor="{StaticResource TextColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ></local:CustomEditor>
                             </StackLayout>
-                            <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="1" Grid.Column="0" ></BoxView>
-
-                            <local:CustomLabel x:Name="lblMemoryDate" Text="Enter Date of Memory" Style="{StaticResource LabelInputData}" Grid.Row="2" Grid.Column="0" ></local:CustomLabel>
-                            <local:CustomDatePicker x:Name="dateMemoryDate" BackgroundColor="Aqua" CustomFontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=7}" Grid.Row="2" Grid.Column="0" Style="{StaticResource DatePickerInputData}" ></local:CustomDatePicker>
-                            <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="2" Grid.Column="0" ></BoxView>
-
-                            <local:CustomLabel x:Name="lblMemoryTime" Text="Enter Time of Memory" Style="{StaticResource LabelInputData}" Grid.Row="3" Grid.Column="0"></local:CustomLabel>
-                            <local:CustomTimePicker x:Name="timeMemoryTime" BackgroundColor="Green" CustomFontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=7}" Grid.Row="3" Grid.Column="0" Style="{StaticResource TimePickerInputData}" ></local:CustomTimePicker>
-                            <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="3" Grid.Column="0" ></BoxView>
+                            <BoxView Style="{StaticResource BoxULineInputData}" Grid.Row="5" Grid.Column="0" ></BoxView>
 
                         </Grid>
-                        <Button Text="Submit" Command="{Binding SubmitClickedCommand}">
+<!--                            </StackLayout>-->
+                        <Button Text="Submit" BackgroundColor="Maroon" Command="{Binding SubmitClickedCommand}" VerticalOptions="EndAndExpand">
                         </Button>
                     </StackLayout>
+                    </ScrollView>
                 </StackLayout>
                 
             </AbsoluteLayout>
 
-        </ScrollView>
+<!--        </ScrollView>-->
     </ContentPage.Content>
 </ContentPage>
