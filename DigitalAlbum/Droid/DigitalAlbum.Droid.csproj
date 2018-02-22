@@ -145,6 +145,7 @@
     <Compile Include="CustomControls\AdvViewRender.cs" />
     <Compile Include="CustomControls\CustomBoxViewRender.cs" />
     <Compile Include="DependencyService\SQLiteService.cs" />
+    <Compile Include="CustomControls\CustomLayoutRender.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -161,6 +162,12 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable\withBorder.xml" />
+    <AndroidResource Include="Resources\drawable\Avatar1.png" />
+    <AndroidResource Include="Resources\drawable\Avatar2.png" />
+    <AndroidResource Include="Resources\drawable\Avatar3.png" />
+    <AndroidResource Include="Resources\drawable\Avatar4.jpg" />
+    <AndroidResource Include="Resources\drawable\Avatar5.png" />
+    <AndroidResource Include="Resources\drawable\Avatar6.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomControls\" />

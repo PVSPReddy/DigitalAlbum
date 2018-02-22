@@ -104,6 +104,7 @@
     <Compile Include="PCLResources\AppGlobalResources.Designer.cs">
       <DependentUpon>AppGlobalResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\CustomLayout.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SQLite.Net">

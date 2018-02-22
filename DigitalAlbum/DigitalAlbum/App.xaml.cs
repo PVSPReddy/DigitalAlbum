@@ -8,7 +8,9 @@ namespace DigitalAlbum
         {
             InitializeComponent();
 
-            MainPage = new CreateCompanion();
+            MainPage = new HomePage();
+            //MainPage = new CreateMemory();
+            //MainPage = new CreateCompanion();
         }
 
         protected override void OnStart()

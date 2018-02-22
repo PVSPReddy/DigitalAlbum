@@ -14,6 +14,7 @@
             <Color x:Key="PageBackgroundColor">Yellow</Color>
             <Color x:Key="HeadingTextColor">Black</Color>
             <Color x:Key="NormalTextColor">Blue</Color>
+<!--            <x:Double x:Key="AppBorderSize"></x:Double>-->
             <Style x:Key="LabelPageHeadingStyle" TargetType="Label">
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="HorizontalOptions" Value="Center" />
@@ -51,25 +52,54 @@
             </StackLayout>
             <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,0.9" AbsoluteLayout.LayoutFlags="All">
                 <StackLayout>
-                    <ListView>
+                    <ListView x:Name="listViewCompanions" RowHeight="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=15}" ItemsSource="{Binding CompanionData}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <!--<ListView.ItemsSource>
+                        </ListView.ItemsSource>-->
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="Center">
-										<Grid.RowDefinitions>
-											<RowDefinition Height="1"/>
-											<RowDefinition Height="3"/>
-											<RowDefinition Height="1"/>
-										</Grid.RowDefinitions>
-										<Grid.ColumnDefinitions>
-											<ColumnDefinition Width="2"/>
-                                            <ColumnDefinition Width="5"/>
-										</Grid.ColumnDefinitions>
-										<local:CustomImage Grid.Row="0" Grid.RowSpan="3" Grid.Column="0">
-										</local:CustomImage>
-										<Label  Grid.Row="1" Grid.Column="1">
-										</Label>
-                                    </Grid>
+                                    <StackLayout BackgroundColor="Transparent" Padding="10,10,10,10" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=15}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Grid BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=12}"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=12}"/>
+                                            </Grid.ColumnDefinitions>
+                                            <!--<local:CustomImage  Grid.Column="0">
+                                            </local:CustomImage>-->
+                                            
+                                            <local:CustomLayout StartColor="Teal" EndColor="Teal" GradientDirection="Horizontal" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=12}" CornerWRT="WRTHeightRequest" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            </local:CustomLayout>
+                                            
+                                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Padding="5,5,5,5">
+                                                <!--<local:CustomLayout StartColor="Maroon" EndColor="Maroon" GradientDirection="Horizontal" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" WidthRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" CornerWRT="WRTHeightRequest" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                    <Label Text="+" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                    </Label>
+                                                </local:CustomLayout>-->
+                                                <local:CustomImage Source="Avatar1.png" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" WidthRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+                                                </local:CustomImage>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                                <local:CustomLabel Text="{Binding CompanionName}" TextColor="Black" BackgroundColor="Transparent" LineBreakMode="TailTruncation" FontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=2.5}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                                </local:CustomLabel>
+                                                <local:CustomLabel Text="{Binding DateOfBirth, StringFormat= 'Date of Birth : {0}'}" TextColor="Black" BackgroundColor="Transparent" FontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=1.8}" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                                </local:CustomLabel>
+                                                <local:CustomLabel Text="{Binding MemoriesCount, StringFormat= 'Memories Count : {0}'}" TextColor="Black" BackgroundColor="Transparent" FontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=1.8}" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                                </local:CustomLabel>
+                                            </StackLayout>
+                                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="2" Padding="5,5,5,5">
+                                                <local:CustomLayout StartColor="Maroon" EndColor="Maroon" GradientDirection="Horizontal" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" WidthRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" CornerWRT="WRTHeightRequest" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                    <Label Text="+" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                    </Label>
+                                                </local:CustomLayout>
+                                            </StackLayout>
+                                            
+                                        </Grid>
+                                    </StackLayout>
+                                    <!---->
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
