@@ -57,7 +57,13 @@
                         </ListView.ItemsSource>-->
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
+
+                                <local:HomePageViewCell >
+                                    
+                                </local:HomePageViewCell>
+                                
+                                <!--<ViewCell>
+                                    
                                     <StackLayout BackgroundColor="Transparent" Padding="10,10,10,10" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=15}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                                         <Grid BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
@@ -68,17 +74,12 @@
                                                 <ColumnDefinition Width="1*"/>
                                                 <ColumnDefinition Width="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=12}"/>
                                             </Grid.ColumnDefinitions>
-                                            <!--<local:CustomImage  Grid.Column="0">
-                                            </local:CustomImage>-->
                                             
                                             <local:CustomLayout StartColor="Teal" EndColor="Teal" GradientDirection="Horizontal" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=12}" CornerWRT="WRTHeightRequest" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                             </local:CustomLayout>
                                             
                                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Padding="5,5,5,5">
-                                                <!--<local:CustomLayout StartColor="Maroon" EndColor="Maroon" GradientDirection="Horizontal" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" WidthRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" CornerWRT="WRTHeightRequest" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                                    <Label Text="+" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                                    </Label>
-                                                </local:CustomLayout>-->
+                                                
                                                 <local:CustomImage Source="Avatar1.png" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" WidthRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
                                                 </local:CustomImage>
                                             </StackLayout>
@@ -99,8 +100,8 @@
                                             
                                         </Grid>
                                     </StackLayout>
-                                    <!---->
-                                </ViewCell>
+                                    
+                                </ViewCell>-->
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

@@ -93,6 +93,9 @@
       <DependentUpon>CreateCompanion.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\CreateCompanionViewModel.cs" />
+    <Compile Include="Views\HomePageViewCell.xaml.cs">
+      <DependentUpon>HomePageViewCell.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MemoryMenu.xaml.cs">
       <DependentUpon>MemoryMenu.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,12 @@
     <Folder Include="CustomControls\CustomViews\" />
     <Folder Include="DependencyService\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\HomePageViewCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
