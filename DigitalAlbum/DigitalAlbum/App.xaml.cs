@@ -8,7 +8,8 @@ namespace DigitalAlbum
         {
             InitializeComponent();
 
-            MainPage = new HomePage();
+            MainPage = new HomeMasterPage();
+            //MainPage = new HomePage();
             //MainPage = new CreateMemory();
             //MainPage = new CreateCompanion();
         }

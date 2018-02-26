@@ -7,10 +7,12 @@ namespace DigitalAlbum
 {
     public partial class HomePage : ContentPage
     {
+        public static HomePage homePage;
         public HomePage()
         {
             BindingContext = new HomePageViewModel(Navigation);
             InitializeComponent();
+            homePage = this;
             //BindingContext = new HomePageViewModel(Navigation);
             listViewCompanions.ItemSelected += (object sender, SelectedItemChangedEventArgs e) => 
             {

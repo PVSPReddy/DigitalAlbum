@@ -21,6 +21,7 @@ namespace DigitalAlbum
         {
             try
             {
+                HomePage.homePage.Navigation.PushModalAsync(new CreateMemory());
                 //DisplayAlert("ALert", "HelloWorld", "Ok");
             }
             catch (Exception ex)

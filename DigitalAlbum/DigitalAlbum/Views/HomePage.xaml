@@ -3,7 +3,8 @@
 	xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	xmlns:local="clr-namespace:DigitalAlbum;assembly=DigitalAlbum"
-	x:Class="DigitalAlbum.HomePage">
+	x:Class="DigitalAlbum.HomePage"
+    Title="HomePage" Icon="null">
 
 	<!--<ContentPage.BindingContext>
         <local:HomePageViewModel/>
