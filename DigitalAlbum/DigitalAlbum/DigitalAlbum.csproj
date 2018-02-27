@@ -49,15 +49,23 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppGlobalResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MasterPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\HomeMasterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\HomeMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CompanionDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CompanionsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CompanionsListViewCell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -120,15 +128,25 @@
       <DependentUpon>AppGlobalResources.resx</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\CustomLayout.cs" />
-    <Compile Include="Views\MasterPage.xaml.cs">
-      <DependentUpon>MasterPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\HomeMasterPage.xaml.cs">
       <DependentUpon>HomeMasterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeMenuPage.xaml.cs">
       <DependentUpon>HomeMenuPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CompanionDetails.xaml.cs">
+      <DependentUpon>CompanionDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CompanionsList.xaml.cs">
+      <DependentUpon>CompanionsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CompanionsListViewCell.xaml.cs">
+      <DependentUpon>CompanionsListViewCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\CompanionsListViewModel.cs" />
+    <Compile Include="Models\CompanionsData.cs" />
+    <Compile Include="Models\MemoriesData.cs" />
+    <Compile Include="Models\LocationDetails.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SQLite.Net">

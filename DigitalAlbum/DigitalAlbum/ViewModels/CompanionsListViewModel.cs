@@ -1,19 +1,18 @@
 ﻿using System;
-
-using Xamarin.Forms;
-using System.Windows.Input;
 using System.Collections.Generic;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace DigitalAlbum
 {
-    public class HomePageViewModel : BaseViewModel
+    public class CompanionsListViewModel : BaseViewModel
     {
         public ICommand _CommandClicked { get; private set; }
         public ICommand AddMemoryClick { get; private set; }
         public INavigation Navigation { get; set; }
         public List<CompanionsData> CompanionData { get; set; }
 
-        public HomePageViewModel(INavigation navigation)
+        public CompanionsListViewModel(INavigation navigation)
         {
             Navigation = navigation;
             _CommandClicked = new Command(() => CommandClicked());
@@ -30,6 +29,8 @@ namespace DigitalAlbum
                 new CompanionsData(){ CompanionName="Pulagam Venkata SivaPrasad Reddy", DateOfBirth="01/01/1992", MemoriesCount="9" }
             };
         }
+
+
 
         void AddMemoryClicked()
         {
@@ -55,4 +56,3 @@ namespace DigitalAlbum
         }
     }
 }
-

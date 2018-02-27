@@ -6,5 +6,51 @@
     Title="MasterMenuPage" Icon="null">
     
 	<ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,0.3" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Image HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=20}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
+                    </Image>
+                    <Label HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,0.7" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <ListView x:Name="listviewMenu" RowHeight="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=8}" HeightRequest="{Binding  Converter={StaticResource HeightConverter}, ConverterParameter=48}" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="4*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            <Image Source="{Binding MenuImage}" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=8}" WidthRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=8}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                            </Image>
+                                        </StackLayout>
+                                        <Label Text="{Binding MenuPageName}" Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        </Label>
+                                        <BoxView x:Name="selectedBoxView" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Color="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        </BoxView>
+                                    </Grid>
+                                    <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Image Source="{Binding MenuImage}" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=8}" WidthRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=8}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
+                                        </Image>
+                                        <Label Text="{Binding MenuPageName}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        </Label>
+                                    </StackLayout>-->
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+        </AbsoluteLayout>
 	</ContentPage.Content>
+    
 </ContentPage>
