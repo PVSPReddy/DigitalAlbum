@@ -12,8 +12,22 @@
             <converter:WidthConverter x:Key="WidthConverter" />
 
             <Color x:Key="HeaderBackGroundColor">#33302E</Color>
-            <Color x:Key="CurrentTextColor">White</Color>
+            <Color x:Key="CurrentTextColor">Green</Color>
+<!--            <Color x:Key="HeaderNaviControlsColor">Black</Color>-->
+
+            <!--<x:Double x:Key="HeaderFontSize">1</x:Double>
+            <x:Double x:Key="HeaderNaviControlsFontSize">1</x:Double>
+            <x:Double x:Key="NaviMenuTextFont">1</x:Double>
+            <x:Double x:Key="AppVeryLargeFontSize">1</x:Double>
+            <x:Double x:Key="AppLargeFontSize">1</x:Double>
+            <x:Double x:Key="AppMediumFontize">1</x:Double>
+            <x:Double x:Key="AppSmallFontize">1</x:Double>
+            <x:Double x:Key="AppMicroFontize">1</x:Double>-->
             
+           <!-- <Style x:Key="LabelHeaderNaviControls" TargetType="Label">
+                <Setter Property="FontSize" Value="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=HeaderNaviControlsFontSize}" />
+                <Setter Property="TextColor" Value="{DynamicColor HeaderNaviControlsColor}" />
+            </Style>-->
             
         </ResourceDictionary>
     </Application.Resources>

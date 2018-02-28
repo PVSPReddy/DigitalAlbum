@@ -7,8 +7,11 @@ namespace DigitalAlbum
 {
     public partial class MemoryDetailPage : ContentPage
     {
+        public INavigation PageNavigation { get; set; }
+
         public MemoryDetailPage(MemoriesData selectedMemory)
         {
+            PageNavigation = Navigation;
             InitializeComponent();
             BindingContext = new MemoryDetailViewModel(Navigation);
         }

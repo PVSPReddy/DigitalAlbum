@@ -73,6 +73,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\CustomViews\GlobalHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\CustomViews\BaseContentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -153,6 +161,13 @@
     <Compile Include="Models\LocationDetails.cs" />
     <Compile Include="Views\AppSettings.xaml.cs">
       <DependentUpon>AppSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\CustomViews\GlobalHeader.xaml.cs">
+      <DependentUpon>GlobalHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ValueConverters\TextToUniCodeSymbolCoverter.cs" />
+    <Compile Include="CustomControls\CustomViews\BaseContentPage.xaml.cs">
+      <DependentUpon>BaseContentPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

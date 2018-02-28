@@ -8,9 +8,15 @@ namespace DigitalAlbum
     public partial class HomePage : ContentPage
     {
         public static HomePage homePage;
+        public INavigation PageNavigation { get; set; }
+        //public HomePage
+        //public MasterDetailPage PageNavigation { get; set; }
+
         public HomePage()
         {
             BindingContext = new HomePageViewModel(Navigation);
+            PageNavigation = Navigation;
+            //PageNavigation = ((MasterDetailPage)(this.Parent));
             InitializeComponent();
             homePage = this;
             //BindingContext = new HomePageViewModel(Navigation);
