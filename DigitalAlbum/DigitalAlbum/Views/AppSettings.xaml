@@ -2,8 +2,7 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="DigitalAlbum.CompanionDetails">
-
+    x:Class="DigitalAlbum.AppSettings">
 
 
     <ContentPage.Resources>
@@ -47,12 +46,13 @@
                         <ColumnDefinition Width="4*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Text="&#x2190;" TextColor="Black" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Label Text="&#x2630;" TextColor="Black" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OpenNavigationMenu" />
                         </Label.GestureRecognizers>
                     </Label>
-                    <Label Text="Companion Details" TextColor="Black" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <!--&#x2190;-->
+                    <Label Text="Settings" TextColor="Black" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     </Label>
                     <!--<Label Text="&#x002B;" TextColor="Black" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Label.GestureRecognizers>
@@ -64,7 +64,8 @@
             </StackLayout>
             <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,0.9" AbsoluteLayout.LayoutFlags="All">
                 <StackLayout>
-                    
+                    <Button Text="ChangeTheme" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Clicked="ChangeThemeClicked">
+                    </Button>
                 </StackLayout>
             </StackLayout>
         </AbsoluteLayout>

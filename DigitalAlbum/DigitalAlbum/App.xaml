@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Application 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
@@ -7,8 +7,14 @@
     <Application.Resources>
         <!-- Application resource dictionary -->
         <ResourceDictionary>
+            
             <converter:HeightConverter x:Key="HeightConverter" />
             <converter:WidthConverter x:Key="WidthConverter" />
+
+            <Color x:Key="HeaderBackGroundColor">#33302E</Color>
+            <Color x:Key="CurrentTextColor">White</Color>
+            
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

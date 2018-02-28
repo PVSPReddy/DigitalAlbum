@@ -14,7 +14,7 @@ namespace DigitalAlbum
             {
                 new HomeMenuData(){ MenuImage="Avater2.png", MenuPageName="HomePage" },
                 new HomeMenuData(){ MenuImage="Avater2.png", MenuPageName="Companions" },
-                new HomeMenuData(){ MenuImage="Avater2.png", MenuPageName="HomePage3" },
+                new HomeMenuData(){ MenuImage="Avater2.png", MenuPageName="App Settings" },
                 new HomeMenuData(){ MenuImage="Avater2.png", MenuPageName="HomePage4" },
                 new HomeMenuData(){ MenuImage="Avater2.png", MenuPageName="HomePage5" },
                 new HomeMenuData(){ MenuImage="Avater2.png", MenuPageName="HomePage6" }
@@ -43,6 +43,9 @@ namespace DigitalAlbum
                             break;
                         case "Companions":
                             parentDetailView.Detail = new CompanionsList() { BackgroundColor = Color.White };
+                            break;
+                        case "App Settings":
+                            parentDetailView.Detail = new AppSettings() { BackgroundColor = Color.White };
                             break;
                         default:
                             break;
