@@ -11,5 +11,19 @@ namespace DigitalAlbum
         {
             InitializeComponent();
         }
+
+        void OpenNavigationMenu(object sender, EventArgs args)
+        {
+            try
+            {
+                Navigation.PopModalAsync();
+                //var ParentPage = (MasterDetailPage)this.Parent;
+                //ParentPage.IsPresented = (ParentPage.IsPresented == false) ? true : false;
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+        }
     }
 }

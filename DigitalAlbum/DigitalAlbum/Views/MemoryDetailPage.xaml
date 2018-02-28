@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage 
-    xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="DigitalAlbum.CompanionDetails">
-
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+    xmlns:local="clr-namespace:DigitalAlbum;assembly=DigitalAlbum"
+	x:Class="DigitalAlbum.MemoryDetailPage">
 
 
     <ContentPage.Resources>
@@ -52,7 +52,7 @@
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OpenNavigationMenu" />
                         </Label.GestureRecognizers>
                     </Label>
-                    <Label Text="Companion Details" TextColor="Black" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Label Text="Memory Detail" TextColor="Black" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     </Label>
                     <!--<Label Text="&#x002B;" TextColor="Black" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Label.GestureRecognizers>

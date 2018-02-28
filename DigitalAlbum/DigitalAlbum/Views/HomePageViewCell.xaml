@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	xmlns:local="clr-namespace:DigitalAlbum;assembly=DigitalAlbum"
@@ -25,17 +25,17 @@
                 </StackLayout>
                 
                 <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                    <local:CustomLabel Text="{Binding CompanionName}" TextColor="Black" BackgroundColor="Transparent" LineBreakMode="TailTruncation" FontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=2.5}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                    <local:CustomLabel Text="{Binding LocationName}" TextColor="Black" BackgroundColor="Transparent" LineBreakMode="TailTruncation" FontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=2.5}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                     </local:CustomLabel>
-                    <local:CustomLabel Text="{Binding DateOfBirth, StringFormat= 'Date of Birth : {0}'}" TextColor="Black" BackgroundColor="Transparent" FontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=1.8}" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                    <local:CustomLabel Text="{Binding DateOfMemory, StringFormat= 'Date of Memory : {0}'}" TextColor="Black" BackgroundColor="Transparent" FontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=1.8}" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                     </local:CustomLabel>
-                    <local:CustomLabel Text="{Binding MemoriesCount, StringFormat= 'Memories Count : {0}'}" TextColor="Black" BackgroundColor="Transparent" FontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=1.8}" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                    <local:CustomLabel Text="{Binding CompanionsNoCount, StringFormat= 'Companions Count : {0}'}" TextColor="Black" BackgroundColor="Transparent" FontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=1.8}" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                     </local:CustomLabel>
                 </StackLayout>
                 
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="2" Padding="5,5,5,5">
+                <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="2" Padding="5,5,5,5">
                     <local:CustomLayout StartColor="Maroon" EndColor="Maroon" GradientDirection="Horizontal" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" WidthRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" CornerWRT="WRTHeightRequest" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                        <Label Text="+" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Label Text="=" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                         </Label>
                     </local:CustomLayout>
                 </StackLayout>
@@ -43,7 +43,7 @@
                     <BoxView.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="AddMemoryToPerson" />
                     </BoxView.GestureRecognizers>
-                </BoxView>
+                </BoxView>-->
 
             </Grid>
             

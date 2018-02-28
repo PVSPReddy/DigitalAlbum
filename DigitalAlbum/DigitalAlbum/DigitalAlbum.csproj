@@ -42,7 +42,7 @@
     <EmbeddedResource Include="Views\MemoryMenu.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MemoryDetail.xaml">
+    <EmbeddedResource Include="Views\MemoryDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="PCLResources\AppGlobalResources.resx">
@@ -120,8 +120,8 @@
       <DependentUpon>MemoryMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MemoryMenuViewModel.cs" />
-    <Compile Include="Views\MemoryDetail.xaml.cs">
-      <DependentUpon>MemoryDetail.xaml</DependentUpon>
+    <Compile Include="Views\MemoryDetailPage.xaml.cs">
+      <DependentUpon>MemoryDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\MemoryDetailViewModel.cs" />
     <Compile Include="PCLResources\AppGlobalResources.Designer.cs">

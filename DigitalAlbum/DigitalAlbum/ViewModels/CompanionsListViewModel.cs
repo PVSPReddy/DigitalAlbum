@@ -9,6 +9,7 @@ namespace DigitalAlbum
     {
         public ICommand _CommandClicked { get; private set; }
         public ICommand AddMemoryClick { get; private set; }
+        public ICommand AddCompanionClick { get; private set; }
         public INavigation Navigation { get; set; }
         public List<CompanionsData> CompanionData { get; set; }
 
@@ -17,6 +18,7 @@ namespace DigitalAlbum
             Navigation = navigation;
             _CommandClicked = new Command(() => CommandClicked());
             AddMemoryClick = new Command(() => AddMemoryClicked());
+            AddCompanionClick = new Command(() => AddCompanionClicked());
             CompanionData = new List<CompanionsData>()
             {
                 new CompanionsData(){ CompanionName="SivaPrasad", DateOfBirth="02/07/1992", MemoriesCount="30" },
@@ -30,7 +32,17 @@ namespace DigitalAlbum
             };
         }
 
-
+        private void AddCompanionClicked()
+        {
+            try
+            {
+                Navigation.PushModalAsync(new CreateCompanion());
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+        }
 
         void AddMemoryClicked()
         {

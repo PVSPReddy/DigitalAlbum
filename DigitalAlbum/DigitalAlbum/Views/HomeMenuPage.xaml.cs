@@ -26,6 +26,7 @@ namespace DigitalAlbum
 
         private void MenuItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            var parentDetailView = (MasterDetailPage)this.Parent;
             try
             {
                 var menuItemSelected = ((ListView)sender).SelectedItem as HomeMenuData;
@@ -35,9 +36,6 @@ namespace DigitalAlbum
                 }
                 else
                 {
-                    var parentDetailView = (MasterDetailPage)this.Parent;
-                    parentDetailView.IsPresented = false;
-
                     switch(menuItemSelected.MenuPageName)
                     {
                         case "HomePage":
@@ -51,6 +49,7 @@ namespace DigitalAlbum
                     }
 
                 }
+                parentDetailView.IsPresented = false;
             }
             catch(Exception ex)
             {
@@ -58,6 +57,7 @@ namespace DigitalAlbum
                 System.Diagnostics.Debug.WriteLine("Error => " + ex.Message);
                 System.Diagnostics.Debug.WriteLine("StackTrace => " + ex.StackTrace);
                 //throw new Exception(ex.Message);
+                parentDetailView.IsPresented = false;
             }
             ((ListView)sender).SelectedItem = null;
         }

@@ -18,12 +18,15 @@ namespace DigitalAlbum
             {
                 try
                 {
-                    var item = ((ListView)sender).SelectedItem as CompanionsData;
-                    if (item == null)
+                    var selectedMemory = ((ListView)sender).SelectedItem as MemoriesData;
+                    if (selectedMemory == null)
                     {
                         return;
                     }
-
+                    else
+                    {
+                        Navigation.PushModalAsync(new MemoryDetailPage(selectedMemory));
+                    }
                     ((ListView)sender).SelectedItem = null;
                 }
                 catch(Exception ex)
@@ -32,6 +35,49 @@ namespace DigitalAlbum
                 }
 
             };
+        }
+
+        void OpenNavigationMenu(object sender, EventArgs args)
+        {
+            try
+            {
+                var ParentPage = (MasterDetailPage)this.Parent;
+                ParentPage.IsPresented = (ParentPage.IsPresented == false) ? true : false;
+                //HomePage.homePage.Navigation.PushModalAsync(new CreateMemory());
+                //DisplayAlert("ALert", "HelloWorld", "Ok");
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message;
+            }
+        }
+
+        //void AddNewMemory(object sender, EventArgs args)
+        //{
+        //    try
+        //    {
+        //        //HomePage.homePage.Navigation.PushModalAsync(new CreateMemory());
+        //        //DisplayAlert("ALert", "HelloWorld", "Ok");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var msg = ex.Message;
+        //    }
+        //}
+
+        protected override bool OnBackButtonPressed()
+        {
+            //return base.OnBackButtonPressed();
+            //try
+            //{
+            //    return true;
+            //}
+            //catch(Exception ex)
+            //{
+            //    var msg = ex.Message;
+            //    return true;
+            //}
+            return true;
         }
     }
 }

@@ -5,12 +5,12 @@ using Xamarin.Forms;
 
 namespace DigitalAlbum
 {
-    public partial class CreateCompanion : ContentPage
+    public partial class MemoryDetailPage : ContentPage
     {
-        public CreateCompanion()
+        public MemoryDetailPage(MemoriesData selectedMemory)
         {
             InitializeComponent();
-            BindingContext = new CreateCompanionViewModel(Navigation);
+            BindingContext = new MemoryDetailViewModel(Navigation);
         }
 
         void OpenNavigationMenu(object sender, EventArgs args)
