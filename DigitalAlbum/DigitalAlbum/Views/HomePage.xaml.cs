@@ -8,14 +8,40 @@ namespace DigitalAlbum
     public partial class HomePage : ContentPage
     {
         public static HomePage homePage;
-        public INavigation PageNavigation { get; set; }
+        public string PageNavigation { get; set; }
         //public HomePage
         //public MasterDetailPage PageNavigation { get; set; }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            //MessagingCenter.Subscribe<GlobalHeader, string>(this, "My Memories", (sender, args)=>//(GlobalHeader arg1, string arg2) =>
+            //{
+            //    // do something whenever the "HomePage - key" message is sent
+            //    try
+            //    {
+            //        var ParentPage = (MasterDetailPage)this.Parent;
+            //        ParentPage.IsPresented = (ParentPage.IsPresented == false) ? true : false;
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        var msg = ex.Message + "\n" + ex.StackTrace;
+            //        System.Diagnostics.Debug.WriteLine(msg);
+            //    }
+            //});
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            //MessagingCenter.Unsubscribe<GlobalHeader, string>(this, "My Memories");
+        }
 
         public HomePage()
         {
             BindingContext = new HomePageViewModel(Navigation);
-            PageNavigation = Navigation;
+            //PageNavigation = "Master";
+
             //PageNavigation = ((MasterDetailPage)(this.Parent));
             InitializeComponent();
             homePage = this;

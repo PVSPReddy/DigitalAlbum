@@ -10,6 +10,7 @@
             
             <converter:HeightConverter x:Key="HeightConverter" />
             <converter:WidthConverter x:Key="WidthConverter" />
+            <converter:TextToUniCodeSymbolCoverter x:Key="TextToSymbolConverter" />
 
             <Color x:Key="HeaderBackGroundColor">#33302E</Color>
             <Color x:Key="CurrentTextColor">Green</Color>

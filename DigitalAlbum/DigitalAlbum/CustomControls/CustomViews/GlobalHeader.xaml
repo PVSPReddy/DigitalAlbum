@@ -2,8 +2,15 @@
 <ContentView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:DigitalAlbum;assembly=DigitalAlbum"
     x:Class="DigitalAlbum.GlobalHeader">
 
+    <!--<ContentView.Resources>
+        <ResourceDictionary>
+            <x:Static x:Key="MyConstString" Value="{Binding NaviImage}" />
+        </ResourceDictionary>
+    </ContentView.Resources>-->
+    
     <ContentView.Content>
         <Grid BackgroundColor="{DynamicResource HeaderBackGroundColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>

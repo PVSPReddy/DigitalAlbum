@@ -38,7 +38,7 @@
         <AbsoluteLayout BackgroundColor="{DynamicResource HeaderBackGroundColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,0.1" AbsoluteLayout.LayoutFlags="All">
 
-                <local:GlobalHeader>
+                <!--<local:GlobalHeader>
                     <x:Arguments>
                         <x:String>NonMaster</x:String>
                         <x:String>&#x2190;</x:String>
@@ -46,8 +46,8 @@
                         <x:Boolean>false</x:Boolean>
                         <x:Object>PageNavigation</x:Object>
                     </x:Arguments>
-                </local:GlobalHeader>
-                <!--<Grid BackgroundColor="Maroon" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                </local:GlobalHeader>-->
+                <Grid BackgroundColor="Maroon" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
@@ -62,13 +62,13 @@
                         </Label.GestureRecognizers>
                     </Label>
                     <Label Text="Memory Detail" TextColor="Black" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    </Label>-->
+                    </Label>
                     <!--<Label Text="&#x002B;" TextColor="Black" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AddMemoryClick}" />
                         </Label.GestureRecognizers>
                     </Label>-->
-                <!--</Grid>-->
+                </Grid>
                 
             </StackLayout>
             <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,0.9" AbsoluteLayout.LayoutFlags="All">

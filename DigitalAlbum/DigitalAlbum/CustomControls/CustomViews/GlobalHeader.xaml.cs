@@ -12,14 +12,30 @@ namespace DigitalAlbum
         public string PageTitle { get; set; }
         public string NaviImage { get; set; }
         public bool ShowThirdButton { get; set; }
-        public object PageNavigation { get; set; }
-        public GlobalHeader(string naviType, string naviImage, string pageTitle, bool showThirdButton, object pageNavigation )
+        //public object PageNavigation { get; set; }
+        public GlobalHeader(string naviType, string naviImage, string pageTitle, bool showThirdButton )
         {
             NaviType = naviType;
+            if(NaviType == "Master")
+            {
+                NaviImage = TextToUniCodeSymbolCoverter.GetSymbolValue("HamBurger");
+            }
+            else
+            {
+                NaviImage = TextToUniCodeSymbolCoverter.GetSymbolValue("LeftArrow");
+            }
+            //if (NaviType == "Master")
+            //{
+            //    NaviImage = "HamBurger";
+            //}
+            //else
+            //{
+            //    NaviImage = "LeftArrow";
+            //}
             PageTitle = pageTitle;
-            NaviImage = naviImage;
+            //NaviImage = naviImage;
             ShowThirdButton = showThirdButton;
-            PageNavigation = pageNavigation;
+            //PageNavigation = pageNavigation;
 
             BindingContext = this;
 
@@ -46,6 +62,7 @@ namespace DigitalAlbum
         {
             try
             {
+                /*
                 //var objectObtained = (ContentPage)PageDetails;
                 //var d = PageDetails.Parent;
                 if (NaviType == "Master")
@@ -62,20 +79,21 @@ namespace DigitalAlbum
                     var objectObtained = (ContentPage)(((this.Parent).Parent).Parent);
                     objectObtained.Navigation.PopModalAsync();
 
-                    /*
-                    Type myType = PageNavigation.GetType();
-                    IList<System.Reflection.PropertyInfo> props = new List<System.Reflection.PropertyInfo>(myType.GetProperties());
 
-                    foreach (System.Reflection.PropertyInfo prop in props)
-                    {
-                        object propValue = prop.GetValue(PageNavigation, null);
-                        //propValue.Navigation.PopModalAsync();
-                        // Do something with propValue
-                    }
-                    */
+                    //Type myType = PageNavigation.GetType();
+                    //IList<System.Reflection.PropertyInfo> props = new List<System.Reflection.PropertyInfo>(myType.GetProperties());
+
+                    //foreach (System.Reflection.PropertyInfo prop in props)
+                    //{
+                    //    object propValue = prop.GetValue(PageNavigation, null);
+                    //    //propValue.Navigation.PopModalAsync();
+                    //    // Do something with propValue
+                    //}
                     //var objectObtained = ((BindableObject)PageNavigation).Navigation; //(INavigation)PageNavigation;
                     //objectObtained.PopModalAsync();
                 }
+                */
+                MessagingCenter.Send<GlobalHeader, string>(this, PageTitle, NaviType);
             }
             catch (Exception ex)
             {
