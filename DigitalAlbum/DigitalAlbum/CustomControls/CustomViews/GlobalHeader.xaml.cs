@@ -1,20 +1,87 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using DigitalAlbum.ValueConverters;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
 namespace DigitalAlbum
 {
-    public partial class GlobalHeader : ContentView
+    public partial class GlobalHeader : ContentView, INotifyPropertyChanged
     {
-        public string NaviType { get; set; }
-        public string PageTitle { get; set; }
-        public string NaviImage { get; set; }
-        public bool ShowThirdButton { get; set; }
-        //public object PageNavigation { get; set; }
-        public GlobalHeader(string naviType, string naviImage, string pageTitle, bool showThirdButton )
+
+        public string naviType = "";
+        public string NaviType 
         {
+            get
+            {
+                return naviType;
+            }
+            set
+            {
+                if (naviType != value)
+                {
+                    naviType = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs("NaviType"));
+                }
+
+            }
+        }
+
+        public string pageTitle = "";
+        public string PageTitle
+        {
+            get
+            {
+                return pageTitle;
+            }
+            set
+            {
+                if (pageTitle != value)
+                {
+                    pageTitle = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs("PageTitle"));
+                }
+
+            }
+        }
+
+        public string naviImage = "";
+        public string NaviImage
+        {
+            get
+            {
+                return naviImage;
+            }
+            set
+            {
+                if (naviImage != value)
+                {
+                    naviImage = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs("NaviImage"));
+                }
+
+            }
+        }
+
+        public bool ShowThirdButton { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+        //public object PageNavigation { get; set; }
+        //public GlobalHeader(string naviType, string naviImage, string pageTitle, bool showThirdButton )
+
+        public GlobalHeader(bool showThirdButton)
+        {
+            /*
+            MessagingCenter.Subscribe<HeaderValues, string[]>(this, "headerValues", (sender, args) =>
+            {
+                var allValues = (string[])args;
+                NaviType = allValues[0];
+                PageTitle = allValues[1];
+                NaviImage = allValues[2];
+            });
+            */
+            /*
             NaviType = naviType;
             if(NaviType == "Master")
             {
@@ -33,6 +100,7 @@ namespace DigitalAlbum
             //    NaviImage = "LeftArrow";
             //}
             PageTitle = pageTitle;
+            */
             //NaviImage = naviImage;
             ShowThirdButton = showThirdButton;
             //PageNavigation = pageNavigation;
@@ -101,10 +169,11 @@ namespace DigitalAlbum
             }
         }
 
-        void AddNewMemory(object sender, EventArgs args)
+        void AddMemoryClick(object sender, EventArgs args)
         {
             try
             {
+                MessagingCenter.Send<GlobalHeader>(this, "Add");
                 //HomePage.homePage.Navigation.PushModalAsync(new CreateMemory());
                 //DisplayAlert("ALert", "HelloWorld", "Ok");
             }
@@ -126,16 +195,31 @@ namespace DigitalAlbum
     }
 
 
-    public enum NavigationType
-    {
-        BackNavigation,
-        MasterNavigation
-    }
+    //public enum NavigationType
+    //{
+    //    BackNavigation,
+    //    MasterNavigation
+    //}
 
-    public class ExtraButtons
-    {
-        public string ButtonText { get; set; }
+    //public class ExtraButtons
+    //{
+    //    public string ButtonText { get; set; }
 
-        public bool IsVisible { get; set; }
+    //    public bool IsVisible { get; set; }
+    //}
+
+    public class HeaderValues
+    {
+        public HeaderValues(string pageType, string pageTitles, string pageImage)
+        {
+            string[] headerValues = new string[]
+            {
+                pageType,
+                pageTitles,
+                pageImage
+            };
+
+            MessagingCenter.Send<HeaderValues, string[]>(this, "headerValues", headerValues );
+        }
     }
 }

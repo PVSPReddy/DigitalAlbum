@@ -29,9 +29,9 @@
             <Label x:Name="labelPageTitle" Text="{Binding PageTitle}" TextColor="Black" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             </Label>
             <Label x:Name="labelThirdButton" Text="&#x002B;" TextColor="Black" IsVisible="{Binding ShowThirdButton}" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <!--<Label.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AddMemoryClick}" />
-                </Label.GestureRecognizers>-->
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="AddMemoryClick"/>
+                </Label.GestureRecognizers>
             </Label>
         </Grid>
     </ContentView.Content>

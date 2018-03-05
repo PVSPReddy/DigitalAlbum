@@ -8,10 +8,19 @@ namespace DigitalAlbum
         {
             InitializeComponent();
 
-            MainPage = new HomeMasterPage();
-            //MainPage = new HomePage();
-            //MainPage = new CreateMemory();
-            //MainPage = new CreateCompanion();
+            try
+            {
+                MainPage = new HomePageTest();
+                //MainPage = new HomeMasterPage();
+                //MainPage = new HomePage();
+                //MainPage = new CreateMemory();
+                //MainPage = new CreateCompanion();
+            }
+            catch(System.Exception ex)
+            {
+                var msg = ex.Message+ "\n" + ex.StackTrace;
+                System.Diagnostics.Debug.WriteLine(msg);
+            }
         }
 
         protected override void OnStart()

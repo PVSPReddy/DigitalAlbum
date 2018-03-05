@@ -81,6 +81,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\HomePageTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -168,6 +172,9 @@
     <Compile Include="ValueConverters\TextToUniCodeSymbolCoverter.cs" />
     <Compile Include="CustomControls\CustomViews\BaseContentPage.xaml.cs">
       <DependentUpon>BaseContentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HomePageTest.xaml.cs">
+      <DependentUpon>HomePageTest.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
