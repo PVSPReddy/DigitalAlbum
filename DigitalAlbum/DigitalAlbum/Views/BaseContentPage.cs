@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace DigitalAlbum
 {
-    public class BaseContentPage : ContentPage
+    public class BaseContentPageOne : ContentPage
     {
         public AbsoluteLayout contentLayout;
         public ActivityIndicator aiLoader;
@@ -13,7 +13,7 @@ namespace DigitalAlbum
 
         public static int screenHeight, screenWidth;
 
-        public BaseContentPage()
+        public BaseContentPageOne()
         {
             this.BackgroundColor = Color.Transparent;
 

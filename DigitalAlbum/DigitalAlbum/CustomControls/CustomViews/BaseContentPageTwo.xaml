@@ -2,9 +2,11 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="DigitalAlbum.CustomControls.CustomViews.BaseContentPage">
+    xmlns:local="clr-namespace:DigitalAlbum;assembly=DigitalAlbum"
+    x:Class="DigitalAlbum.CustomControls.CustomViews.BaseContentPageTwo">
 
-    <ContentPage.Padding>
+    
+	<ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
             <!--<OnPlatform x:TypeArguments="Thickness"
                 iOS="10,0,0,0"
@@ -55,11 +57,23 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     
-	<ContentPage.Content>
+    <ContentPage.Content>
         <AbsoluteLayout BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,0.1" AbsoluteLayout.LayoutFlags="All">
 
-                <Grid BackgroundColor="{DynamicResource HeaderBackGroundColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <local:GlobalHeader x:Name="Header">
+                    <x:Arguments>
+                        <!--<x:String Value="{Binding PageNavigation}"></x:String>
+                        <x:String>&#x2630;</x:String>
+                        <x:String>My Memories</x:String>-->
+                        <x:Boolean>true</x:Boolean>
+                        <!--<x:Array Type="{x:Type x:String}">
+                            <x:String>HomePage</x:String>
+                            <x:String>HomePage</x:String>
+                        </x:Array>-->
+                    </x:Arguments>
+                </local:GlobalHeader>
+                <!--<Grid BackgroundColor="{DynamicResource HeaderBackGroundColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
@@ -79,7 +93,7 @@
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AddMemoryClick}" />
                         </Label.GestureRecognizers>
-                    </Label>
+                    </Label>-->
                     <!--&#x002B   2795   Tapped="AddNewMemory"-->
                     <!--<StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5,5,5,5">
                         <local:CustomLayout StartColor="Maroon" EndColor="Maroon" GradientDirection="Horizontal" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" WidthRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" CornerWRT="WRTHeightRequest" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
@@ -87,7 +101,7 @@
                             </Label>
                         </local:CustomLayout>
                     </StackLayout>-->
-                </Grid>
+<!--                </Grid>-->
                 
             </StackLayout>
             <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,0.9" AbsoluteLayout.LayoutFlags="All">

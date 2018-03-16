@@ -28,12 +28,12 @@ namespace DigitalAlbum.Droid
 
             var dps = (double)((pixels - 0.5f) / scale);
 
-            BaseContentPage.screenWidth = (int)dps;
+            App.screenWidth = (int)dps;
 
             pixels = Resources.DisplayMetrics.HeightPixels;
             dps = (double)((pixels - 0.5f) / scale);
 
-            BaseContentPage.screenHeight = (int)dps;
+            App.screenHeight = (int)dps;
             #endregion
 
             try

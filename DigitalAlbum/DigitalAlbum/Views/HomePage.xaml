@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage 
+<basePage:BaseContentPageTwo
 	xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 	xmlns:local="clr-namespace:DigitalAlbum;assembly=DigitalAlbum"
+    xmlns:basePage="clr-namespace:DigitalAlbum.CustomControls.CustomViews;assembly=DigitalAlbum"
 	x:Class="DigitalAlbum.HomePage"
     Title="HomePage" Icon="null"
     x:Name="currentPage">
@@ -39,25 +40,25 @@
         </OnPlatform>
     </ContentPage.Padding>
     
-    <ContentPage.Content>
+    <!--<ContentPage.Content>
         <AbsoluteLayout BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,0.1" AbsoluteLayout.LayoutFlags="All">
-
+-->
                 <!--<StackLayout.BindingContext>
                     <x:Reference Name="currentPage" />
                 </StackLayout.BindingContext>-->
-                <local:GlobalHeader x:Name="Header">
-                    <x:Arguments>
+                <!--<local:GlobalHeader x:Name="Header">
+                    <x:Arguments>-->
                         <!--<x:String Value="{Binding PageNavigation}"></x:String>
                         <x:String>&#x2630;</x:String>
                         <x:String>My Memories</x:String>-->
-                        <x:Boolean>true</x:Boolean>
+<!--                        <x:Boolean>true</x:Boolean>-->
                         <!--<x:Array Type="{x:Type x:String}">
                             <x:String>HomePage</x:String>
                             <x:String>HomePage</x:String>
                         </x:Array>-->
-                    </x:Arguments>
-                </local:GlobalHeader>
+                    <!--</x:Arguments>
+                </local:GlobalHeader>-->
                 <!--<Grid BackgroundColor="{DynamicResource HeaderBackGroundColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -88,9 +89,11 @@
                     </StackLayout>-->
 <!--                </Grid>-->
                 
-            </StackLayout>
-            <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,0.9" AbsoluteLayout.LayoutFlags="All">
-                <StackLayout>
+<!--            </StackLayout>-->
+<!--            <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,0.9" AbsoluteLayout.LayoutFlags="All">-->
+
+            <basePage:BaseContentPageTwo.CurrentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout>
                     <ListView x:Name="listViewCompanions" RowHeight="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=15}" ItemsSource="{Binding MemoriesData}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <!--<ListView.ItemsSource>
                         </ListView.ItemsSource>-->
@@ -145,7 +148,8 @@
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-            </StackLayout>
+                </basePage:BaseContentPageTwo.CurrentView>
+<!--            </StackLayout>-->
 
             <!--<StackLayout BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="0.88,0.88,0.2,0.12" AbsoluteLayout.LayoutFlags="All">
                 <StackLayout Padding="5,5,5,5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
@@ -156,6 +160,6 @@
                 </StackLayout>
             </StackLayout>-->
             
-        </AbsoluteLayout>
-    </ContentPage.Content>
-</ContentPage>
+        <!--</AbsoluteLayout>
+    </ContentPage.Content>-->
+</basePage:BaseContentPageTwo>

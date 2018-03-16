@@ -1,26 +1,45 @@
 ﻿<Properties StartupConfiguration="{0F91EA85-D7BC-4672-977D-997B6F7A28D9}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DigitalAlbum/Views/HomePage.xaml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DigitalAlbum/CustomControls/CustomViews/GlobalHeader.xaml.cs">
     <Files>
-      <File FileName="DigitalAlbum/Views/HomePage.xaml" Line="57" Column="51" />
-      <File FileName="DigitalAlbum/Views/HomePage.xaml.cs" Line="25" Column="60" />
-      <File FileName="DigitalAlbum/ViewModels/HomePageViewModel.cs" Line="23" Column="106" />
-      <File FileName="DigitalAlbum/Views/CreateMemory.xaml" Line="154" Column="15" />
-      <File FileName="DigitalAlbum/App.xaml.cs" Line="9" Column="35" />
+      <File FileName="DigitalAlbum/CustomControls/CustomViews/BaseContentPage.xaml" Line="104" Column="40" />
+      <File FileName="DigitalAlbum/CustomControls/CustomViews/BaseContentPage.xaml.cs" Line="18" Column="16" />
+      <File FileName="DigitalAlbum/CustomControls/CustomViews/BaseContentPageTwo.xaml" Line="74" Column="35" />
+      <File FileName="DigitalAlbum/CustomControls/CustomViews/BaseContentPageTwo.xaml.cs" Line="59" Column="1" />
+      <File FileName="DigitalAlbum/Views/HomePage.xaml.cs" Line="68" Column="1" />
+      <File FileName="DigitalAlbum/Views/HomePage.xaml" Line="165" Column="30" />
+      <File FileName="DigitalAlbum/CustomControls/CustomViews/GlobalHeader.xaml.cs" Line="173" Column="1" />
+      <File FileName="DigitalAlbum/App.xaml.cs" Line="16" Column="45" />
       <File FileName="iOS/Main.cs" Line="17" Column="1" />
-      <File FileName="DigitalAlbum/CustomControls/CustomEntry.cs" Line="19" Column="9" />
-      <File FileName="DigitalAlbum/CustomControls/CustomLayout.cs" Line="25" Column="30" />
-      <File FileName="iOS/CustomControls/CustomLayoutRender.cs" Line="117" Column="14" />
-      <File FileName="Droid/CustomControls/CustomLayoutRender.cs" Line="31" Column="16" />
-      <File FileName="DigitalAlbum/CustomControls/CustomLabel.cs" Line="1" Column="1" />
-      <File FileName="Droid/CustomControls/CustomLabelRender.cs" Line="17" Column="9" />
-      <File FileName="iOS/CustomControls/CustomImageRender.cs" Line="53" Column="70" />
+      <File FileName="DigitalAlbum/Views/HomePageTest.xaml" Line="49" Column="28" />
+      <File FileName="DigitalAlbum/Views/HomePageTest.xaml.cs" Line="68" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/ValueConverters/TextToUniCodeSymbolCoverter.cs" relfile="DigitalAlbum/ValueConverters/TextToUniCodeSymbolCoverter.cs" line="45" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/Views/HomePage.xaml.cs" relfile="DigitalAlbum/Views/HomePage.xaml.cs" line="90" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/App.xaml.cs" relfile="DigitalAlbum/App.xaml.cs" line="21" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/CustomControls/CustomViews/BaseContentPage.xaml.cs" relfile="DigitalAlbum/CustomControls/CustomViews/BaseContentPage.xaml.cs" line="159" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/Views/HomePageTest.xaml.cs" relfile="DigitalAlbum/Views/HomePageTest.xaml.cs" line="91" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/CustomControls/CustomViews/GlobalHeader.xaml.cs" relfile="DigitalAlbum/CustomControls/CustomViews/GlobalHeader.xaml.cs" line="167" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/CustomControls/CustomViews/GlobalHeader.xaml.cs" relfile="DigitalAlbum/CustomControls/CustomViews/GlobalHeader.xaml.cs" line="173" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/App.xaml.cs" relfile="DigitalAlbum/App.xaml.cs" line="24" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/CustomControls/CustomViews/GlobalHeader.xaml.cs" relfile="DigitalAlbum/CustomControls/CustomViews/GlobalHeader.xaml.cs" line="181" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/CustomControls/CustomViews/GlobalHeader.xaml.cs" relfile="DigitalAlbum/CustomControls/CustomViews/GlobalHeader.xaml.cs" line="113" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/Views/HomePageTest.xaml.cs" relfile="DigitalAlbum/Views/HomePageTest.xaml.cs" line="85" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/CustomControls/CustomViews/GlobalHeader.xaml.cs" relfile="DigitalAlbum/CustomControls/CustomViews/GlobalHeader.xaml.cs" line="74" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/Views/HomePage.xaml.cs" relfile="DigitalAlbum/Views/HomePage.xaml.cs" line="55" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/Views/HomePage.xaml.cs" relfile="DigitalAlbum/Views/HomePage.xaml.cs" line="68" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/CustomControls/CustomViews/BaseContentPageTwo.xaml.cs" relfile="DigitalAlbum/CustomControls/CustomViews/BaseContentPageTwo.xaml.cs" line="59" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/CustomControls/CustomViews/BaseContentPageTwo.xaml.cs" relfile="DigitalAlbum/CustomControls/CustomViews/BaseContentPageTwo.xaml.cs" line="39" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/CustomControls/CustomViews/BaseContentPageTwo.xaml.cs" relfile="DigitalAlbum/CustomControls/CustomViews/BaseContentPageTwo.xaml.cs" line="21" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/CustomControls/CustomViews/BaseContentPageTwo.xaml.cs" relfile="DigitalAlbum/CustomControls/CustomViews/BaseContentPageTwo.xaml.cs" line="111" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/untitledfolder/PersonalProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/Views/HomePageTest.xaml.cs" relfile="DigitalAlbum/Views/HomePageTest.xaml.cs" line="68" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.DigitalAlbum.Droid PreferredExecutionTarget="Android.ZY222Z3P7X" />
   <MonoDevelop.Ide.ItemProperties.DigitalAlbum.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C95224D6-DD97-49E5-8302-491746C7D5CE" />
   <MultiItemStartupConfigurations />
 </Properties>

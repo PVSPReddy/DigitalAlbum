@@ -13,7 +13,7 @@ namespace DigitalAlbum.ValueConverters
         public static int ScreenHeight;
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            ScreenHeight = BaseContentPage.screenHeight;
+            ScreenHeight = App.screenHeight;
             double percentHeight = 0.0;
             try
             {

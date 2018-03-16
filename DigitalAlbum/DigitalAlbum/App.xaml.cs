@@ -4,6 +4,7 @@ namespace DigitalAlbum
 {
     public partial class App : Application
     {
+        public static int screenHeight, screenWidth;
         public App()
         {
             InitializeComponent();

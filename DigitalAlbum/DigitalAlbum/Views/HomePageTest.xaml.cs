@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace DigitalAlbum
 {
-    public partial class HomePageTest : BasePage
+    public partial class HomePageTest : BaseContentPage
     {
         protected override void OnAppearing()
         {
@@ -59,7 +59,8 @@ namespace DigitalAlbum
                     }
                     else
                     {
-                        Navigation.PushModalAsync(new MemoryDetailPage(selectedMemory));
+                        Navigation.PushModalAsync(new HomePage());
+                        //Navigation.PushModalAsync(new MemoryDetailPage(selectedMemory));
                     }
                     ((ListView)sender).SelectedItem = null;
                 }

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using DigitalAlbum.CustomControls.CustomViews;
 using Xamarin.Forms;
 
 namespace DigitalAlbum
 {
-    public partial class HomePage : ContentPage
+    public partial class HomePage : BaseContentPageTwo
     {
         //public static HomePage homePage;
         //public HomePage
@@ -59,9 +59,16 @@ namespace DigitalAlbum
 
             //PageNavigation = ((MasterDetailPage)(this.Parent));
             InitializeComponent();
+            /*
             Header.NaviType = "Master";
             Header.PageTitle = "Memories Hub";
             Header.NaviImage = ValueConverters.TextToUniCodeSymbolCoverter.GetSymbolValue("HamBurger");
+            */
+
+            NaviType = "Master";
+            PageTitle = "Memories Hub";
+            NaviImage = ValueConverters.TextToUniCodeSymbolCoverter.GetSymbolValue("HamBurger");
+
             //homePage = this;
             //BindingContext = new HomePageViewModel(Navigation);
             listViewCompanions.ItemSelected += (object sender, SelectedItemChangedEventArgs e) => 

@@ -13,7 +13,7 @@ namespace DigitalAlbum.ValueConverters
         public static int ScreenWidth;
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            ScreenWidth = BaseContentPage.screenHeight;
+            ScreenWidth = App.screenHeight;
             double percentWidth = 0.0;
             try
             {

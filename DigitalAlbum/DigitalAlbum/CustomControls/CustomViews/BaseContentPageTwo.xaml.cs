@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace DigitalAlbum.CustomControls.CustomViews
 {
-    public partial class BaseContentPage : ContentPage, INotifyPropertyChanged
+    public partial class BaseContentPageTwo : ContentPage, INotifyPropertyChanged
     {
 
         public string naviType = "";
@@ -38,7 +38,8 @@ namespace DigitalAlbum.CustomControls.CustomViews
                 if (pageTitle != value)
                 {
                     pageTitle = value;
-                    PageTitleValue.Text = pageTitle;
+                    Header.pageTitle = pageTitle;
+                    //PageTitleValue.Text = pageTitle;
                     PropertyChanged(this, new PropertyChangedEventArgs("PageTitle"));
                 }
 
@@ -57,7 +58,8 @@ namespace DigitalAlbum.CustomControls.CustomViews
                 if (naviImage != value)
                 {
                     naviImage = value;
-                    NaviImageValue.Text = value;
+                    Header.naviImage = naviImage;
+                    //NaviImageValue.Text = value;
                     PropertyChanged(this, new PropertyChangedEventArgs("NaviImage"));
                 }
 
@@ -105,7 +107,7 @@ namespace DigitalAlbum.CustomControls.CustomViews
         public bool ShowThirdButton { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
-        public BaseContentPage()
+        public BaseContentPageTwo()
         {
             BindingContext = this;
             InitializeComponent();
@@ -180,16 +182,16 @@ namespace DigitalAlbum.CustomControls.CustomViews
     }
 
 
-    public enum NavigationType
-    {
-        BackNavigation,
-        MasterNavigation
-    }
+    //public enum NavigationType
+    //{
+    //    BackNavigation,
+    //    MasterNavigation
+    //}
 
-    public class ExtraButtons
-    {
-        public string ButtonText { get; set; }
+    //public class ExtraButtons
+    //{
+    //    public string ButtonText { get; set; }
 
-        public bool IsVisible { get; set; }
-    }
+    //    public bool IsVisible { get; set; }
+    //}
 }
