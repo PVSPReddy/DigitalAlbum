@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace DigitalAlbum
 {
-    public partial class HomePage : BaseContentPage
+    public partial class HomePageTestTwo : BaseContentPageTwo
     {
         //public static HomePage homePage;
         //public HomePage
@@ -15,7 +15,7 @@ namespace DigitalAlbum
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            MessagingCenter.Subscribe<GlobalHeader, string>(this, "Memories Hub", (sender, args)=>//(GlobalHeader arg1, string arg2) =>
+            MessagingCenter.Subscribe<GlobalHeader, string>(this, "Memories Hub", (sender, args) =>//(GlobalHeader arg1, string arg2) =>
             {
                 // do something whenever the "HomePage - key" message is sent
                 try
@@ -51,7 +51,7 @@ namespace DigitalAlbum
             MessagingCenter.Unsubscribe<GlobalHeader>(this, "Add");
         }
 
-        public HomePage()
+        public HomePageTestTwo()
         {
             homePageViewModel = new HomePageViewModel(Navigation);
             BindingContext = homePageViewModel;
@@ -59,11 +59,19 @@ namespace DigitalAlbum
 
             //PageNavigation = ((MasterDetailPage)(this.Parent));
             InitializeComponent();
+            /*
+            Header.NaviType = "Master";
+            Header.PageTitle = "Memories Hub";
+            Header.NaviImage = ValueConverters.TextToUniCodeSymbolCoverter.GetSymbolValue("HamBurger");
+            */
+
             NaviType = "Master";
             PageTitle = "Memories Hub";
             NaviImage = ValueConverters.TextToUniCodeSymbolCoverter.GetSymbolValue("HamBurger");
 
-            listViewCompanions.ItemSelected += (object sender, SelectedItemChangedEventArgs e) => 
+            //homePage = this;
+            //BindingContext = new HomePageViewModel(Navigation);
+            listViewCompanions.ItemSelected += (object sender, SelectedItemChangedEventArgs e) =>
             {
                 try
                 {
@@ -78,7 +86,7 @@ namespace DigitalAlbum
                     }
                     ((ListView)sender).SelectedItem = null;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     var msg = ex.Message;
                 }
@@ -101,20 +109,6 @@ namespace DigitalAlbum
             }
         }
 
-        void AddMemoryClick(object sender, EventArgs args)
-        {
-            try
-            {
-                homePageViewModel.AddMemoryClick.Execute(null);
-            }
-            catch (Exception ex)
-            {
-                var msg = ex.Message + "\n" + ex.StackTrace;
-                System.Diagnostics.Debug.WriteLine(msg);
-            }
-
-        }
-
         //void AddNewMemory(object sender, EventArgs args)
         //{
         //    try
@@ -130,6 +124,16 @@ namespace DigitalAlbum
 
         protected override bool OnBackButtonPressed()
         {
+            //return base.OnBackButtonPressed();
+            //try
+            //{
+            //    return true;
+            //}
+            //catch(Exception ex)
+            //{
+            //    var msg = ex.Message;
+            //    return true;
+            //}
             return true;
         }
     }

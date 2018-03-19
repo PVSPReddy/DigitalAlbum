@@ -3,15 +3,20 @@ using System;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
+using DigitalAlbum.CustomControls.CustomViews;
 
 namespace DigitalAlbum
 {
-    public partial class CreateMemory : ContentPage
+    public partial class CreateMemory : BaseContentPage
     {
         public CreateMemory()
         {
             BindingContext = new CreateMemoryViewModel(Navigation);
             InitializeComponent();
+
+            NaviType = "Master";
+            PageTitle = "Memories Hub";
+            NaviImage = ValueConverters.TextToUniCodeSymbolCoverter.GetSymbolValue("LeftArrow");
 
             /*
             dateMemoryDate.SetBinding(CustomDatePicker.CustomFontSizeProperty, new Binding(".", BindingMode.Default, new WidthConverter(), 3, null));
@@ -34,6 +39,20 @@ namespace DigitalAlbum
             {
                 var msg = ex.Message;
             }
+        }
+
+        void AddMemoryClick(object sender, EventArgs args)
+        {
+            try
+            {
+                
+            }
+            catch (Exception ex)
+            {
+                var msg = ex.Message + "\n" + ex.StackTrace;
+                System.Diagnostics.Debug.WriteLine(msg);
+            }
+
         }
     }
 }

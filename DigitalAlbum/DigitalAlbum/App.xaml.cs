@@ -11,9 +11,10 @@ namespace DigitalAlbum
 
             try
             {
-                MainPage = new HomePageTest();
+                //MainPage = new HomePageTestTwo();
+                //MainPage = new HomePageTest();
                 //MainPage = new HomeMasterPage();
-                //MainPage = new HomePage();
+                MainPage = new HomePage();
                 //MainPage = new CreateMemory();
                 //MainPage = new CreateCompanion();
             }

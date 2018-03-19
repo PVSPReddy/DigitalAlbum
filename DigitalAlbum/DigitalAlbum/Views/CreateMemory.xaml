@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage 
+<basePage:BaseContentPage 
 	xmlns="http://xamarin.com/schemas/2014/forms" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
     xmlns:local="clr-namespace:DigitalAlbum;assembly=DigitalAlbum"
+    xmlns:basePage="clr-namespace:DigitalAlbum.CustomControls.CustomViews;assembly=DigitalAlbum"
     xmlns:converter="clr-namespace:DigitalAlbum.ValueConverters;assembly=DigitalAlbum"
 	x:Class="DigitalAlbum.CreateMemory">
 
@@ -78,9 +79,9 @@
     </ContentPage.Padding>
 
 	
-    <ContentPage.Content>
+<!--    <ContentPage.Content>-->
 <!--        <ScrollView BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">-->
-            <AbsoluteLayout BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <!--<AbsoluteLayout BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                 <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,0.1" AbsoluteLayout.LayoutFlags="All">
                     <Grid BackgroundColor="{DynamicResource HeaderBackGroundColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -98,17 +99,20 @@
                             </Label.GestureRecognizers>
                         </Label>
                         <Label Text="Add Memories" TextColor="Black" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                        </Label>
+                        </Label>-->
                         <!--<Label Text="&#x002B;" TextColor="Black" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AddMemoryClick}" />
                             </Label.GestureRecognizers>
                         </Label>-->
-                    </Grid>
-                </StackLayout>
+                    <!--</Grid>
+                </StackLayout>-->
 
-			<StackLayout AbsoluteLayout.LayoutBounds="1,1,1,0.9" AbsoluteLayout.LayoutFlags="All">
-                    <ScrollView BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+    <basePage:BaseContentPage.CurrentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+<!--			<StackLayout AbsoluteLayout.LayoutBounds="1,1,1,0.9" AbsoluteLayout.LayoutFlags="All">-->
+
+        <StackLayout>
+        <ScrollView BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20,30,20,0">
 
 					<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" >
@@ -165,8 +169,9 @@
                 </StackLayout>
                         </ScrollView>
 			</StackLayout>
+        </basePage:BaseContentPage.CurrentView>
 			
-		</AbsoluteLayout>
+<!--		</AbsoluteLayout>-->
 <!--        </ScrollView>-->
-    </ContentPage.Content>
-</ContentPage>
+<!--    </ContentPage.Content>-->
+</basePage:BaseContentPage>

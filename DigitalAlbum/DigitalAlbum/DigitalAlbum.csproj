@@ -89,6 +89,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\HomePageTestTwo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -182,6 +186,9 @@
     </Compile>
     <Compile Include="CustomControls\CustomViews\BaseContentPageTwo.xaml.cs">
       <DependentUpon>BaseContentPageTwo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HomePageTestTwo.xaml.cs">
+      <DependentUpon>HomePageTestTwo.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<basePage:BaseContentPageTwo 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:local="clr-namespace:DigitalAlbum;assembly=DigitalAlbum"
+    xmlns:basePage="clr-namespace:DigitalAlbum.CustomControls.CustomViews;assembly=DigitalAlbum"
+    x:Class="DigitalAlbum.HomePageTestTwo"
+    Title="HomePage" Icon="null"
+    x:Name="currentPage">
+
+
+    
+	<!--<ContentPage.BindingContext>
+        <local:HomePageViewModel/>
+    </ContentPage.BindingContext>-->
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PageBackgroundColor">Yellow</Color>
+            <Color x:Key="HeadingTextColor">Black</Color>
+            <Color x:Key="NormalTextColor">Blue</Color>
+<!--            <x:Double x:Key="AppBorderSize"></x:Double>-->
+            <Style x:Key="LabelPageHeadingStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="{StaticResource HeadingTextColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <!--<OnPlatform x:TypeArguments="Thickness"
+                iOS="10,0,0,0"
+                Android="10,0,0,0"
+            WinPhone="8,0,0,0" />-->
+            <OnPlatform.Platforms>
+                <On Platform="iOS" Value="0, 20, 0, 0" />
+                <On Platform="Android" Value="0, 0, 0, 0" />
+                <On Platform="UWP" Value="0, 0, 0, 0" /> 
+            </OnPlatform.Platforms>
+        </OnPlatform>
+    </ContentPage.Padding>
+    
+    <!--<ContentPage.Content>
+        <AbsoluteLayout BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,0.1" AbsoluteLayout.LayoutFlags="All">
+-->
+                <!--<StackLayout.BindingContext>
+                    <x:Reference Name="currentPage" />
+                </StackLayout.BindingContext>-->
+                <!--<local:GlobalHeader x:Name="Header">
+                    <x:Arguments>-->
+                        <!--<x:String Value="{Binding PageNavigation}"></x:String>
+                        <x:String>&#x2630;</x:String>
+                        <x:String>My Memories</x:String>-->
+<!--                        <x:Boolean>true</x:Boolean>-->
+                        <!--<x:Array Type="{x:Type x:String}">
+                            <x:String>HomePage</x:String>
+                            <x:String>HomePage</x:String>
+                        </x:Array>-->
+                    <!--</x:Arguments>
+                </local:GlobalHeader>-->
+                <!--<Grid BackgroundColor="{DynamicResource HeaderBackGroundColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="&#x2630;" TextColor="Black" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OpenNavigationMenu" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Text="My Memories" TextColor="Black" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    </Label>
+                    <Label Text="&#x002B;" TextColor="Black" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AddMemoryClick}" />
+                        </Label.GestureRecognizers>
+                    </Label>-->
+                    <!--&#x002B   2795   Tapped="AddNewMemory"-->
+                    <!--<StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5,5,5,5">
+                        <local:CustomLayout StartColor="Maroon" EndColor="Maroon" GradientDirection="Horizontal" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" WidthRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" CornerWRT="WRTHeightRequest" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Label Text="+" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            </Label>
+                        </local:CustomLayout>
+                    </StackLayout>-->
+<!--                </Grid>-->
+                
+<!--            </StackLayout>-->
+<!--            <StackLayout AbsoluteLayout.LayoutBounds="1,1,1,0.9" AbsoluteLayout.LayoutFlags="All">-->
+
+            <basePage:BaseContentPageTwo.CurrentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout>
+                    <ListView x:Name="listViewCompanions" RowHeight="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=15}" ItemsSource="{Binding MemoriesData}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <!--<ListView.ItemsSource>
+                        </ListView.ItemsSource>-->
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+
+                                <local:HomePageViewCell >
+                                    
+                                </local:HomePageViewCell>
+                                
+                                <!--<ViewCell>
+                                    
+                                    <StackLayout BackgroundColor="Transparent" Padding="10,10,10,10" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=15}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Grid BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=12}"/>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=12}"/>
+                                            </Grid.ColumnDefinitions>
+                                            
+                                            <local:CustomLayout StartColor="Teal" EndColor="Teal" GradientDirection="Horizontal" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=12}" CornerWRT="WRTHeightRequest" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            </local:CustomLayout>
+                                            
+                                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Padding="5,5,5,5">
+                                                
+                                                <local:CustomImage Source="Avatar1.png" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" WidthRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+                                                </local:CustomImage>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                                <local:CustomLabel Text="{Binding CompanionName}" TextColor="Black" BackgroundColor="Transparent" LineBreakMode="TailTruncation" FontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=2.5}" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                                </local:CustomLabel>
+                                                <local:CustomLabel Text="{Binding DateOfBirth, StringFormat= 'Date of Birth : {0}'}" TextColor="Black" BackgroundColor="Transparent" FontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=1.8}" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                                </local:CustomLabel>
+                                                <local:CustomLabel Text="{Binding MemoriesCount, StringFormat= 'Memories Count : {0}'}" TextColor="Black" BackgroundColor="Transparent" FontSize="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=1.8}" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                                                </local:CustomLabel>
+                                            </StackLayout>
+                                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="2" Padding="5,5,5,5">
+                                                <local:CustomLayout StartColor="Maroon" EndColor="Maroon" GradientDirection="Horizontal" HeightRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" WidthRequest="{Binding Converter={StaticResource HeightConverter}, ConverterParameter=10}" CornerWRT="WRTHeightRequest" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                    <Label Text="+" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                    </Label>
+                                                </local:CustomLayout>
+                                            </StackLayout>
+                                            
+                                        </Grid>
+                                    </StackLayout>
+                                    
+                                </ViewCell>-->
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                </basePage:BaseContentPageTwo.CurrentView>
+<!--            </StackLayout>-->
+
+            <!--<StackLayout BackgroundColor="Transparent" AbsoluteLayout.LayoutBounds="0.88,0.88,0.2,0.12" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Padding="5,5,5,5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <local:CustomLayout StartColor="Maroon" EndColor="Maroon" GradientDirection="Horizontal" HeightRequest="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=10}" WidthRequest="{Binding Converter={StaticResource WidthConverter}, ConverterParameter=10}" CornerWRT="WRTWidthRequest" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Label Text="+" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        </Label>
+                    </local:CustomLayout>
+                </StackLayout>
+            </StackLayout>-->
+            
+        <!--</AbsoluteLayout>
+    </ContentPage.Content>-->
+</basePage:BaseContentPageTwo>

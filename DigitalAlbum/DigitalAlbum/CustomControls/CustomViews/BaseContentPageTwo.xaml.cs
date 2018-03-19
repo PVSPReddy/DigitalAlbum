@@ -38,7 +38,7 @@ namespace DigitalAlbum.CustomControls.CustomViews
                 if (pageTitle != value)
                 {
                     pageTitle = value;
-                    Header.pageTitle = pageTitle;
+                    Header.PageTitle = pageTitle;
                     //PageTitleValue.Text = pageTitle;
                     PropertyChanged(this, new PropertyChangedEventArgs("PageTitle"));
                 }
@@ -58,7 +58,7 @@ namespace DigitalAlbum.CustomControls.CustomViews
                 if (naviImage != value)
                 {
                     naviImage = value;
-                    Header.naviImage = naviImage;
+                    Header.NaviImage = naviImage;
                     //NaviImageValue.Text = value;
                     PropertyChanged(this, new PropertyChangedEventArgs("NaviImage"));
                 }
