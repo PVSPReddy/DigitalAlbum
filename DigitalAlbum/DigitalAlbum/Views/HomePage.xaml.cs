@@ -63,6 +63,8 @@ namespace DigitalAlbum
             PageTitle = "Memories Hub";
             NaviImage = ValueConverters.TextToUniCodeSymbolCoverter.GetSymbolValue("HamBurger");
 
+
+
             listViewCompanions.ItemSelected += (object sender, SelectedItemChangedEventArgs e) => 
             {
                 try
@@ -100,6 +102,8 @@ namespace DigitalAlbum
                 var msg = ex.Message;
             }
         }
+
+
 
         void AddMemoryClick(object sender, EventArgs args)
         {
