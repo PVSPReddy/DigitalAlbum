@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{0F91EA85-D7BC-4672-977D-997B6F7A28D9}|Default">
+  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/rabbit/Desktop/Sivaprasad/untitled folder/Personal ProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/Views/HomePage.xaml.cs" relfile="DigitalAlbum/Views/HomePage.xaml.cs" line="19" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/Sivaprasad/untitled folder/Personal ProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/Views/HomePage.xaml.cs" relfile="DigitalAlbum/Views/HomePage.xaml.cs" line="33" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/Sivaprasad/untitled folder/Personal ProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/Views/HomePage.xaml.cs" relfile="DigitalAlbum/Views/HomePage.xaml.cs" line="92" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/Sivaprasad/untitled folder/Personal ProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/CustomControls/CustomViews/BaseContentPage.xaml.cs" relfile="DigitalAlbum/CustomControls/CustomViews/BaseContentPage.xaml.cs" line="120" column="1" />
+      <Breakpoint file="/Users/rabbit/Desktop/Sivaprasad/untitled folder/Personal ProjFiles/DigitalAlbum/DigitalAlbum/DigitalAlbum/ViewModels/HomePageViewModel.cs" relfile="DigitalAlbum/ViewModels/HomePageViewModel.cs" line="54" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.DigitalAlbum.Droid PreferredExecutionTarget="Android.ZY222Z3P7X" />
+  <MonoDevelop.Ide.ItemProperties.DigitalAlbum.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.BD353F08-B061-48E8-A2EF-14D7D4CE4E9C" />
+  <MultiItemStartupConfigurations />
+</Properties>
