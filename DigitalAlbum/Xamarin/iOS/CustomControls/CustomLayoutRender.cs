@@ -16,7 +16,6 @@ namespace DigitalAlbum.iOS
         protected override void OnElementChanged(ElementChangedEventArgs<StackLayout> e)
         {
             base.OnElementChanged(e);
-
         }
 
         protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -60,7 +59,15 @@ namespace DigitalAlbum.iOS
 
             try
             {
-                if (stack.HasBorderColor == true && stack.BorderColor != null)
+                //if(stack.HasBorderColor == true)
+                //{
+                    
+                //}
+                //else if(stack.BorderColor != null)
+                //{
+                    
+                //}
+                if (stack.HasBorderColor == true && stack.BorderColor.ToCGColor() != null)
                 {
                     //double min = Math.Min(Element.Width, Element.Height);
                     //Control.Layer.CornerRadius = (float)(min / 2.0);

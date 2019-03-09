@@ -10,6 +10,9 @@ obj/
 # Ignore folder named 'bin'
 bin/
 
+# Ignore folder named '.vs'
+.Vs/
+
 # Ignore folder named 'packages'
 packages/
 
