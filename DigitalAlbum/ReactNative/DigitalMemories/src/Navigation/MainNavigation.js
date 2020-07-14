@@ -5,6 +5,7 @@ import { useWindowDimensions } from "react-native";
 import ProfilePage from "../Screens/MainScreens/ProfilePage";
 import SettingsPage from "../Screens/MainScreens/SettingsPage";
 import MemoryNavigation from "./MemoryNavigation";
+import { MEMORY_NAVIGATION, PROFILE_PAGE, SETTINGS_PAGE } from "../Helpers/PageNameConstants";
 
 const Drawer = createDrawerNavigator();
 
@@ -19,12 +20,12 @@ const MainNavigation = () => {
             drawerType={isLargeScreen ? 'permanent' : 'front'}
             drawerStyle={isLargeScreen ? null : { width: '70%' }}
             overlayColor="#00000030">
-            <Drawer.Screen name="MemoryNavigation" component={MemoryNavigation} options={{
+            <Drawer.Screen name={MEMORY_NAVIGATION} component={MemoryNavigation} options={{
                 title: "Home"
             }} />
             {/* openByDefault drawerType={isLargeScreen ? 'permanent' : 'back'} */}
-            <Drawer.Screen name="ProfilePage" component={ProfilePage} />
-            <Drawer.Screen name="SettingsPage" component={SettingsPage}/>
+            <Drawer.Screen name={PROFILE_PAGE} component={ProfilePage} />
+            <Drawer.Screen name={SETTINGS_PAGE} component={SettingsPage}/>
         </Drawer.Navigator >
     )
     return mainNavigationComponent;

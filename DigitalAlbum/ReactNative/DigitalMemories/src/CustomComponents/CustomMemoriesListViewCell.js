@@ -1,13 +1,20 @@
-import React from "react"
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native"
-
+import React, { useState } from "react"
+import { View, Text, Image, StyleSheet, TouchableOpacity, Modal } from "react-native"
+// import {Tooltip} from "react-native-elements"
 
 const CustomMemoriesListViewCell = (props) => {
     const { dataItem } = props;
+    const {isVisible, setIsVisible} = useState(false);
     const item = dataItem;
     console.log(item);
+
+    const onPressHandler = () => {
+        props.onPress(item.item);
+    }
+
     const viewCellComponent = (
-        <TouchableOpacity activeOpacity="0.4" onPress={() => { props.onPress(item.item); }}>
+        // <View>
+        <TouchableOpacity activeOpacity="0.4" onPress={onPressHandler}>
             <View style={styles.itemViewCellStyle}>
                 <Image style={styles.itemViewCellImageStyle} source={require("./../Assets/CommonImages/profileDummyImage.jpeg")} />
                 <View style={{ flex: 1, paddingLeft: 15 }}>
@@ -20,6 +27,7 @@ const CustomMemoriesListViewCell = (props) => {
                 {/* {(item.item.showAccessibleButtons) ? <Button title="Delete" /> : <></>} */}
             </View>
         </TouchableOpacity>
+        // </View>
     );
     return viewCellComponent;
 }
