@@ -15,7 +15,7 @@ const CustomMemoriesListViewCell = (props) => {
                     <Text>{item.item.createdOn}</Text>
                 </View>
                 <View style={styles.itemViewCellNumberTextHolderStyle}>
-                    <Text style={styles.itemViewCellNumberTextStyle}>{item.item.number}</Text>
+                    <Text style={styles.itemViewCellNumberTextStyle}>{item.item.id}</Text>
                 </View>
                 {/* {(item.item.showAccessibleButtons) ? <Button title="Delete" /> : <></>} */}
             </View>
