@@ -2,6 +2,7 @@ import React from "react"
 
 import { View, Text, StyleSheet } from "react-native"
 import CustomHeader from "./../../CustomComponents/CustomHeader";
+import { YING_YANG } from "../../Assets/CommonImages/UniCodesForImages";
 
 class ProfilePage extends React.Component {
     constructor(props) {
@@ -35,6 +36,7 @@ class ProfilePage extends React.Component {
                     hideBackButton={false}
                     onBackButtonPress={this.onBackButtonPressHandler} />
                 <Text>Profile Page</Text>
+        <Text>{YING_YANG}</Text>
             </View>
         )
         return mainUIComponent;

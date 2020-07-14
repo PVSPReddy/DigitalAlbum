@@ -6,6 +6,7 @@ import ProfilePage from "../Screens/MainScreens/ProfilePage";
 import SettingsPage from "../Screens/MainScreens/SettingsPage";
 import MemoryNavigation from "./MemoryNavigation";
 import { MEMORY_NAVIGATION, PROFILE_PAGE, SETTINGS_PAGE } from "../Helpers/PageNameConstants";
+import SidebarMenu from "./SidebarMenu";
 
 const Drawer = createDrawerNavigator();
 
@@ -17,6 +18,7 @@ const MainNavigation = () => {
 
     const mainNavigationComponent = (
         <Drawer.Navigator
+            drawerContent={SidebarMenu}
             drawerType={isLargeScreen ? 'permanent' : 'front'}
             drawerStyle={isLargeScreen ? null : { width: '70%' }}
             overlayColor="#00000030">
@@ -25,7 +27,7 @@ const MainNavigation = () => {
             }} />
             {/* openByDefault drawerType={isLargeScreen ? 'permanent' : 'back'} */}
             <Drawer.Screen name={PROFILE_PAGE} component={ProfilePage} />
-            <Drawer.Screen name={SETTINGS_PAGE} component={SettingsPage}/>
+            <Drawer.Screen name={SETTINGS_PAGE} component={SettingsPage} />
         </Drawer.Navigator >
     )
     return mainNavigationComponent;

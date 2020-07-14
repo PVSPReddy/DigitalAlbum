@@ -6,7 +6,7 @@ const CustomMemoriesListViewCell = (props) => {
     const { dataItem } = props;
     const {isVisible, setIsVisible} = useState(false);
     const item = dataItem;
-    console.log(item);
+    // console.log(item);
 
     const onPressHandler = () => {
         props.onPress(item.item);
