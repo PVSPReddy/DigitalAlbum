@@ -1,10 +1,8 @@
 import React from "react"
-import { View, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } from "react-native"
+import { View, StyleSheet, Text, Image, ScrollView, SafeAreaView, TouchableOpacity } from "react-native"
 import { HOME_PAGE, PROFILE_PAGE, SETTINGS_PAGE } from "../Helpers/PageNameConstants";
 
 const SidebarMenu = (props) => {
-    console.log("side menu", props);
-    console.log("side menu", props.state.routeNames);
     const pageDetails = [
         {
             pageIcon: require("./../Assets/CommonImages/homeIcon.png"),
@@ -23,11 +21,15 @@ const SidebarMenu = (props) => {
         }
     ]
 
+    const onPressNavigationHandler = (navigationID) => {
+        props.navigation.navigate(navigationID);
+    }
+
     const pageListDesign = (item) => {
         const pageListCellView = (
-            <TouchableOpacity>
+            <TouchableOpacity activeOpacity="0.2" onPress={() => onPressNavigationHandler(item.navigationRouter)}>
                 <View style={styles.itemViewCellHolderStyle}>
-                    <Image source={pageIcon} />
+                    <Image style={styles.itemViewCellImageStyle} source={item.pageIcon} />
                     <Text style={styles.pageNameTextStyle}>{item.pageTitle}</Text>
                 </View>
             </TouchableOpacity>
@@ -36,28 +38,47 @@ const SidebarMenu = (props) => {
     }
 
     const mainUIComponent = (
-        // <SafeAreaView>
-        //     <ScrollView>
-        //         {/* <DrawerItem {...props} /> */}
-        //         {/* {props.state.routeNames.map((item) => { <View id={item}><Text>{item}</Text></View> })} */}
-        //         {/* {props.state.routeNames.map((item) => {console.log(item)})} */}
-        //         {pageDetails.map((item) => {pageListDesign(item)})}
-        //     </ScrollView>
-        // </SafeAreaView>
-        <View>
-            {pageDetails.map((item) => { pageListDesign(item) })}
-        </View>
+        <SafeAreaView>
+            <ScrollView>
+                <View>
+                    <Text></Text>
+                    <View style={styles.profileImageHolderStyle}>
+                        {/* <TouchableOpacity> */}
+                        <Image source={require("./../Assets/CommonImages/profileDummyImage.jpeg")} />
+                        {/* </TouchableOpacity> */}
+                    </View>
+                    {
+                        pageDetails.map((item) => { return pageListDesign(item) })
+                    }
+                </View>
+            </ScrollView>
+        </SafeAreaView>
     )
     return mainUIComponent;
 }
 
 const styles = StyleSheet.create({
+    profileImageHolderStyle: {
+        height: 250,
+        paddingVertical: 40,
+        justifyContent: "center",
+        alignItems: "center"
+    },
     itemViewCellHolderStyle: {
         flexDirection: "row",
+        backgroundColor: "blue",
+        alignItems: "center",
         height: 50,
-        backgroundColor: "blue"
+        marginHorizontal: 10,
+        marginBottom: 5
+    },
+    itemViewCellImageStyle: {
+        height: 40,
+        width: 40,
+        marginHorizontal: 10
     },
     pageNameTextStyle: {
+        fontSize: 18,
         flex: 1
     }
 })

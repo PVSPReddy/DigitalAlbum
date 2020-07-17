@@ -22,12 +22,16 @@ const MainNavigation = () => {
             drawerType={isLargeScreen ? 'permanent' : 'front'}
             drawerStyle={isLargeScreen ? null : { width: '70%' }}
             overlayColor="#00000030">
-            <Drawer.Screen name={MEMORY_NAVIGATION} component={MemoryNavigation} options={{
+                <Drawer.Screen name={MEMORY_NAVIGATION} component={MemoryNavigation} options={{
                 title: "Home"
             }} />
+            {/* <Drawer.Screen name={MEMORY_NAVIGATION} component={MemoryNavigation} options={{
+                title: "Home"
+            }} /> */}
             {/* openByDefault drawerType={isLargeScreen ? 'permanent' : 'back'} */}
             <Drawer.Screen name={PROFILE_PAGE} component={ProfilePage} />
             <Drawer.Screen name={SETTINGS_PAGE} component={SettingsPage} />
+            {/* <Drawer.Screen name="Test" component={SidebarMenu}/> */}
         </Drawer.Navigator >
     )
     return mainNavigationComponent;

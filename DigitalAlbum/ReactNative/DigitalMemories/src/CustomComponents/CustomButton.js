@@ -19,7 +19,7 @@ const CustomButton = (props) => {
 
     const mainUIMainComponent = (
         <TouchableComponent onPress={onTouchPress} onLongPress={onTouchLongPress}>
-            <View style={{...styles.containerStyle, ...props.styles}}>
+            <View style={{...styles.containerStyle, ...props.style}}>
                 <Text style={styles.textStyle}>{props.title}</Text>
             </View>
         </TouchableComponent>
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         alignContent: "center",
         justifyContent: "center",
         backgroundColor: "blue",
-        margin:10,
+        // marginVertical:10,
     },
     textHolderStyle: {
         alignItems: "center",

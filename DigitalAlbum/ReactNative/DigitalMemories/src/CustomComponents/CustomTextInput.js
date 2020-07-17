@@ -2,9 +2,15 @@ import React, { useState, useReducer, useEffect, useCallback } from 'react'
 import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet } from 'react-native'
 
 const CustomTextInput = (props) => {
-    const { allowInbuiltValidation, allowErrorText, isValidInput, isRequired, isMobileNumber, isEmailID, isNumericValue } = props.validationOptions;
+    let validationOptions = props.validationOptions;
+    if( validationOptions || validationOptions === null || (typeof validationOptions === 'undefined'))
+    {
+        validationOptions = {};
+        console.log("validation is null", validationOptions);
+    }
+    const { allowInbuiltValidation, allowErrorText, isValidInput, isRequired, isMobileNumber, isEmailID, isNumericValue } = validationOptions;
     const { inputID, validationType } = props;
-    const { shallInitValidation } = props.validationOptions;
+    const { shallInitValidation } = validationOptions;
     //const [shallInitInputValidation, setShallInitInputValidation] = useState(false);
     
     const arabic = "\u0f441";//"\u0633";
@@ -104,6 +110,7 @@ const CustomTextInput = (props) => {
                     style={{ ...styles.textInputStyle, ...props.inputTextStyle }}
                     placeholder={props.placeholder}
                     placeholderTextColor={props.placeholderTextColor}
+                    multiline={props.multiline}
                     text={props.text}
                     secureTextEntry={isSecureTextEntry}
                     onChangeText={onTextChanged}
