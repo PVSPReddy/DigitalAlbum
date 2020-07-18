@@ -2,11 +2,12 @@ import React, { useState } from "react"
 import { View, Text, StyleSheet, FlatList } from "react-native"
 
 import CustomHeader from "./../../CustomComponents/CustomHeader";
-import CustomMemoriesListViewCell from "../../CustomComponents/CustomMemoriesListViewCell";
+import CustomMemoriesListViewCell from "../../CustomComponents/AppLocalComponents/CustomMemoriesListViewCell";
 import CustomFloatingButton from "../../CustomComponents/CustomFloatingButton";
 
 import { memoriesListItems } from "./../../Constants/ListItems"
 import { IMAGE_HAMBURGER_MENU } from "../../Constants/LocalImages";
+import AppStyleConstants from "../../Constants/AppStyleConstants";
 
 
 const HomePage = (props) => {
@@ -29,7 +30,7 @@ const HomePage = (props) => {
     }
 
     const mainUIComponent = (
-        <View style={{ flex: 1 }}>
+        <View style={styles.mainComponentStyle}>
             <CustomHeader
                 headerViewStyle={styles.headerStyle}
                 headerTextStyle={styles.headerTextStyle}
@@ -50,9 +51,13 @@ const HomePage = (props) => {
 }
 
 const styles = StyleSheet.create({
+    mainComponentStyle: {
+        flex: 1,
+        backgroundColor: AppStyleConstants.colors.MAIN_CONTAINER_COLOR
+    },
     headerStyle: {
         height: 50,
-        backgroundColor: "yellow"
+        backgroundColor: AppStyleConstants.colors.MAIN_HEADER_COLOR
     },
     headerTextStyle: {
         marginRight: 50

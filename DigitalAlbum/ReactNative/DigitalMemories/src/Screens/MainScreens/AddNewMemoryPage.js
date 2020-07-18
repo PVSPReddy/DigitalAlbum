@@ -1,50 +1,34 @@
 import React, { useState } from "react"
-import { View, ScrollView, StyleSheet, Dimensions, Text, Image, Button } from "react-native"
+import { View, ScrollView, StyleSheet, Dimensions, Text, Image, Button, TouchableOpacity } from "react-native"
+
 import CustomHeader from "../../CustomComponents/CustomHeader";
 import CustomButton from "../../CustomComponents/CustomButton";
 import CustomTextInput from "../../CustomComponents/CustomTextInput";
 import CustomCarouselView from "../../CustomComponents/CustomCarouselView";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import CustomHeaderContentCardView from "../../CustomComponents/CustomHeaderContentCardView";
+
 import { IMAGE_PROFILE_ICON, IMAGE_BACK } from "../../Constants/LocalImages";
 import AppStyleConstants from "../../Constants/AppStyleConstants";
-import { personsDummyList, carouselViewDummyData } from "../../Constants/ListItems";
+import CameraView from "../../CustomComponents/AppLocalComponents/CameraView";
+import CustomActionSheet from "../../CustomComponents/CustomActionSheet";
 
 const AddNewMemoryPage = (props) => {
+
+    const [showCamera, setShowCamera] = useState(false);
+
+    const DUMMY_ID = "DummyId"
 
     const onBackButtonPressHandler = () => {
         props.navigation.pop();
     }
 
-    const imageDetails = {
-        imageID: "",
+    const addImage = {
+        imageID: DUMMY_ID,
         imageURL: ""
-    }
-    const contactDetails = {
-        contactId: "",
-        contactFirstName: "",
-        contactLastName: "",
-        contactImageURL: "",
-        contactNickName: "",
-        contactRelation: "",
-        contactMobileNo: "",
-        contactEmailID: ""
-    }
-
-    const carouselData = carouselViewDummyData;
-
-    const [memory, setMemory] = useState({
-        images: carouselData,
-        persons: personsDummyList,
-        loaction: {
-            lat: 0,
-            long: 0
-        },
-        memoryInfo: ""
-    });
+    };
 
     const addPerson = {
-        contactId: "dummy",
+        contactId: DUMMY_ID,
         contactFirstName: "Hello World 1",
         contactLastName: "",
         contactImageURL: IMAGE_PROFILE_ICON,
@@ -54,41 +38,78 @@ const AddNewMemoryPage = (props) => {
         contactEmailID: ""
     };
 
-    const screenWidth = Dimensions.get("screen").width;
-    // const screenHeight = Dimensions.get("screen").height;
+
+
+    const [memory, setMemory] = useState({
+        images: [],
+        persons: [],
+        loaction: {
+            lat: 0,
+            long: 0
+        },
+        memoryInfo: ""
+    });
+
+    const roundImageView = (id, imageSource) => {
+        const uiContent = (
+            <View style={{ height: 100, width: 100, borderRadius: 50, borderWidth: 2, overflow: "hidden", margin: 10, alignItems: "center", justifyContent: "center" }}>
+                {(id !== DUMMY_ID) ?
+                    <Image style={{ height: 100, width: 100 }} source={imageSource}></Image> :
+                    <Text style={{ fontSize: 40 }}>+</Text>
+                }
+            </View>
+        )
+        return uiContent;
+    }
 
 
     const memoryCarouselContent = (data) => {
         const carouselView = (
-            <View key={data.key} style={{ ...styles.carouselContentMainStyle, width: screenWidth, backgroundColor: data.color }}>
-                <Text>One</Text>
-            </View>
+            // <View key={data.key} style={{ ...styles.carouselContentMainStyle }}>
+            //     {/* <Text>One</Text> */}
+            //     <Image source={{uri: data.imageURL}} />
+            // </View>
+            <TouchableOpacity key={data.imageID} activeOpacity="0.8" onPress={() => { onSelectImage(data.imageID) }}>
+                {roundImageView(data.imageID, { uri: data.imageURL })}
+            </TouchableOpacity>
         )
         return carouselView;
     }
 
     const personCarouselContent = (data) => {
         const carouselView = (
-            <TouchableOpacity activeOpacity="0.8" onPress={() => { if (data.contactId !== "dummy") { } else { } }}>
+            <TouchableOpacity key={data.contactId} activeOpacity="0.8" onPress={() => { if (data.contactId !== DUMMY_ID) { } else { } }}>
                 <View style={{ alignItems: "center" }}>
-
-                    <View key={data.contactId} style={{ height: 100, width: 100, borderRadius: 50, borderWidth: 2, overflow: "hidden", margin: 10, alignItems: "center", justifyContent: "center" }}>
-                        {(data.contactId !== "dummy") ?
-                            <Image style={{ height: 100, width: 100 }} source={data.contactImageURL}></Image> :
-                            <Text style={{ fontSize: 40 }}>+</Text>
-                            // <Image style={{height: 100, width: 100}} source={data.contactImageURL}></Image>
-                        }
-                    </View>
-
-                    <Text>{(data.contactId !== "dummy") ? data.contactFirstName : "Add Person"}</Text>
+                    {roundImageView(data.contactId, { uri: data.contactImageURL })}
+                    <Text>{(data.contactId !== DUMMY_ID) ? data.contactFirstName : "Add Person"}</Text>
                 </View>
             </TouchableOpacity>
         )
         return carouselView;
     }
 
-    const onSelectImage = () => {
+    const onCameraSnappedHandler = (uri) => {
+        console.log(uri);
+        let imagesTemp = memory.images;
+        const newImage = {
+            imageID: "123",
+            imageURL: uri
+        };
+        imagesTemp.push(newImage);
+        setMemory({ ...memory, images: imagesTemp })
+        setShowCamera(false);
+    }
 
+    const onClosePressHandler = () => {
+        setShowCamera(false);
+    }
+
+    const onSelectImage = (id) => {
+        console.log(id);
+        if (id === DUMMY_ID) {
+            setShowCamera(true);
+        }
+        else { }
     }
 
     const onSelectPerson = () => {
@@ -104,7 +125,8 @@ const AddNewMemoryPage = (props) => {
     }
 
     const mainUIComponent = (
-        
+
+
         <View style={styles.mainComponentStyle}>
             <CustomHeader
                 headerViewStyle={styles.headerStyle}
@@ -114,36 +136,50 @@ const AddNewMemoryPage = (props) => {
                 hideBackButton={false}
                 onBackButtonPress={onBackButtonPressHandler} />
 
-<View style={styles.bodyHolderViewStyle}>
-<ScrollView>
+            <View style={styles.bodyHolderViewStyle}>
+                <CameraView visibility={showCamera} onCameraSnapped={onCameraSnappedHandler} onClosePress={onClosePressHandler} />
 
-                <CustomHeaderContentCardView style={styles.cardStyle} HeaderStyle={styles.cardTitleStyle} title="Add Images">
-                    <CustomCarouselView style={{ height: 150 }}>
-                        {memory.images.map(item => memoryCarouselContent(item))}
-                    </CustomCarouselView>
-                    <CustomButton style={styles.buttonStyle} title="Add Image of Memory" onPress={onSelectImage} />
-                </CustomHeaderContentCardView>
+<CustomActionSheet />
 
-                <CustomHeaderContentCardView style={styles.cardStyle} HeaderStyle={styles.cardTitleStyle} title="Add Persons">
-                    <ScrollView
-                        style={{ ...styles.scrollContent, ...props.style }}
-                        horizontal={true}
-                        showsHorizontalScrollIndicator={true}>
-                        {personCarouselContent(addPerson)}
-                        {memory.persons.map(item => personCarouselContent(item))}
-                    </ScrollView>
-                </CustomHeaderContentCardView>
+                <ScrollView>
 
-                <CustomHeaderContentCardView style={styles.cardStyle} HeaderStyle={styles.cardTitleStyle} title="No Coordinates available">
-                    <CustomTextInput placeholder="Enter Location Address or Details" inputTextStyle={styles.inputTextStyle} multiline={true} />
-                    <CustomButton style={styles.buttonStyle} title="Get and Add Location" onPress={onSelectLocation} />
-                </CustomHeaderContentCardView>
+                    <CustomHeaderContentCardView style={styles.cardStyle} headerStyle={styles.cardTitleStyle} title="Add Images">
+                        {/* <CustomCarouselView> */}
+                        <ScrollView
+                            style={{ ...styles.scrollContent, ...props.style }}
+                            horizontal={true}
+                            showsHorizontalScrollIndicator={true}>
+                            {memoryCarouselContent(addImage)}
+                            {memory.images.map(item => memoryCarouselContent(item))}
+                        </ScrollView>
+                        {/* </CustomCarouselView> */}
+                        {/* <CustomButton style={styles.buttonStyle} title="Add Image of Memory" onPress={onSelectImage} /> */}
+                    </CustomHeaderContentCardView>
 
-                <CustomHeaderContentCardView style={styles.cardStyle} HeaderStyle={styles.cardTitleStyle} title="Enter more info">
-                    <CustomTextInput placeholder="Enter Description" inputTextStyle={styles.inputTextStyle} multiline={true} />
-                </CustomHeaderContentCardView>
+                    <CustomHeaderContentCardView style={styles.cardStyle} headerStyle={styles.cardTitleStyle} title="Add Persons">
+                        <ScrollView
+                            style={{ ...styles.scrollContent, ...props.style }}
+                            horizontal={true}
+                            showsHorizontalScrollIndicator={true}>
+                            {personCarouselContent(addPerson)}
+                            {memory.persons.map(item => personCarouselContent(item))}
+                        </ScrollView>
+                    </CustomHeaderContentCardView>
 
-                <CustomButton style={styles.buttonStyle} title="Add Memory" onPress={onSubmit} />
+                    <CustomHeaderContentCardView style={styles.cardStyle} headerStyle={styles.cardTitleStyle} bodyStyle={styles.cardBodyStyle} title="Enter more info">
+                        <CustomTextInput placeholder="Set memory a name" inputTextStyle={styles.inputTextEntryStyle} />
+                        <CustomTextInput placeholder="Memory identification label" inputTextStyle={styles.inputTextEntryStyle} />
+                        <CustomTextInput placeholder="Enter Date of memory" inputTextStyle={styles.inputTextEntryStyle} />
+                        <CustomTextInput placeholder="Enter Description" inputTextStyle={styles.inputTextEditorStyle} multiline={true} />
+                    </CustomHeaderContentCardView>
+
+                    <CustomHeaderContentCardView style={styles.cardStyle} headerStyle={styles.cardTitleStyle} bodyStyle={styles.cardBodyStyle} title="No Coordinates available">
+                        <Text>No Coordinated found</Text>
+                        <CustomTextInput placeholder="Enter Location name, Address or Details" inputTextStyle={styles.inputTextEditorStyle} multiline={true} />
+                        <CustomButton style={styles.buttonStyle} title="Get and Save Co-ordinates" onPress={onSelectLocation} />
+                    </CustomHeaderContentCardView>
+
+                    <CustomButton style={styles.buttonStyle} title="Add Memory" onPress={onSubmit} />
                 </ScrollView>
             </View>
         </View>
@@ -168,10 +204,14 @@ const styles = StyleSheet.create({
         flex: 1,
         margin: 10
     },
-    inputTextStyle: {
+    inputTextEditorStyle: {
         textAlignVertical: "top",
-        borderBottomWidth:0,
+        borderBottomWidth: 0,
         minHeight: 150
+    },
+    inputTextEntryStyle: {
+        textAlignVertical: "top",
+        borderBottomWidth: 0,
     },
     buttonStyle: {
         backgroundColor: AppStyleConstants.colors.BUTTON_COLOR,
@@ -181,6 +221,7 @@ const styles = StyleSheet.create({
 
     carouselContentMainStyle: {
         flex: 1,
+        alignItems: "center"
         // width: "100%"
     },
 
@@ -188,6 +229,8 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         borderTopRightRadius: 20,
         borderTopLeftRadius: 20,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10
         // marginBottom: 20,
         // paddingBottom: 10
     },
@@ -195,6 +238,9 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         marginBottom: 10,
         backgroundColor: AppStyleConstants.colors.DATA_CARD_HEADER_COLOR
+    },
+    cardBodyStyle: {
+        marginHorizontal: 10
     }
 })
 

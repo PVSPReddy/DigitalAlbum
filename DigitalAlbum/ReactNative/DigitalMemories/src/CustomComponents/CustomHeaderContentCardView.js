@@ -4,10 +4,10 @@ import {View, Text, StyleSheet} from "react-native"
 const CustomHeaderContentCardView = (props) => {
     const mainUIContent = (
         <View style={{...styles.cardMainHolderStyle, ...props.style}}>
-            <View style={{...styles.cardHeaderHolderStyle, ...props.HeaderStyle}}>
-    <Text style={{...styles.cardHeaderTextStyle, ...props.HeaderTextStyle}}>{props.title}</Text>
+            <View style={{...styles.cardHeaderHolderStyle, ...props.headerStyle}}>
+    <Text style={{...styles.cardHeaderTextStyle, ...props.headerTextStyle}}>{props.title}</Text>
             </View>
-            <View style={{...styles.cardContentHolderStyle, ...props.style}}>
+            <View style={{...styles.cardContentHolderStyle, ...props.bodyStyle}}>
                 {props.children}
             </View>
         </View>
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     cardContentHolderStyle: {
-        backgroundColor: "#c9c9c9",
+        backgroundColor: "transparent",
         margin: 0,
         padding: 0
     }

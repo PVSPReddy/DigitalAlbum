@@ -19,25 +19,28 @@ const WHITE = "#FFFFFF"
 // export const MAIN_HEADER_COLOR = "";
 
 const AppStyleConstants = {
-    fontWeight: {
-        regular: '400',
-        medium: '600',
-        bold: 'bold'
-      },
-      colors: {
-          MODAL_BACKGROUND_COLOR: "",
+  fontWeight: {
+    regular: '400',
+    medium: '600',
+    bold: 'bold'
+  },
+  colors: {
+    MODAL_BACKGROUND_COLOR: "",
 
-          BUTTON_COLOR: "orange",
+    BUTTON_COLOR: "orange",
 
-        MAIN_CONTAINER_COLOR: "cyan",
-        MAIN_HEADER_COLOR: "gray",
-        MAIN_BODY_COLOR: "",
+    MAIN_CONTAINER_COLOR: "cyan",
+    MAIN_HEADER_COLOR: "gray",
+    MAIN_BODY_COLOR: "",
 
-        DATA_CARD_HEADER_COLOR:  "green",//"#C7C7C7",
-        DATA_CARD_HEADER_TITLE_COLOR:  "#000000",
-        DATA_CARD_BODY_COLOR:  "maroon",//"#c9c9c9",
-        DATA_CARD_BUTTON_COLOR: "teal"
-      }
+    LIST_CELL_BODY_COLOR: "gray",
+    LIST_CELL_NUMBER_HOLDER_COLOR: "yellow",
+
+    DATA_CARD_HEADER_COLOR: "green",//"#C7C7C7",
+    DATA_CARD_HEADER_TITLE_COLOR: "#000000",
+    DATA_CARD_BODY_COLOR: "maroon",//"#c9c9c9",
+    DATA_CARD_BUTTON_COLOR: "teal"
+  }
 }
 
 export default AppStyleConstants;

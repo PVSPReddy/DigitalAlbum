@@ -1,6 +1,7 @@
 import React, { useState } from "react"
-import { View, Text, Image, StyleSheet, TouchableOpacity, Modal } from "react-native"
-import { IMAGE_PROFILE_DUMMY } from "../Constants/LocalImages";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native"
+import { IMAGE_PROFILE_DUMMY } from "../../Constants/LocalImages";
+import AppStyleConstants from "../../Constants/AppStyleConstants";
 // import {Tooltip} from "react-native-elements"
 
 const CustomMemoriesListViewCell = (props) => {
@@ -23,7 +24,7 @@ const CustomMemoriesListViewCell = (props) => {
                     <Text>{item.item.createdOn}</Text>
                 </View>
                 <View style={styles.itemViewCellNumberTextHolderStyle}>
-                    <Text style={styles.itemViewCellNumberTextStyle}>{item.item.id}</Text>
+                    <Text style={styles.itemViewCellNumberTextStyle}>{item.item.number}</Text>
                 </View>
                 {/* {(item.item.showAccessibleButtons) ? <Button title="Delete" /> : <></>} */}
             </View>
@@ -35,7 +36,7 @@ const CustomMemoriesListViewCell = (props) => {
 
 const styles = StyleSheet.create({
     itemViewCellStyle: {
-        backgroundColor: "gray",
+        backgroundColor: AppStyleConstants.colors.LIST_CELL_BODY_COLOR,
         flexDirection: "row",
         alignItems: "center",
         // justifyContent: "center",
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
         fontSize: 30
     },
     itemViewCellNumberTextHolderStyle: {
-        backgroundColor: "green",
+        backgroundColor: AppStyleConstants.colors.LIST_CELL_NUMBER_HOLDER_COLOR,
         alignItems: "center",
         justifyContent: "center",
         height: 60,
