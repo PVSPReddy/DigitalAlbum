@@ -2,7 +2,8 @@ import React from "react"
 
 import { View, Text, StyleSheet } from "react-native"
 import CustomHeader from "./../../CustomComponents/CustomHeader";
-import { YING_YANG } from "../../Assets/CommonImages/UniCodesForImages";
+import { YING_YANG } from "./../../Constants/UniCodesForImages";
+import { IMAGE_BACK } from "../../Constants/LocalImages";
 
 class ProfilePage extends React.Component {
     constructor(props) {
@@ -32,7 +33,7 @@ class ProfilePage extends React.Component {
                     headerViewStyle={styles.headerStyle}
                     headerTextStyle={styles.headerTextStyle}
                     title="Profile"
-                    backButtonIconSource={require("./../../Assets/CommonImages/hamburgerMenu.png")}
+                    backButtonIconSource={IMAGE_BACK}
                     hideBackButton={false}
                     onBackButtonPress={this.onBackButtonPressHandler} />
                 <Text>Profile Page</Text>

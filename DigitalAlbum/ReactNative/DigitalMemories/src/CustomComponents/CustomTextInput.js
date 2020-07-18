@@ -1,5 +1,6 @@
 import React, { useState, useReducer, useEffect, useCallback } from 'react'
 import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet } from 'react-native'
+import { IMAGE_PASSWORD_HIDE, IMAGE_PASSWORD_SHOW } from '../Constants/LocalImages';
 
 const CustomTextInput = (props) => {
     let validationOptions = props.validationOptions;
@@ -128,10 +129,10 @@ const CustomTextInput = (props) => {
                         {isSecureTextEntry ?
                             <Image
                                 style={styles.passwordImageStyle}
-                                source={require("./../Assets/CommonImages/HidePassword.png")} /> :
+                                source={IMAGE_PASSWORD_HIDE} /> :
                             <Image
                                 style={styles.passwordImageStyle}
-                                source={require("./../Assets/CommonImages/ShowPassword.png")} />
+                                source={IMAGE_PASSWORD_SHOW} />
                         }
                     </TouchableOpacity>
                 </View> : <></>
@@ -146,7 +147,7 @@ const styles = StyleSheet.create({
     viewStyle: {
         backgroundColor: "white",
         borderWidth: 2,
-        borderColor: "maroon",
+        borderColor: "gray",
         borderRadius: 10,
         overflow: 'hidden',
         flexDirection: "row",

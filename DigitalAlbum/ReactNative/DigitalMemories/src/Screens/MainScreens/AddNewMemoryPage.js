@@ -6,6 +6,9 @@ import CustomTextInput from "../../CustomComponents/CustomTextInput";
 import CustomCarouselView from "../../CustomComponents/CustomCarouselView";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import CustomHeaderContentCardView from "../../CustomComponents/CustomHeaderContentCardView";
+import { IMAGE_PROFILE_ICON, IMAGE_BACK } from "../../Constants/LocalImages";
+import AppStyleConstants from "../../Constants/AppStyleConstants";
+import { personsDummyList, carouselViewDummyData } from "../../Constants/ListItems";
 
 const AddNewMemoryPage = (props) => {
 
@@ -28,101 +31,11 @@ const AddNewMemoryPage = (props) => {
         contactEmailID: ""
     }
 
-    const carouselData = [
-        {
-            id: 1,
-            color: "yellow",
-            width: screenWidth,
-            imageID: "",
-            imageURL: ""
-        },
-        {
-            id: 2,
-            color: "blue",
-            width: screenWidth,
-            imageID: "",
-            imageURL: ""
-        },
-        {
-            id: 3,
-            color: "green",
-            width: screenWidth,
-            imageID: "",
-            imageURL: ""
-        },
-        {
-            id: 4,
-            color: "maroon",
-            width: screenWidth,
-            imageID: "",
-            imageURL: ""
-        }
-    ]
+    const carouselData = carouselViewDummyData;
 
     const [memory, setMemory] = useState({
         images: carouselData,
-        persons: [
-            {
-                contactId: "",
-                contactFirstName: "Hello World 1",
-                contactLastName: "",
-                contactImageURL: require("./../../Assets/CommonImages/profileIcon.png"),
-                contactNickName: "",
-                contactRelation: "",
-                contactMobileNo: "",
-                contactEmailID: ""
-            },
-            {
-                contactId: "",
-                contactFirstName: "Hello World 2",
-                contactLastName: "",
-                contactImageURL: require("./../../Assets/CommonImages/profileIcon.png"),
-                contactNickName: "",
-                contactRelation: "",
-                contactMobileNo: "",
-                contactEmailID: ""
-            },
-            {
-                contactId: "",
-                contactFirstName: "Hello World 3",
-                contactLastName: "",
-                contactImageURL: require("./../../Assets/CommonImages/profileIcon.png"),
-                contactNickName: "",
-                contactRelation: "",
-                contactMobileNo: "",
-                contactEmailID: ""
-            },
-            {
-                contactId: "",
-                contactFirstName: "Hello World 4",
-                contactLastName: "",
-                contactImageURL: require("./../../Assets/CommonImages/profileIcon.png"),
-                contactNickName: "",
-                contactRelation: "",
-                contactMobileNo: "",
-                contactEmailID: ""
-            },
-            {
-                contactId: "",
-                contactFirstName: "Hello World 5",
-                contactLastName: "",
-                contactImageURL: require("./../../Assets/CommonImages/profileIcon.png"),
-                contactNickName: "",
-                contactRelation: "",
-                contactMobileNo: "",
-                contactEmailID: ""
-            },
-            {
-                contactId: "",
-                contactFirstName: "Hello World 6",
-                contactLastName: "",
-                contactImageURL: require("./../../Assets/CommonImages/profileIcon.png"),
-                contactNickName: "",
-                contactRelation: "",
-                contactMobileNo: "",
-                contactEmailID: ""
-            }
-        ],
+        persons: personsDummyList,
         loaction: {
             lat: 0,
             long: 0
@@ -130,11 +43,11 @@ const AddNewMemoryPage = (props) => {
         memoryInfo: ""
     });
 
-    const addNewPerson = {
+    const addPerson = {
         contactId: "dummy",
         contactFirstName: "Hello World 1",
         contactLastName: "",
-        contactImageURL: require("./../../Assets/CommonImages/profileIcon.png"),
+        contactImageURL: IMAGE_PROFILE_ICON,
         contactNickName: "",
         contactRelation: "",
         contactMobileNo: "",
@@ -142,12 +55,12 @@ const AddNewMemoryPage = (props) => {
     };
 
     const screenWidth = Dimensions.get("screen").width;
-    const screenHeight = Dimensions.get("screen").height;
+    // const screenHeight = Dimensions.get("screen").height;
 
 
     const memoryCarouselContent = (data) => {
         const carouselView = (
-            <View key={data.key} style={{ ...styles.carouselContentMainStyle, width: data.width, backgroundColor: data.color }}>
+            <View key={data.key} style={{ ...styles.carouselContentMainStyle, width: screenWidth, backgroundColor: data.color }}>
                 <Text>One</Text>
             </View>
         )
@@ -167,7 +80,7 @@ const AddNewMemoryPage = (props) => {
                         }
                     </View>
 
-                    <Text>{(data.contactId !== "dummy") ? data.contactFirstName : "Add New Person"}</Text>
+                    <Text>{(data.contactId !== "dummy") ? data.contactFirstName : "Add Person"}</Text>
                 </View>
             </TouchableOpacity>
         )
@@ -192,44 +105,43 @@ const AddNewMemoryPage = (props) => {
 
     const mainUIComponent = (
         
-        <View>
+        <View style={styles.mainComponentStyle}>
             <CustomHeader
                 headerViewStyle={styles.headerStyle}
                 headerTextStyle={styles.headerTextStyle}
                 title="New Memmory"
-                backButtonIconSource={require("./../../Assets/CommonImages/back.png")}
+                backButtonIconSource={IMAGE_BACK}
                 hideBackButton={false}
                 onBackButtonPress={onBackButtonPressHandler} />
 
 <View style={styles.bodyHolderViewStyle}>
 <ScrollView>
 
-                <CustomHeaderContentCardView style={styles.cardStyle} title="Add Images">
-                    <CustomCarouselView style={{ height: 150, backgroundColor: "blue" }}>
+                <CustomHeaderContentCardView style={styles.cardStyle} HeaderStyle={styles.cardTitleStyle} title="Add Images">
+                    <CustomCarouselView style={{ height: 150 }}>
                         {memory.images.map(item => memoryCarouselContent(item))}
                     </CustomCarouselView>
                     <CustomButton style={styles.buttonStyle} title="Add Image of Memory" onPress={onSelectImage} />
                 </CustomHeaderContentCardView>
 
-                <CustomHeaderContentCardView style={styles.cardStyle} title="Add Persons">
+                <CustomHeaderContentCardView style={styles.cardStyle} HeaderStyle={styles.cardTitleStyle} title="Add Persons">
                     <ScrollView
                         style={{ ...styles.scrollContent, ...props.style }}
                         horizontal={true}
                         showsHorizontalScrollIndicator={true}>
-                        {personCarouselContent(addNewPerson)}
+                        {personCarouselContent(addPerson)}
                         {memory.persons.map(item => personCarouselContent(item))}
                     </ScrollView>
                 </CustomHeaderContentCardView>
 
-                <CustomHeaderContentCardView style={styles.cardStyle} title="No Coordinates available">
-                    <CustomTextInput placeholder="Enter Location Address or Details" inputTextStyle={styles.addInfoInputTextStyle} multiline={true} />
+                <CustomHeaderContentCardView style={styles.cardStyle} HeaderStyle={styles.cardTitleStyle} title="No Coordinates available">
+                    <CustomTextInput placeholder="Enter Location Address or Details" inputTextStyle={styles.inputTextStyle} multiline={true} />
                     <CustomButton style={styles.buttonStyle} title="Get and Add Location" onPress={onSelectLocation} />
                 </CustomHeaderContentCardView>
 
-                <CustomHeaderContentCardView style={styles.cardStyle} title="Enter more info">
-                    <CustomTextInput placeholder="Enter Description" inputTextStyle={styles.addInfoInputTextStyle} multiline={true} />
+                <CustomHeaderContentCardView style={styles.cardStyle} HeaderStyle={styles.cardTitleStyle} title="Enter more info">
+                    <CustomTextInput placeholder="Enter Description" inputTextStyle={styles.inputTextStyle} multiline={true} />
                 </CustomHeaderContentCardView>
-
 
                 <CustomButton style={styles.buttonStyle} title="Add Memory" onPress={onSubmit} />
                 </ScrollView>
@@ -241,33 +153,48 @@ const AddNewMemoryPage = (props) => {
 }
 
 const styles = StyleSheet.create({
+    mainComponentStyle: {
+        flex: 1,
+        backgroundColor: AppStyleConstants.colors.MAIN_CONTAINER_COLOR
+    },
     headerStyle: {
         height: 50,
-        backgroundColor: "gray"
+        backgroundColor: AppStyleConstants.colors.MAIN_HEADER_COLOR
     },
     headerTextStyle: {
-        marginRight: 50
+        marginRight: 50,
     },
     bodyHolderViewStyle: {
-        // flex: 1,
+        flex: 1,
         margin: 10
     },
-    addInfoInputTextStyle: {
+    inputTextStyle: {
         textAlignVertical: "top",
+        borderBottomWidth:0,
         minHeight: 150
     },
     buttonStyle: {
+        backgroundColor: AppStyleConstants.colors.BUTTON_COLOR,
         // color: "yellow",
-        // marginVertical: 10,
+        marginTop: 10,
     },
 
     carouselContentMainStyle: {
         flex: 1,
+        // width: "100%"
     },
+
     cardStyle: {
         backgroundColor: "white",
+        borderTopRightRadius: 20,
+        borderTopLeftRadius: 20,
         // marginBottom: 20,
         // paddingBottom: 10
+    },
+    cardTitleStyle: {
+        paddingLeft: 20,
+        marginBottom: 10,
+        backgroundColor: AppStyleConstants.colors.DATA_CARD_HEADER_COLOR
     }
 })
 

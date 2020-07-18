@@ -1,12 +1,13 @@
 import React from "react"
 import { View, Text, Image, StyleSheet, TouchableWithoutFeedback } from "react-native"
+import { IMAGE_BACK } from "../Constants/LocalImages";
 
 const CustomHeader = (props) => {
     const { hideBackButton, backButtonIconSource } = props;//backButtonImageSource
 
     var backButtonImageSource = backButtonIconSource;
     if (backButtonIconSource === null) {
-        backButtonImageSource = require("./../Assets/CommonImages/back.png");
+        backButtonImageSource = IMAGE_BACK;
     }
 
     // navigation.setParams("props", props);

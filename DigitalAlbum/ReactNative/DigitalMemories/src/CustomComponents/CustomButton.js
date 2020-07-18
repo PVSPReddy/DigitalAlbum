@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         height: 40,
         alignContent: "center",
         justifyContent: "center",
-        backgroundColor: "blue",
+        backgroundColor: "gray",
         // marginVertical:10,
     },
     textHolderStyle: {

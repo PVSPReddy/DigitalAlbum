@@ -1,21 +1,22 @@
 import React from "react"
 import { View, StyleSheet, Text, Image, ScrollView, SafeAreaView, TouchableOpacity } from "react-native"
 import { HOME_PAGE, PROFILE_PAGE, SETTINGS_PAGE } from "../Helpers/PageNameConstants";
+import { IMAGE_HOME_ICON, IMAGE_PROFILE_ICON, IMAGE_SETTINGS, IMAGE_PROFILE_DUMMY } from "../Constants/LocalImages";
 
 const SidebarMenu = (props) => {
     const pageDetails = [
         {
-            pageIcon: require("./../Assets/CommonImages/homeIcon.png"),
+            pageIcon: IMAGE_HOME_ICON,
             pageTitle: "Home Page",
             navigationRouter: HOME_PAGE
         },
         {
-            pageIcon: require("./../Assets/CommonImages/profileIcon.png"),
+            pageIcon: IMAGE_PROFILE_ICON,
             pageTitle: "Profile",
             navigationRouter: PROFILE_PAGE
         },
         {
-            pageIcon: require("./../Assets/CommonImages/settingsIcon.png"),
+            pageIcon: IMAGE_SETTINGS,
             pageTitle: "Settings",
             navigationRouter: SETTINGS_PAGE
         }
@@ -44,7 +45,7 @@ const SidebarMenu = (props) => {
                     <Text></Text>
                     <View style={styles.profileImageHolderStyle}>
                         {/* <TouchableOpacity> */}
-                        <Image source={require("./../Assets/CommonImages/profileDummyImage.jpeg")} />
+                        <Image source={IMAGE_PROFILE_DUMMY} />
                         {/* </TouchableOpacity> */}
                     </View>
                     {

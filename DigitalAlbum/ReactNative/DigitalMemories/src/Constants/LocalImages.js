@@ -1,0 +1,12 @@
+export const IMAGE_BACK = require("./../Assets/CommonImages/back.png");
+export const IMAGE_BACK_ARROW = require("./../Assets/CommonImages/backArrow.png");
+export const IMAGE_CALENDAR = require("./../Assets/CommonImages/calendar.png");
+export const IMAGE_PASSWORD_HIDE = require("./../Assets/CommonImages/passwordHide.png");
+export const IMAGE_PASSWORD_SHOW = require("./../Assets/CommonImages/passwordShow.png");
+export const IMAGE_HOME_ICON = require("./../Assets/CommonImages/homeIcon.png");
+export const IMAGE_PICTURE_DUMMY = require("./../Assets/CommonImages/profileDummyImage.jpeg");
+export const IMAGE_PROFILE_DUMMY = require("./../Assets/CommonImages/profileDummyImage.jpeg");
+export const IMAGE_PROFILE_ICON = require("./../Assets/CommonImages/profileIcon.png");
+export const IMAGE_SEARCH = require("./../Assets/CommonImages/search.png");
+export const IMAGE_SETTINGS = require("./../Assets/CommonImages/settingsIcon.png");
+export const IMAGE_HAMBURGER_MENU = require("./../Assets/CommonImages/hamburgerMenu.png");

@@ -1,3 +1,5 @@
+import { IMAGE_PROFILE_ICON } from "./LocalImages";
+
 export const memoriesListItems = [{
     id: "1",
     name: "Sivaprasad",
@@ -70,3 +72,97 @@ export const memoriesListItems = [{
     number: 22,
     createdOn: (new Date).toString()
 }];
+
+export const personsDummyList = [
+    {
+        contactId: "",
+        contactFirstName: "Hello World 1",
+        contactLastName: "",
+        contactImageURL: IMAGE_PROFILE_ICON,
+        contactNickName: "",
+        contactRelation: "",
+        contactMobileNo: "",
+        contactEmailID: ""
+    },
+    {
+        contactId: "",
+        contactFirstName: "Hello World 2",
+        contactLastName: "",
+        contactImageURL: IMAGE_PROFILE_ICON,
+        contactNickName: "",
+        contactRelation: "",
+        contactMobileNo: "",
+        contactEmailID: ""
+    },
+    {
+        contactId: "",
+        contactFirstName: "Hello World 3",
+        contactLastName: "",
+        contactImageURL: IMAGE_PROFILE_ICON,
+        contactNickName: "",
+        contactRelation: "",
+        contactMobileNo: "",
+        contactEmailID: ""
+    },
+    {
+        contactId: "",
+        contactFirstName: "Hello World 4",
+        contactLastName: "",
+        contactImageURL: IMAGE_PROFILE_ICON,
+        contactNickName: "",
+        contactRelation: "",
+        contactMobileNo: "",
+        contactEmailID: ""
+    },
+    {
+        contactId: "",
+        contactFirstName: "Hello World 5",
+        contactLastName: "",
+        contactImageURL: IMAGE_PROFILE_ICON,
+        contactNickName: "",
+        contactRelation: "",
+        contactMobileNo: "",
+        contactEmailID: ""
+    },
+    {
+        contactId: "",
+        contactFirstName: "Hello World 6",
+        contactLastName: "",
+        contactImageURL: IMAGE_PROFILE_ICON,
+        contactNickName: "",
+        contactRelation: "",
+        contactMobileNo: "",
+        contactEmailID: ""
+    }
+];
+
+export const carouselViewDummyData = [
+    {
+        id: 1,
+        color: "yellow",
+        // width: screenWidth,
+        imageID: "",
+        imageURL: ""
+    },
+    {
+        id: 2,
+        color: "blue",
+        // width: screenWidth,
+        imageID: "",
+        imageURL: ""
+    },
+    {
+        id: 3,
+        color: "green",
+        // width: screenWidth,
+        imageID: "",
+        imageURL: ""
+    },
+    {
+        id: 4,
+        color: "maroon",
+        // width: screenWidth,
+        imageID: "",
+        imageURL: ""
+    }
+];

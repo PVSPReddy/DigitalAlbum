@@ -17,7 +17,8 @@ const CustomHeaderContentCardView = (props) => {
 
 const styles = StyleSheet.create({
     cardMainHolderStyle: {
-        marginBottom: 30
+        marginBottom: 30,
+        overflow: "hidden"
     },
     cardHeaderHolderStyle: {
         backgroundColor: "#c7c7c7",

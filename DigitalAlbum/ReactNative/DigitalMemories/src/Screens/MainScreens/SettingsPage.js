@@ -2,6 +2,7 @@ import React from "react"
 
 import { View, Text, StyleSheet } from "react-native"
 import CustomHeader from "./../../CustomComponents/CustomHeader";
+import { IMAGE_HAMBURGER_MENU } from "../../Constants/LocalImages";
 
 class SettingsPage extends React.Component {
     constructor(props) {
@@ -31,7 +32,7 @@ class SettingsPage extends React.Component {
                     headerViewStyle={styles.headerStyle}
                     headerTextStyle={styles.headerTextStyle}
                     title="Settings"
-                    backButtonIconSource={require("./../../Assets/CommonImages/hamburgerMenu.png")}
+                    backButtonIconSource={IMAGE_HAMBURGER_MENU}
                     hideBackButton={false}
                     onBackButtonPress={this.onBackButtonPressHandler} />
                 <Text>Settings Page</Text>

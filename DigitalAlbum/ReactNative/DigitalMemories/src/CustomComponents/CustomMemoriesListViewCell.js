@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { View, Text, Image, StyleSheet, TouchableOpacity, Modal } from "react-native"
+import { IMAGE_PROFILE_DUMMY } from "../Constants/LocalImages";
 // import {Tooltip} from "react-native-elements"
 
 const CustomMemoriesListViewCell = (props) => {
@@ -16,7 +17,7 @@ const CustomMemoriesListViewCell = (props) => {
         // <View>
         <TouchableOpacity activeOpacity="0.4" onPress={onPressHandler}>
             <View style={styles.itemViewCellStyle}>
-                <Image style={styles.itemViewCellImageStyle} source={require("./../Assets/CommonImages/profileDummyImage.jpeg")} />
+                <Image style={styles.itemViewCellImageStyle} source={IMAGE_PROFILE_DUMMY} />
                 <View style={{ flex: 1, paddingLeft: 15 }}>
                     <Text style={styles.itemViewCellNameTextStyle}>{item.item.name}</Text>
                     <Text>{item.item.createdOn}</Text>

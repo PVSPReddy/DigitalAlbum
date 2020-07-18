@@ -6,6 +6,7 @@ import CustomMemoriesListViewCell from "../../CustomComponents/CustomMemoriesLis
 import CustomFloatingButton from "../../CustomComponents/CustomFloatingButton";
 
 import { memoriesListItems } from "./../../Constants/ListItems"
+import { IMAGE_HAMBURGER_MENU } from "../../Constants/LocalImages";
 
 
 const HomePage = (props) => {
@@ -33,7 +34,7 @@ const HomePage = (props) => {
                 headerViewStyle={styles.headerStyle}
                 headerTextStyle={styles.headerTextStyle}
                 title="Home"
-                backButtonIconSource={require("./../../Assets/CommonImages/hamburgerMenu.png")}
+                backButtonIconSource={IMAGE_HAMBURGER_MENU}
                 hideBackButton={false}
                 onBackButtonPress={onBackButtonPressHandler} />
             <View style={styles.sortOptionsHolderStyle}></View>

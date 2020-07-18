@@ -1,6 +1,7 @@
 import React from "react"
 import { View, ScrollView, StyleSheet } from "react-native"
 import CustomHeader from "../../CustomComponents/CustomHeader";
+import { IMAGE_BACK } from "../../Constants/LocalImages";
 
 const AddNewPersonPage = (props) => {
 
@@ -14,7 +15,7 @@ const AddNewPersonPage = (props) => {
                 headerViewStyle={styles.headerStyle}
                 headerTextStyle={styles.headerTextStyle}
                 title="Add New Person"
-                backButtonIconSource={require("./../../Assets/CommonImages/back.png")}
+                backButtonIconSource={IMAGE_BACK}
                 hideBackButton={false}
                 onBackButtonPress={onBackButtonPressHandler} />
         </ScrollView>

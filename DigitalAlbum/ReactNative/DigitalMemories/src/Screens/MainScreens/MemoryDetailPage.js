@@ -6,6 +6,7 @@ import CustomMemoriesListViewCell from "../../CustomComponents/CustomMemoriesLis
 import CustomFloatingButton from "../../CustomComponents/CustomFloatingButton";
 
 import {memoriesListItems} from "./../../Constants/ListItems"
+import { IMAGE_BACK } from "../../Constants/LocalImages";
 
 
 const MemoryDetailPage = (props) => {
@@ -27,7 +28,7 @@ const MemoryDetailPage = (props) => {
                 headerViewStyle={styles.headerStyle}
                 headerTextStyle={styles.headerTextStyle}
                 title={props.route.params.name}
-                backButtonIconSource={require("./../../Assets/CommonImages/back.png")}
+                backButtonIconSource={IMAGE_BACK}
                 hideBackButton={false}
                 onBackButtonPress={onBackButtonPressHandler} />
             <View style={styles.sortOptionsHolderStyle}></View>
