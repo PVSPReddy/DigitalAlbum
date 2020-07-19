@@ -11,7 +11,7 @@ import { IMAGE_PROFILE_ICON, IMAGE_BACK } from "../../Constants/LocalImages";
 import AppStyleConstants from "../../Constants/AppStyleConstants";
 import CameraView from "../../CustomComponents/AppLocalComponents/CameraView";
 import CustomActionSheet from "../../CustomComponents/CustomActionSheet";
-import { ADD_NEW_PERSON_PAGE } from "../../Helpers/PageNameConstants";
+import { ADD_NEW_PERSON_PAGE, MEMORY_DETAIL_PAGE, PERSON_DETAIL_PAGE } from "../../Helpers/PageNameConstants";
 
 const AddNewMemoryPage = (props) => {
 
@@ -82,9 +82,11 @@ const AddNewMemoryPage = (props) => {
         if (id === DUMMY_ID) {
             setImageOptionsCallerID(callerID);
             setShowImageOptions(true);
-            //setShowCamera(true);
         }
-        // else { }
+        else 
+        {
+            // navigateTo();
+         }
     }
 
     const onCancelPressHandler = (id) => {
@@ -113,6 +115,10 @@ const AddNewMemoryPage = (props) => {
         if(id === DUMMY_ID)
         {
             setShowPersonOptions(true);
+        }
+        else
+        {
+            props.navigation.navigate(PERSON_DETAIL_PAGE)
         }
     }
 
