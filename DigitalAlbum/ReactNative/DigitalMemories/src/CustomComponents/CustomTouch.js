@@ -1,6 +1,5 @@
 import React from "react"
-import {} from "react-native"
-import { TouchableOpacity, TouchableNativeFeedback } from "react-native-gesture-handler"
+import { TouchableOpacity, TouchableNativeFeedback, Platform } from "react-native"
 
 const CustomTouch = (props) => {
     let TouchableComponent = TouchableOpacity;
@@ -10,7 +9,7 @@ const CustomTouch = (props) => {
     }
 
     const mainUIComponent = (
-        <TouchableComponent>
+        <TouchableComponent onPress={props.onPress} onLongPress={props.onLongPress}>
             {props.children}
         </TouchableComponent>
     )

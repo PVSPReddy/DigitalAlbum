@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { View, Text, StyleSheet, FlatList } from "react-native"
 
 import CustomHeader from "./../../CustomComponents/CustomHeader";
-import CustomMemoriesListViewCell from "../../CustomComponents/CustomMemoriesListViewCell";
+import CustomMemoriesListViewCell from "../../CustomComponents/AppLocalComponents/CustomMemoriesListViewCell";
 import CustomFloatingButton from "../../CustomComponents/CustomFloatingButton";
 
 import {memoriesListItems} from "./../../Constants/ListItems"

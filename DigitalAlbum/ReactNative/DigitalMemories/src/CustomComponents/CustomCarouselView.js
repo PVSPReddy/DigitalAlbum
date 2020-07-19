@@ -26,7 +26,7 @@ const CustomCarouselView = (props) => {
                 {/* <View> */}
                     {/* {uiview()} */}
                 {props.children}
-                <Text>hello World</Text>
+                {/* <Text>hello World</Text> */}
                 {/* </View> */}
                 {/* { carouselData.map(item=>carouselContent(item)) } */}
             </ScrollView>

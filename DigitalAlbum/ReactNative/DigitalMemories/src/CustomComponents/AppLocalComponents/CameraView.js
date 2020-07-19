@@ -13,7 +13,7 @@ const CameraView = (props) => {
         const data = await camera.takePictureAsync(options);
         //  eslint-disable-next-line
         console.log(data.uri);
-        props.onCameraSnapped(data.uri);
+        props.onCameraSnapped(data.uri, props.callerID);
     };
 
     const onClose = () => {

@@ -11,10 +11,18 @@ import { IMAGE_PROFILE_ICON, IMAGE_BACK } from "../../Constants/LocalImages";
 import AppStyleConstants from "../../Constants/AppStyleConstants";
 import CameraView from "../../CustomComponents/AppLocalComponents/CameraView";
 import CustomActionSheet from "../../CustomComponents/CustomActionSheet";
+import { ADD_NEW_PERSON_PAGE } from "../../Helpers/PageNameConstants";
 
 const AddNewMemoryPage = (props) => {
 
+    const NONE = "NONE";
+    const ADD_IMAGES = "ADD_IMAGES";
+    const ADD_PERSONS = "ADD_PERSONS";
+
     const [showCamera, setShowCamera] = useState(false);
+    const [showImageOptions, setShowImageOptions] = useState(false);
+    const [showPersonOptions, setShowPersonOptions] = useState(false);
+    const [imageOptionsCallerID, setImageOptionsCallerID] = useState("NONE");
 
     const DUMMY_ID = "DummyId"
 
@@ -38,8 +46,6 @@ const AddNewMemoryPage = (props) => {
         contactEmailID: ""
     };
 
-
-
     const [memory, setMemory] = useState({
         images: [],
         persons: [],
@@ -49,6 +55,84 @@ const AddNewMemoryPage = (props) => {
         },
         memoryInfo: ""
     });
+
+    const onCameraSnappedHandler = (uri, callerID) => {
+        console.log(uri);
+        if (callerID === ADD_IMAGES) {
+            let imagesTemp = memory.images;
+            const newImage = {
+                imageID: "123",
+                imageURL: uri
+            };
+            imagesTemp.push(newImage);
+            setMemory({ ...memory, images: imagesTemp })
+        }
+        else if (callerID === ADD_IMAGES) {
+
+        }
+        setShowCamera(false);
+    }
+
+    const onClosePressHandler = () => {
+        setShowCamera(false);
+    }
+
+    const onSelectImage = (id, callerID) => {
+        console.log(id);
+        if (id === DUMMY_ID) {
+            setImageOptionsCallerID(callerID);
+            setShowImageOptions(true);
+            //setShowCamera(true);
+        }
+        // else { }
+    }
+
+    const onCancelPressHandler = (id) => {
+        if (id === "cameraOptionsAS") {
+            setShowImageOptions(false);
+        }
+        else if(id === "personOptionsAS")
+        {
+            setShowPersonOptions(false);
+        }
+        console.log("alert close")
+    }
+
+    const onCameraSelectionHandler = () => {
+        console.log("camera clicked");
+        setShowImageOptions(false);
+        setShowCamera(true);
+    }
+
+    const onGallerySelectionHandler = () => {
+        console.log("gallery clicked");
+        setShowImageOptions(false);
+    }
+
+    const onSelectPerson = (id, callerID) => {
+        if(id === DUMMY_ID)
+        {
+            setShowPersonOptions(true);
+        }
+    }
+
+    const onAddNewPerson = (id, callerID) => {
+        setShowPersonOptions(false);
+        props.navigation.navigate(ADD_NEW_PERSON_PAGE);
+    }
+
+    const onAddExistingPerson = (id, callerID) => {
+        setShowPersonOptions(false);
+    }
+
+    const onSelectLocation = () => {
+
+    }
+
+    const onSubmit = () => {
+
+    }
+
 
     const roundImageView = (id, imageSource) => {
         const uiContent = (
@@ -69,7 +153,7 @@ const AddNewMemoryPage = (props) => {
             //     {/* <Text>One</Text> */}
             //     <Image source={{uri: data.imageURL}} />
             // </View>
-            <TouchableOpacity key={data.imageID} activeOpacity="0.8" onPress={() => { onSelectImage(data.imageID) }}>
+            <TouchableOpacity key={data.imageID} activeOpacity="0.8" onPress={() => { onSelectImage(data.imageID, ADD_IMAGES) }}>
                 {roundImageView(data.imageID, { uri: data.imageURL })}
             </TouchableOpacity>
         )
@@ -78,7 +162,7 @@ const AddNewMemoryPage = (props) => {
 
     const personCarouselContent = (data) => {
         const carouselView = (
-            <TouchableOpacity key={data.contactId} activeOpacity="0.8" onPress={() => { if (data.contactId !== DUMMY_ID) { } else { } }}>
+            <TouchableOpacity key={data.contactId} activeOpacity="0.8" onPress={() => { onSelectPerson(data.contactId, ADD_PERSONS) }}>
                 <View style={{ alignItems: "center" }}>
                     {roundImageView(data.contactId, { uri: data.contactImageURL })}
                     <Text>{(data.contactId !== DUMMY_ID) ? data.contactFirstName : "Add Person"}</Text>
@@ -86,42 +170,6 @@ const AddNewMemoryPage = (props) => {
             </TouchableOpacity>
         )
         return carouselView;
-    }
-
-    const onCameraSnappedHandler = (uri) => {
-        console.log(uri);
-        let imagesTemp = memory.images;
-        const newImage = {
-            imageID: "123",
-            imageURL: uri
-        };
-        imagesTemp.push(newImage);
-        setMemory({ ...memory, images: imagesTemp })
-        setShowCamera(false);
-    }
-
-    const onClosePressHandler = () => {
-        setShowCamera(false);
-    }
-
-    const onSelectImage = (id) => {
-        console.log(id);
-        if (id === DUMMY_ID) {
-            setShowCamera(true);
-        }
-        else { }
-    }
-
-    const onSelectPerson = () => {
-
-    }
-
-    const onSelectLocation = () => {
-
-    }
-
-    const onSubmit = () => {
-
     }
 
     const mainUIComponent = (
@@ -137,9 +185,29 @@ const AddNewMemoryPage = (props) => {
                 onBackButtonPress={onBackButtonPressHandler} />
 
             <View style={styles.bodyHolderViewStyle}>
-                <CameraView visibility={showCamera} onCameraSnapped={onCameraSnappedHandler} onClosePress={onClosePressHandler} />
 
-<CustomActionSheet />
+
+                <CameraView callerID={imageOptionsCallerID} visibility={showCamera} onCameraSnapped={onCameraSnappedHandler} onClosePress={onClosePressHandler} />
+
+                <CustomActionSheet
+                    visibility={showImageOptions}
+                    id="cameraOptionsAS"
+                    title="Select an option"
+                    onCancelPress={onCancelPressHandler}
+                    options={[
+                        { text: "Camera", onPress: onCameraSelectionHandler },
+                        { text: "Gallery", onPress: onGallerySelectionHandler },
+                    ]} />
+
+                <CustomActionSheet
+                    visibility={showPersonOptions}
+                    id="personOptionsAS"
+                    title="Select an option"
+                    onCancelPress={onCancelPressHandler}
+                    options={[
+                        { text: "Add New Person", onPress: onAddNewPerson },
+                        { text: "Add From Existing", onPress: onAddExistingPerson },
+                    ]} />
 
                 <ScrollView>
 
