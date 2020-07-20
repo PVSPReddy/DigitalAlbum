@@ -108,6 +108,7 @@ const CustomTextInput = (props) => {
                 {((!isValidInput)) ? <Text>isValidInput</Text> : <></>}
                 </View> */}
                 {((allowErrorText) && (shallInitValidation) && (!isValidInput)) ? <Text style={{ ...styles.textStyle, ...props.errorTextStyle }}>{props.errorHintText}</Text> : <></>}
+                {/* <TextInput /> */}
                 <TextInput
                     style={{ ...styles.textInputStyle, ...props.inputTextStyle }}
                     placeholder={props.placeholder}
