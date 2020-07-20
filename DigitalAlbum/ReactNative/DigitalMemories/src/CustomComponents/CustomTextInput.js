@@ -7,7 +7,7 @@ const CustomTextInput = (props) => {
     if( validationOptions || validationOptions === null || (typeof validationOptions === 'undefined'))
     {
         validationOptions = {};
-        console.log("validation is null", validationOptions);
+        //console.log("validation is null", validationOptions);
     }
     const { allowInbuiltValidation, allowErrorText, isValidInput, isRequired, isMobileNumber, isEmailID, isNumericValue } = validationOptions;
     const { inputID, validationType } = props;
@@ -68,6 +68,7 @@ const CustomTextInput = (props) => {
     const [valueState, valueValidationReducer] = useReducer(validationReducer, initialState);
 
     useEffect(() => {
+        //console.log("available to send", valueState);
         if(props.onInputChanged)
         {
             if(allowInbuiltValidation)

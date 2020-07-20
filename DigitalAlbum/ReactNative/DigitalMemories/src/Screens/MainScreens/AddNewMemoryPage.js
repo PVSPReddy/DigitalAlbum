@@ -12,19 +12,30 @@ import AppStyleConstants from "../../Constants/AppStyleConstants";
 import CameraView from "../../CustomComponents/AppLocalComponents/CameraView";
 import CustomActionSheet from "../../CustomComponents/CustomActionSheet";
 import { ADD_NEW_PERSON_PAGE, MEMORY_DETAIL_PAGE, PERSON_DETAIL_PAGE } from "../../Helpers/PageNameConstants";
+import { setTimeTicksAsID } from "../../Helpers/GetDynamicID";
 
 const AddNewMemoryPage = (props) => {
 
     const NONE = "NONE";
     const ADD_IMAGES = "ADD_IMAGES";
     const ADD_PERSONS = "ADD_PERSONS";
+    const DUMMY_ID = "DummyId";
+
+    const MEMORY_NAME_ID = "MEMORY_NAME_ID";
+    const MEMORY_LABEL_ID = "MEMORY_LABEL_ID";
+    const MEMORY_DATE_ID = "MEMORY_DATE_ID";
+    const MEMORY_DESCRIPTION_ID = "MEMORY_DESCRIPTION_ID";
+    const LOCATION_INFO_ID = "LOCATION_INFO_ID";
+
 
     const [showCamera, setShowCamera] = useState(false);
     const [showImageOptions, setShowImageOptions] = useState(false);
     const [showPersonOptions, setShowPersonOptions] = useState(false);
-    const [imageOptionsCallerID, setImageOptionsCallerID] = useState("NONE");
+    const [imageOptionsCallerID, setImageOptionsCallerID] = useState(NONE);
+    // const [formData, setFormData] = useState({
+    //     ,
+    // });
 
-    const DUMMY_ID = "DummyId"
 
     const onBackButtonPressHandler = () => {
         props.navigation.pop();
@@ -49,11 +60,17 @@ const AddNewMemoryPage = (props) => {
     const [memory, setMemory] = useState({
         images: [],
         persons: [],
-        loaction: {
-            lat: 0,
-            long: 0
-        },
-        memoryInfo: ""
+        memoryInfo: {
+            memoryName: "",
+            memoryLabel: "",
+            memoryDate: "",
+            memoryDescription: "",
+            memoryLocation: {
+                latitude: 0,
+                longitude: 0,
+                loctionDescription: ""
+            }
+        }
     });
 
     const onCameraSnappedHandler = (uri, callerID) => {
@@ -61,14 +78,13 @@ const AddNewMemoryPage = (props) => {
         if (callerID === ADD_IMAGES) {
             let imagesTemp = memory.images;
             const newImage = {
-                imageID: "123",
+                imageID: setTimeTicksAsID(),
                 imageURL: uri
             };
             imagesTemp.push(newImage);
             setMemory({ ...memory, images: imagesTemp })
         }
         else if (callerID === ADD_IMAGES) {
-
         }
         setShowCamera(false);
     }
@@ -101,13 +117,11 @@ const AddNewMemoryPage = (props) => {
     }
 
     const onCameraSelectionHandler = () => {
-        console.log("camera clicked");
         setShowImageOptions(false);
         setShowCamera(true);
     }
 
     const onGallerySelectionHandler = () => {
-        console.log("gallery clicked");
         setShowImageOptions(false);
     }
 
@@ -133,6 +147,27 @@ const AddNewMemoryPage = (props) => {
 
     const onSelectLocation = () => {
 
+    }
+
+    const onInputChangedHandler = (inputID, value, isValid) => {
+        const tempMemoryInfo= {
+            ...memory.memoryInfo,
+            memoryName: (inputID === MEMORY_NAME_ID) ? value : memory.memoryInfo.memoryName,
+            memoryLabel: (inputID === MEMORY_LABEL_ID) ? value : memory.memoryInfo.memoryLabel,
+            memoryDate: (inputID === MEMORY_DATE_ID) ? value : memory.memoryInfo.memoryDate,
+            memoryDescription: (inputID === MEMORY_DESCRIPTION_ID) ? value : memory.memoryInfo.memoryDescription,
+            memoryLocation: {
+                latitude: memory.memoryInfo.memoryLocation.latitude,
+                longitude: memory.memoryInfo.memoryLocation.longitude,
+                loctionDescription: (inputID === LOCATION_INFO_ID) ? value : memory.memoryInfo.memoryLocation.loctionDescription
+            }
+        }
+        const tempMemory = {
+            ...memory,
+            memoryInfo : tempMemoryInfo
+        }
+        console.log(tempMemory);
+        setMemory(tempMemory);
     }
 
     const onSubmit = () => {
@@ -179,7 +214,6 @@ const AddNewMemoryPage = (props) => {
     }
 
     const mainUIComponent = (
-
 
         <View style={styles.mainComponentStyle}>
             <CustomHeader
@@ -241,23 +275,23 @@ const AddNewMemoryPage = (props) => {
                     </CustomHeaderContentCardView>
 
                     <CustomHeaderContentCardView style={styles.cardStyle} headerStyle={styles.cardTitleStyle} bodyStyle={styles.cardBodyStyle} title="Enter more info">
-                        <CustomTextInput placeholder="Set memory a name" inputTextStyle={styles.inputTextEntryStyle} />
-                        <CustomTextInput placeholder="Memory identification label" inputTextStyle={styles.inputTextEntryStyle} />
-                        <CustomTextInput placeholder="Enter Date of memory" inputTextStyle={styles.inputTextEntryStyle} />
-                        <CustomTextInput placeholder="Enter Description" inputTextStyle={styles.inputTextEditorStyle} multiline={true} />
+                        <CustomTextInput inputID={MEMORY_NAME_ID} placeholder="Set memory a name" inputTextStyle={styles.inputTextEntryStyle} onInputChanged={onInputChangedHandler} />
+                        <CustomTextInput inputID={MEMORY_LABEL_ID} placeholder="Memory identification label" inputTextStyle={styles.inputTextEntryStyle} onInputChanged={onInputChangedHandler} />
+                        <CustomTextInput inputID={MEMORY_DATE_ID} placeholder="Enter Date of memory" inputTextStyle={styles.inputTextEntryStyle} onInputChanged={onInputChangedHandler} />
+                        <CustomTextInput inputID={MEMORY_DESCRIPTION_ID} placeholder="Enter Description" inputTextStyle={styles.inputTextEditorStyle} multiline={true} onInputChanged={onInputChangedHandler} />
                     </CustomHeaderContentCardView>
 
                     <CustomHeaderContentCardView style={styles.cardStyle} headerStyle={styles.cardTitleStyle} bodyStyle={styles.cardBodyStyle} title="No Coordinates available">
                         <Text>No Coordinated found</Text>
-                        <CustomTextInput placeholder="Enter Location name, Address or Details" inputTextStyle={styles.inputTextEditorStyle} multiline={true} />
-                        <CustomButton style={styles.buttonStyle} title="Get and Save Co-ordinates" onPress={onSelectLocation} />
+                        <CustomTextInput inputID={LOCATION_INFO_ID} placeholder="Enter Location name, Address or Details" inputTextStyle={styles.inputTextEditorStyle} multiline={true} onInputChanged={onInputChangedHandler} />
+                        <CustomButton style={{...styles.buttonStyle, marginBottom: 10}} title="Get and Save Co-ordinates" onPress={onSelectLocation} />
                     </CustomHeaderContentCardView>
 
                     <CustomButton style={styles.buttonStyle} title="Add Memory" onPress={onSubmit} />
                 </ScrollView>
             </View>
         </View>
-
+        
     )
     return mainUIComponent;
 }
