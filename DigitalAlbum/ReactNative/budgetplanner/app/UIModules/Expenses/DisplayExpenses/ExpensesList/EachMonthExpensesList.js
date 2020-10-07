@@ -10,14 +10,22 @@ import CustomTouch from "../../../../CustomComponents/CustomTouch"
 
 const EachMonthExpenseList = (props) => {
 
+    const { route } = props;
+    const expensesRequestParms = route.params.monthsExpensesParams;
+
     const [expenseListItems, setExpenseListItems] = useState([]);
     const [loaderVisibility, setLoaderVisibility] = useState(false);
+    const [pageTitle, setPageTitle] = useState(expensesRequestParms.sheetName);
 
     useEffect(() => {
-        const { route } = props;
-        const expensesRequestParms = route.params.monthsExpensesParams;
+        // const { route } = props;
+        // const expensesRequestParms = route.params.monthsExpensesParams;
         GetAvailableYearsMonthsData(expensesRequestParms);
     }, []);
+
+    // useEffect(() => {
+    //     //setPageTitle
+    // },[]);
 
     const GetAvailableYearsMonthsData = async (expensesRequestParms) => {
         try {
@@ -49,6 +57,17 @@ const EachMonthExpenseList = (props) => {
                 console.log(responseJSON);
                 if (responseJSON.status_code === successStatusCode) {
                     setExpenseListItems(responseJSON.response_data);
+                    var totalAmount = 0;
+                    responseJSON.response_data.map(item => {
+                        var floatValue = parseFloat(item.amountSpend);
+                        if (floatValue !== NaN) {
+                            totalAmount += parseFloat(item.amountSpend);
+                        }
+                    });
+                    console.log(totalAmount);
+                    // if (totalAmount !== NaN || totalAmount !== "NaN") {
+                    //     setPageTitle(expensesRequestParms.sheetName + "(" + totalAmount + ")");
+                    // }
                 }
             }).catch((error) => {
                 setLoaderVisibility(false);
@@ -79,24 +98,23 @@ const EachMonthExpenseList = (props) => {
         const inputFiledView = (
             <CustomTouch isRequiredFeedback={true} childData={data} onPress={(data) => { onItemSelectionhandler(data); }} >
                 <View style={styles.listTextContainerStyle}>
-                    <View>
+                    <View style={styles.expensesTextHolderStyle}>
                         <Text style={styles.listTextStyle}>{data.nameOfPurchase}</Text>
+                        <Text style={styles.listTextStyle}>{data.dateOfPurchase}</Text>
                     </View>
+                    <Text style={styles.amountTextStyle}>{data.amountSpend}</Text>
                 </View>
             </CustomTouch >
         )
         return inputFiledView;
     };
 
-    const { route } = props;
-    const expensesRequestParms = route.params.monthsExpensesParams;
-
     const mainUIComponent = (
         <SafeAreaView>
             <>
                 <CustomActivityIndicator visibility={loaderVisibility} />
                 <CustomHeader
-                    title={expensesRequestParms.sheetName}
+                    title={pageTitle}//{`${expensesRequestParms.sheetName}(${totalAmount})`}
                     backButtonIconSource={IMAGE_BACK}
                     hideBackButton={false}
                     onBackButtonPress={() => { moveBack(); }}
@@ -116,12 +134,22 @@ const EachMonthExpenseList = (props) => {
 const styles = StyleSheet.create({
     listTextContainerStyle: {
         height: 50,
-        justifyContent: "center",
+        flexDirection: "row",
+        // justifyContent: "center",
+        alignItems: "center",
         borderBottomColor: "green",
         borderBottomWidth: 2
     },
-    listTextStyle: {
+    expensesTextHolderStyle: {
+        flex: 1,
         marginHorizontal: 30
+    },
+    listTextStyle: {
+        fontSize: 15
+    },
+    amountTextStyle: {
+        alignSelf: "center",
+        marginRight: 30
     },
     bottomSpaceStyle: {
         paddingBottom: (Platform.OS === "ios") ? 40 : 0
