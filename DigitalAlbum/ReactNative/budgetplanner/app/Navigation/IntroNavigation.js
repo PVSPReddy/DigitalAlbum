@@ -6,11 +6,14 @@ import {createStackNavigator} from "@react-navigation/stack"
 //import RegistrationPage from "../Screens/RegistrationPage";
 //import ResetPage from "../Screens/ResetPage";
 //import { LOGIN_PAGE, REGISTRATION_PAGE, RESET_PAGE, CAROUSEL_PAGE } from "../Helpers/PageNameConstants";
-import { HOME_PAGE, INTRO_PAGE, ADD_EXPENSE_PAGE, EXPENSES_YEARS_LIST } from "../Constants/PageNameConstants";
+import { HOME_PAGE, INTRO_PAGE, ADD_EXPENSE_PAGE, EXPENSES_YEARS_LIST, EXPENSES_MONTHS_LIST, EACH_MONTH_EXPENSES_LIST, DISPLAY_EXPENSE_ITEM } from "../Constants/PageNameConstants";
 import IntroPage from "../UIModules/IntroPage";
 import HomePage from "../UIModules/HomeScreen/HomePage";
 import AddExpensePage from "../UIModules/Expenses/AddExpense/AddExpensePage";
 import ExpensesYearsList from "../UIModules/Expenses/DisplayExpenses/ExpenseYearList/ExpensesYearsList";
+import ExpensesMonthsList from "../UIModules/Expenses/DisplayExpenses/ExpenseMonthList/ExpensesMonthsList";
+import EachMonthExpenseList from "../UIModules/Expenses/DisplayExpenses/ExpensesList/EachMonthExpensesList";
+import DisplayExpenseItem from "../UIModules/Expenses/DisplayExpenses/DisplayExpenseItem/DisplayExpenseItem";
 
 const stack = createStackNavigator();
 
@@ -21,6 +24,9 @@ const IntroNavigation = (params) => {
             <stack.Screen name={HOME_PAGE} component={HomePage} />
             <stack.Screen name={ADD_EXPENSE_PAGE} component={AddExpensePage} />
             <stack.Screen name={EXPENSES_YEARS_LIST} component={ExpensesYearsList} />
+            <stack.Screen name={EXPENSES_MONTHS_LIST} component={ExpensesMonthsList} />
+            <stack.Screen name={EACH_MONTH_EXPENSES_LIST} component={EachMonthExpenseList} />
+            <stack.Screen name={DISPLAY_EXPENSE_ITEM} component={DisplayExpenseItem} />
         </stack.Navigator>
         // <stack.Navigator initialRouteName="LoginPage" headerMode="none">
         //     {/* <stack.Screen name="IntroPage" component={IntroPage} /> */}

@@ -244,7 +244,6 @@ const AddExpensePage = (props) => {
                 />
                 <ScrollView>
                     <View style={styles.mainContainerStyle}>
-
                         {textFileds.map(item => getInputFileds(item))}
                         <CustomButton title="Add Expense" onPress={OnSubmitButtonClickHandler} />
                     </View>

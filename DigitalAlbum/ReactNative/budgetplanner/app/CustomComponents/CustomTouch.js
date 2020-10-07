@@ -3,7 +3,16 @@ import { TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback, Pl
 
 const CustomTouch = (props) => {
     let TouchableComponent = TouchableOpacity;
-    if (!props.isRequiredFeedback) {
+
+    const {
+        isRequiredFeedback,
+        onPress,
+        onLongPress,
+        children,
+        childData
+    } = props;
+
+    if (!isRequiredFeedback) {
         TouchableComponent = TouchableWithoutFeedback;
     }
     else {
@@ -12,9 +21,24 @@ const CustomTouch = (props) => {
         }
     }
 
+    const onPressHandler = () => {
+        if(childData === null || childData === NaN || childData === undefined )
+        {
+            onPress();
+        }
+        else
+        {
+            onPress(childData);
+        }
+    }
+
+    const onLongPressHandler = () => {
+
+    }
+
     const mainUIComponent = (
-        <TouchableComponent onPress={props.onPress} onLongPress={props.onLongPress}>
-            {props.children}
+        <TouchableComponent onPress={onPressHandler} onLongPress={onLongPress}>
+            {children}
         </TouchableComponent>
     )
     return mainUIComponent;

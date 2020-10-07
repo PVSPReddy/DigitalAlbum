@@ -6,6 +6,9 @@ export const INTRO_PAGE = "INTRO_PAGE";
 export const HOME_PAGE = "HOME_PAGE";
 export const ADD_EXPENSE_PAGE = "ADD_EXPENSE_PAGE";
 export const EXPENSES_YEARS_LIST = "EXPENSES_YEARS_LIST";
+export const EXPENSES_MONTHS_LIST = "EXPENSES_MONTHS_LIST";
+export const EACH_MONTH_EXPENSES_LIST = "EACH_MONTH_EXPENSES_LIST";
+export const DISPLAY_EXPENSE_ITEM = "DISPLAY_EXPENSE_ITEM";
 
 export const LOGIN_PAGE = "LoginPage";
 export const REGISTRATION_PAGE = "RegistrationPage";
