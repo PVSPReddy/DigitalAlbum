@@ -14,7 +14,7 @@ const EachMonthExpenseList = (props) => {
     const [loaderVisibility, setLoaderVisibility] = useState(false);
 
     useEffect(() => {
-        const {route} = props;
+        const { route } = props;
         const expensesRequestParms = route.params.monthsExpensesParams;
         GetAvailableYearsMonthsData(expensesRequestParms);
     }, []);
@@ -25,11 +25,11 @@ const EachMonthExpenseList = (props) => {
 
             const url = mainURL + PostGetAvailableMonthlyExpenseData;
             const postData = {
-                "method_name":"addNewBudgetData",
+                "method_name": "addNewBudgetData",
                 "service_request_data":
                 {
-                    "month":expensesRequestParms.sheetName,
-                    "year":expensesRequestParms.year
+                    "month": expensesRequestParms.sheetName,
+                    "year": expensesRequestParms.year
                 }
             }
 
@@ -77,17 +77,18 @@ const EachMonthExpenseList = (props) => {
 
     const getListViews = (data) => {
         const inputFiledView = (
-            <CustomTouch isRequiredFeedback={true} childData={data} onPress={(data)=>{ onItemSelectionhandler(data); }} >
-            <View style={styles.listTextContainerStyle}>
-                <Text style={styles.listTextStyle}>{data.nameOfPurchase}</Text>
-                <View style={styles.ulineStyle}></View>
-            </View>
-        </CustomTouch >
+            <CustomTouch isRequiredFeedback={true} childData={data} onPress={(data) => { onItemSelectionhandler(data); }} >
+                <View style={styles.listTextContainerStyle}>
+                    <View>
+                        <Text style={styles.listTextStyle}>{data.nameOfPurchase}</Text>
+                    </View>
+                </View>
+            </CustomTouch >
         )
         return inputFiledView;
     };
 
-    const {route} = props;
+    const { route } = props;
     const expensesRequestParms = route.params.monthsExpensesParams;
 
     const mainUIComponent = (
@@ -120,10 +121,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2
     },
     listTextStyle: {
-        marginHorizontal: 30,
-        justifyContent: "center",
-        borderBottomColor: "green",
-        borderBottomWidth: 2
+        marginHorizontal: 30
     },
     bottomSpaceStyle: {
         paddingBottom: (Platform.OS === "ios") ? 40 : 0

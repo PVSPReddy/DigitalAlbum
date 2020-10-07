@@ -27,7 +27,6 @@ const ExpensesMonthsList = (props) => {
             <CustomTouch isRequiredFeedback={true} childData={eachMonthItem} onPress={(data)=>{ onItemSelectionhandler(data); }} >
                 <View style={styles.listTextContainerStyle}>
                     <Text style={styles.listTextStyle}>{data.sheetName}</Text>
-                    <View style={styles.ulineStyle}></View>
                 </View>
             </CustomTouch >
         )
@@ -63,10 +62,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2
     },
     listTextStyle: {
-        marginHorizontal: 30,
-        justifyContent: "center",
-        borderBottomColor: "green",
-        borderBottomWidth: 2
+        marginHorizontal: 30
     },
     bottomSpaceStyle: {
         paddingBottom: (Platform.OS === "ios") ? 40 : 0
