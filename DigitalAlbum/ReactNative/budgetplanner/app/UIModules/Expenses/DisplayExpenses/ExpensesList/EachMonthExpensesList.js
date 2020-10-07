@@ -60,14 +60,13 @@ const EachMonthExpenseList = (props) => {
                     var totalAmount = 0;
                     responseJSON.response_data.map(item => {
                         var floatValue = parseFloat(item.amountSpend);
-                        if (floatValue !== NaN) {
-                            totalAmount += parseFloat(item.amountSpend);
+                        if(!isNaN(floatValue))
+                        {
+                            console.log(totalAmount);
+                            totalAmount = totalAmount + parseFloat(item.amountSpend);
                         }
                     });
-                    console.log(totalAmount);
-                    // if (totalAmount !== NaN || totalAmount !== "NaN") {
-                    //     setPageTitle(expensesRequestParms.sheetName + "(" + totalAmount + ")");
-                    // }
+                    setPageTitle(expensesRequestParms.sheetName + "(" + totalAmount + ")");
                 }
             }).catch((error) => {
                 setLoaderVisibility(false);
