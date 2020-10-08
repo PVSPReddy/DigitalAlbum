@@ -31,9 +31,18 @@ const AppStyleConstants = {
     PageTopPadding: 20
   },
   colors: {
-    MODAL_BACKGROUND_COLOR: "",
 
-    BUTTON_COLOR: "orange",
+    LOGO_BLUE: "#0b0786",
+    LOGO_PINK: "#e75480",
+    LOGO_GREEN: "#90EE90",
+
+    BUTTON_COLOR: "#0b0786",
+    BUTTON_FONT_COLOR: "#90EE90",
+
+    HEADER_BACKGROUND_COLOR: "#0b0786",
+    HEADER_FONT_COLOR: "#e75480",
+
+    MODAL_BACKGROUND_COLOR: "#0b0786",
 
     MAIN_CONTAINER_COLOR: "cyan",
     MAIN_HEADER_COLOR: "gray",

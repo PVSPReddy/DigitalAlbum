@@ -4,10 +4,20 @@ import CustomTouch from "./CustomTouch"
 
 const CustomButton = (props) => {
 
+    const {
+        style,
+        fontStyle,
+
+        title,
+
+        onPress,
+        onLongPress
+    } = props;
+
     const mainUIMainComponent = (
-        <CustomTouch isRequiredFeedback={true} onPress={props.onPress} onLongPress={props.onLongPress}>
-            <View style={{...styles.containerStyle, ...props.style}}>
-                <Text style={styles.textStyle}>{props.title}</Text>
+        <CustomTouch isRequiredFeedback={true} onPress={onPress} onLongPress={onLongPress}>
+            <View style={{...styles.containerStyle, ...style}}>
+                <Text style={{...styles.textStyle, ...fontStyle}}>{title}</Text>
             </View>
         </CustomTouch>
     )

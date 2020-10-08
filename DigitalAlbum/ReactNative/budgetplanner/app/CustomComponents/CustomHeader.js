@@ -3,24 +3,37 @@ import { View, Text, Image, StyleSheet, TouchableWithoutFeedback } from "react-n
 import { IMAGE_BACK } from "../Assets/ImageHelper";
 
 const CustomHeader = (props) => {
-    const { hideBackButton, backButtonIconSource } = props;//backButtonImageSource
+    const { 
+        headerViewStyle,
+        headerTextStyle,
+        headerTitleFontStyle,
+
+        title,
+
+        hideBackButton, 
+        backButtonIconSource,
+
+        leftSideView,
+        rightSideView,
+
+        onBackButtonPress
+    } = props;
 
     var backButtonImageSource = backButtonIconSource;
     if (backButtonIconSource === null) {
         backButtonImageSource = IMAGE_BACK;
     }
 
-    // navigation.setParams("props", props);
     const mainUIComponent = (
-        <View style={{ ...styles.mainHeaderHolderStyle, ...props.headerViewStyle }}>
-            {(!hideBackButton) ? <TouchableWithoutFeedback onPress={props.onBackButtonPress}>{/*() => {navigation.pop()}*/}
+        <View style={{ ...styles.mainHeaderHolderStyle, ...headerViewStyle }}>
+            {(!hideBackButton) ? <TouchableWithoutFeedback onPress={onBackButtonPress}>{/*() => {navigation.pop()}*/}
                 <Image source={backButtonImageSource} />
             </TouchableWithoutFeedback> : <></>}
-            {props.leftSideView}
-            <View style={{ ...styles.headerTitleHolderStyle, ...props.headerTextStyle }}>
-                <Text style={{ ...styles.headerTitleFontStyle, ...props.headerTitleFontStyle }}>{props.title}</Text>
+            {leftSideView}
+            <View style={{ ...styles.headerTitleHolderStyle, ...headerTextStyle }}>
+                <Text style={{ ...styles.headerTitleFontStyle, ...headerTitleFontStyle }}>{title}</Text>
             </View>
-            {props.rightSideView}
+            {rightSideView}
         </View>
     )
     return mainUIComponent;
