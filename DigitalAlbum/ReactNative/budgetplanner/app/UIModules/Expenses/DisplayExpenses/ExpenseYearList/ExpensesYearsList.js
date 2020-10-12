@@ -3,71 +3,39 @@ import { SafeAreaView, View, Text, Alert, StyleSheet, ScrollView, Platform } fro
 import CustomActivityIndicator from "../../../../CustomComponents/CustomActivityIndicator"
 import CustomHeader from "../../../../CustomComponents/CustomHeader"
 import { IMAGE_BACK } from "../../../../Assets/ImageHelper"
-import { EXPENSES_MONTHS_LIST, HOME_PAGE } from "../../../../Constants/PageNameConstants"
-import { mainURL, GetAvailableYearsMonths, successStatusCode } from "../../../../Constants/URLConstants"
+import { EXPENSES_MONTHS_LIST } from "../../../../Constants/PageNameConstants"
 import CustomTouch from "../../../../CustomComponents/CustomTouch"
+import { connect } from "react-redux"
+import { fetchYearsData } from "./ExpenseYearListActions"
+import { ERROR_ALERT_HEADER, OKAY_BUTON_TEXT } from "./../../../../Constants/TextConstants"
 
 
-const ExpensesYearsList = (props) => {
+const ExpensesYears_List = (props) => {
 
-    const [listItems, setListItems] = useState([]);
-    
-    const [loaderVisibility, setLoaderVisibility] = useState(false);
+    //const dispatch = useDispatch();
+    // useEffect(() => {
+    //     dispatch(getYearsMonthsData());
+    // }, [dispatch]);
+
+
+    const {
+        dispatch,
+        match,
+        loaderVisibility,
+        listItems,
+        errorCode
+    } = props;
 
     useEffect(() => {
-        GetAvailableYearsMonthsData();
+        dispatch(fetchYearsData());
     }, []);
-
-    const GetAvailableYearsMonthsData = async () => {
-        try {
-            setLoaderVisibility(true);
-            const url = mainURL + GetAvailableYearsMonths;
-
-            fetch(url, {
-                method: 'GET',
-                headers: {
-                    Accept: '*/*',
-                    "Accept-Encoding": ["gzip", "deflate", "br"],
-                    "Connection": "keep-alive",
-                    'Content-Type': 'application/json'
-                }
-            }).then((response) => {
-                setLoaderVisibility(false);
-                return response.json();
-            }).then((responseJSON) => {
-                console.log(responseJSON);
-                if (responseJSON.status_code === successStatusCode) {
-                    const _listItemsData = responseJSON.response_data;
-                    var listItemsData = [];
-                    for (let i = 0; i < _listItemsData.length; i++) {
-                        const eachListItem = _listItemsData[i];
-                        listItemsData.push({ ...eachListItem, isOpen: false });
-                    }
-                    setListItems(listItemsData);
-                }
-            }).catch((error) => {
-                setLoaderVisibility(false);
-                console.log(error);
-                Alert.alert("Error", "Unable to get data from server please try again later", [
-                    {
-                        text: "OK",
-                        onPress: () => { }
-                    }
-                ]);
-            });
-        }
-        catch (error) {
-            console.log(error);
-            setLoaderVisibility(false);
-        }
-    }
 
     const moveBack = () => {
         props.navigation.pop();
     }
 
     const onItemSelectionhandler = (data) => {
-        props.navigation.navigate(EXPENSES_MONTHS_LIST, {monthsListData: data});
+        props.navigation.navigate(EXPENSES_MONTHS_LIST, { monthsListData: data });
     }
     const getParentListViews = (data) => {
         const inputFiledView = (
@@ -80,8 +48,14 @@ const ExpensesYearsList = (props) => {
         return inputFiledView;
     };
 
-    const getChildListViews = (data) => {
-
+    if(errorCode !== "")
+    {
+        Alert.alert(ERROR_ALERT_HEADER, errorCode, [
+            {
+                text: OKAY_BUTON_TEXT,
+                onPress: () => { }
+            }
+        ]);
     }
 
     const mainUIComponent = (
@@ -119,6 +93,16 @@ const styles = StyleSheet.create({
     bottomSpaceStyle: {
         paddingBottom: (Platform.OS === "ios") ? 40 : 0
     }
-})
+});
 
+const mapStateToProps = (state) => {
+    return {
+        serviceState: state.ExpenseYearListReducer.serviceState,
+        loaderVisibility: state.ExpenseYearListReducer.loaderVisibility,
+        listItems: state.ExpenseYearListReducer.listItems,
+        errorCode: state.ExpenseYearListReducer.errorCode,
+    };
+}
+
+const ExpensesYearsList = connect(mapStateToProps)(ExpensesYears_List);
 export default ExpensesYearsList;

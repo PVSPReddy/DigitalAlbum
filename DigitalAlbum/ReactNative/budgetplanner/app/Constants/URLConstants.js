@@ -4,3 +4,8 @@ export const GetAvailableYearsMonths = "?Contenttype=application/json&userReques
 export const PostGetAvailableMonthlyExpenseData = "?Contenttype=application/json&userRequest=getDatabyMonth";
 
 export const successStatusCode = 201;
+
+export const INACTIVE = "INACTIVE";
+export const LOADING = "LOADING";
+export const SUCCESS = "SUCCESS";
+export const FAILURE = "FAILURE";

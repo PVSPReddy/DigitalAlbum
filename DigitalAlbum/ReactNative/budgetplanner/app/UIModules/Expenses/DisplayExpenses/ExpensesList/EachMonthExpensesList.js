@@ -1,89 +1,31 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { SafeAreaView, View, Text, Alert, StyleSheet, ScrollView, Platform } from "react-native"
 import CustomActivityIndicator from "../../../../CustomComponents/CustomActivityIndicator"
 import CustomHeader from "../../../../CustomComponents/CustomHeader"
 import { IMAGE_BACK } from "../../../../Assets/ImageHelper"
 import { DISPLAY_EXPENSE_ITEM } from "../../../../Constants/PageNameConstants"
-import { mainURL, PostGetAvailableMonthlyExpenseData, successStatusCode } from "../../../../Constants/URLConstants"
 import CustomTouch from "../../../../CustomComponents/CustomTouch"
+import { connect } from "react-redux"
+import { fetchEachMonthExpenseList } from "./EachMonthExpenseListActions"
 
 
-const EachMonthExpenseList = (props) => {
-
-    const { route } = props;
-    const expensesRequestParms = route.params.monthsExpensesParams;
-
-    const [expenseListItems, setExpenseListItems] = useState([]);
-    const [loaderVisibility, setLoaderVisibility] = useState(false);
-    const [pageTitle, setPageTitle] = useState(expensesRequestParms.sheetName);
+const EachMonthExpense_List = (props) => {
+    
+    const {
+        route,
+        dispatch,
+        match,
+        pageTitle,
+        serviceState,
+        loaderVisibility,
+        expenseListItems,
+        errorCode,
+    } = props;
 
     useEffect(() => {
-        // const { route } = props;
-        // const expensesRequestParms = route.params.monthsExpensesParams;
-        GetAvailableYearsMonthsData(expensesRequestParms);
+        const expensesRequestParms = route.params.monthsExpensesParams;
+        dispatch(fetchEachMonthExpenseList(expensesRequestParms));
     }, []);
-
-    // useEffect(() => {
-    //     //setPageTitle
-    // },[]);
-
-    const GetAvailableYearsMonthsData = async (expensesRequestParms) => {
-        try {
-            setLoaderVisibility(true);
-
-            const url = mainURL + PostGetAvailableMonthlyExpenseData;
-            const postData = {
-                "method_name": "addNewBudgetData",
-                "service_request_data":
-                {
-                    "month": expensesRequestParms.sheetName,
-                    "year": expensesRequestParms.year
-                }
-            }
-
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    Accept: '*/*',
-                    "Accept-Encoding": ["gzip", "deflate", "br"],
-                    "Connection": "keep-alive",
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(postData)
-            }).then((response) => {
-                setLoaderVisibility(false);
-                return response.json();
-            }).then((responseJSON) => {
-                console.log(responseJSON);
-                if (responseJSON.status_code === successStatusCode) {
-                    setExpenseListItems(responseJSON.response_data);
-                    var totalAmount = 0;
-                    responseJSON.response_data.map(item => {
-                        var floatValue = parseFloat(item.amountSpend);
-                        if(!isNaN(floatValue))
-                        {
-                            console.log(totalAmount);
-                            totalAmount = totalAmount + parseFloat(item.amountSpend);
-                        }
-                    });
-                    setPageTitle(expensesRequestParms.sheetName + "(" + totalAmount + ")");
-                }
-            }).catch((error) => {
-                setLoaderVisibility(false);
-                console.log(error);
-                Alert.alert("Error", "Unable to add input value", [
-                    {
-                        text: "OK",
-                        onPress: () => { }
-                    }
-                ]);
-            });
-        }
-        catch (error) {
-            console.log(error);
-            setLoaderVisibility(false);
-        }
-    }
 
     const moveBack = () => {
         props.navigation.pop();
@@ -113,7 +55,7 @@ const EachMonthExpenseList = (props) => {
             <>
                 <CustomActivityIndicator visibility={loaderVisibility} />
                 <CustomHeader
-                    title={pageTitle}//{`${expensesRequestParms.sheetName}(${totalAmount})`}
+                    title={pageTitle}
                     backButtonIconSource={IMAGE_BACK}
                     hideBackButton={false}
                     onBackButtonPress={() => { moveBack(); }}
@@ -134,7 +76,6 @@ const styles = StyleSheet.create({
     listTextContainerStyle: {
         height: 50,
         flexDirection: "row",
-        // justifyContent: "center",
         alignItems: "center",
         borderBottomColor: "green",
         borderBottomWidth: 2
@@ -154,5 +95,17 @@ const styles = StyleSheet.create({
         paddingBottom: (Platform.OS === "ios") ? 40 : 0
     }
 })
+
+const mapStateToProps = (state) => {
+    return {
+        pageTitle: state.EachMonthExpenseListReducer.pageTitle,
+        serviceState: state.EachMonthExpenseListReducer.serviceState,
+        loaderVisibility: state.EachMonthExpenseListReducer.loaderVisibility,
+        expenseListItems: state.EachMonthExpenseListReducer.expenseListItems,
+        errorCode: state.EachMonthExpenseListReducer.errorCode,
+    };
+}
+
+const EachMonthExpenseList = connect(mapStateToProps)(EachMonthExpense_List);
 
 export default EachMonthExpenseList;

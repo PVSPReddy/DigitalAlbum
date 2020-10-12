@@ -1,0 +1,28 @@
+import { FAILURE, INACTIVE, LOADING, SUCCESS } from "../../../../Constants/URLConstants";
+import { GET_YEARS_MONTHS_DETAILS, GET_YEARS_MONTHS_DETAILS_SUCCESS, GET_YEARS_MONTHS_DETAILS_FAILURE } from "./ExpenseYearListActions";
+
+const initialState = {
+    serviceState: INACTIVE,
+    loaderVisibility: false,
+    listItems: [],
+    errorCode: "",
+};
+
+const ExpenseYearListReducer = (state = initialState, action) => {
+    console.log(action);
+    state = {...state, serviceState: INACTIVE, errorCode:"", loaderVisibility: false}
+    switch (action.type) {
+        case GET_YEARS_MONTHS_DETAILS:
+            state = {...state, serviceState: LOADING, loaderVisibility: true}
+            break;
+        case GET_YEARS_MONTHS_DETAILS_SUCCESS:
+            state = {...state, serviceState: SUCCESS, listItems: action.payload}
+            break;
+        case GET_YEARS_MONTHS_DETAILS_FAILURE:
+            state = {...state, serviceState: FAILURE, errorCode:action.payload.message}
+            break;
+    }
+    return state;
+}
+
+export default ExpenseYearListReducer;
