@@ -1,15 +1,28 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { SafeAreaView, View, Text, Alert, StyleSheet, ScrollView } from "react-native"
 import AppStyleConstants from "../../../Constants/AppStyleConstants"
 import CustomButton from "../../../CustomComponents/CustomButton"
 import CustomTextInputField from "../../../CustomComponents/CustomTextInputField"
 import CustomActivityIndicator from "../../../CustomComponents/CustomActivityIndicator"
 import { HOME_PAGE } from "../../../Constants/PageNameConstants"
-import { mainURL, PostExpenditureURL, successStatusCode } from "../../../Constants/URLConstants"
+import { FAILURE, mainURL, PostExpenditureURL, SUCCESS, successStatusCode } from "../../../Constants/URLConstants"
 import { IMAGE_BACK } from "../../../Assets/ImageHelper"
 import CustomHeader from "../../../CustomComponents/CustomHeader"
+import { connect } from "react-redux"
+import SpaceView from "../../../CustomComponents/AppLocalComponents/SpaceView"
+import { fetchAddExpense } from "./AddExpensePageService"
+import { POPUP_OKAY_BUTTON_TEXT, POPUP_HEADER_TEXT, POPUP_ERROR_ALERT_HEADER } from "../../../Constants/TextConstants"
+import { getAddExpenseReset } from "./AddExpensePageActions"
 
-const AddExpensePage = (props) => {
+const AddExpense_Page = (props) => {
+
+    const {
+        dispatch,
+        serviceState,
+        loaderVisibility,
+        errorMessage,
+        successMessage
+    } = props;
 
     const requiredFiled = "*Required";
 
@@ -27,9 +40,6 @@ const AddExpensePage = (props) => {
     const [dateOfPurchase, setDateOfPurchase] = useState({ value: "", isError: false, errorText: "" });
     const [expenditureType, setExpenditureType] = useState({ value: "", isError: false, errorText: "" });
     const [details, setDetails] = useState({ value: "", isError: false, errorText: "" });
-
-    const [loaderVisibility, setLoaderVisibility] = useState(false);
-
 
     const textFileds = [
         {
@@ -96,7 +106,8 @@ const AddExpensePage = (props) => {
                 ...textInputFieldProps,
                 multiline: true,
                 fontStyle: {
-                    minHeight: 150
+                    minHeight: 150,
+                    textAlignVertical: 'top'
                 }
             };
         }
@@ -169,67 +180,44 @@ const AddExpensePage = (props) => {
                 setDetails({ ...details, value: textValue, isError: true, errorText: "Please Enter a valid detail" });
             }
             else {
-                setLoaderVisibility(true);
                 const url = mainURL + PostExpenditureURL;
                 const postData = {
-                    "method_name": "addNewBudgetData",
-                    "service_request_data":
-                    {
-                        "dateOfPurchase": dateOfPurchase.value,
-                        "nameOfPurchase": nameOfPurchase.value,
-                        "expenditureType": expenditureType.value,
-                        "paidBy": paidBy.value,
-                        "amountSpend": amountSpend.value,
-                        "details": details.value,
-                        "dateCreated": new Date().toString()
-                    }
+                    "dateOfPurchase": dateOfPurchase.value,
+                    "nameOfPurchase": nameOfPurchase.value,
+                    "expenditureType": expenditureType.value,
+                    "paidBy": paidBy.value,
+                    "amountSpend": amountSpend.value,
+                    "details": details.value,
+                    "dateCreated": new Date().toString()
                 }
-
-                fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        Accept: '*/*',
-                        "Accept-Encoding": ["gzip", "deflate", "br"],
-                        "Connection": "keep-alive",
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(postData)
-                }).then((response) => {
-                    setLoaderVisibility(false);
-                    return response.json();
-                }).then((responseJSON) => {
-                    console.log(responseJSON);
-                    if (responseJSON.status_code === successStatusCode) {
-                        Alert.alert("Alert", "Values are successfully added to the data base", [
-                            {
-                                text: "OK",
-                                onPress: () => {
-                                    moveBack();
-                                }
-                            }
-                        ])
-                    }
-                }).catch((error) => {
-                    setLoaderVisibility(false);
-                    console.log(error);
-                    Alert.alert("Error", "Unable to add input value", [
-                        {
-                            text: "OK",
-                            onPress: () => { }
-                        }
-                    ]);
-                });
+                dispatch(fetchAddExpense(postData));
             }
         }
         catch (error) {
             console.log(error);
-            setLoaderVisibility(false);
         }
-
     }
 
     const moveBack = () => {
+        dispatch(getAddExpenseReset());
         props.navigation.navigate(HOME_PAGE);
+    }
+
+    if (successMessage !== "") {
+        Alert.alert(POPUP_HEADER_TEXT, successMessage, [{
+            text: POPUP_OKAY_BUTTON_TEXT,
+            onPress: () => {
+                moveBack();
+            }
+        }]);
+    }
+    else if(errorMessage !== "")
+    {
+        Alert.alert(POPUP_ERROR_ALERT_HEADER, errorMessage, [{
+            text: POPUP_OKAY_BUTTON_TEXT,
+            onPress: () => {
+            }
+        }]);
     }
 
     const uiMainComponent = (
@@ -246,6 +234,7 @@ const AddExpensePage = (props) => {
                     <View style={styles.mainContainerStyle}>
                         {textFileds.map(item => getInputFileds(item))}
                         <CustomButton title="Add Expense" onPress={OnSubmitButtonClickHandler} />
+                        <SpaceView />
                     </View>
                 </ScrollView>
             </>
@@ -259,5 +248,16 @@ const styles = StyleSheet.create({
         padding: 20
     }
 });
+
+const mapStateToProps = (state) => {
+    return {
+        serviceState: state.AddExpensePageReducer.serviceState,
+        loaderVisibility: state.AddExpensePageReducer.loaderVisibility,
+        errorMessage: state.AddExpensePageReducer.errorMessage,
+        successMessage: state.AddExpensePageReducer.successMessage,
+    };
+}
+
+const AddExpensePage = connect(mapStateToProps)(AddExpense_Page);
 
 export default AddExpensePage;

@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     textInputStyle: {
         fontSize: 20,
         color: "#000000",
-        margin: 10
+        marginLeft: 10
     },
     textInputContainerStyle: {
         backgroundColor: "#FFFFFF",

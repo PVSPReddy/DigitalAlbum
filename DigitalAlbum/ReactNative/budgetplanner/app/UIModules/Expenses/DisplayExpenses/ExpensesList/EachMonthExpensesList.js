@@ -6,7 +6,7 @@ import { IMAGE_BACK } from "../../../../Assets/ImageHelper"
 import { DISPLAY_EXPENSE_ITEM } from "../../../../Constants/PageNameConstants"
 import CustomTouch from "../../../../CustomComponents/CustomTouch"
 import { connect } from "react-redux"
-import { fetchEachMonthExpenseList } from "./EachMonthExpenseListActions"
+import { fetchEachMonthExpenseList, getEachMonthExpenseListReset } from "./EachMonthExpenseListActions"
 
 
 const EachMonthExpense_List = (props) => {
@@ -19,7 +19,7 @@ const EachMonthExpense_List = (props) => {
         serviceState,
         loaderVisibility,
         expenseListItems,
-        errorCode,
+        errorMessage,
     } = props;
 
     useEffect(() => {
@@ -28,6 +28,7 @@ const EachMonthExpense_List = (props) => {
     }, []);
 
     const moveBack = () => {
+        dispatch(getEachMonthExpenseListReset());
         props.navigation.pop();
     }
 
@@ -102,7 +103,7 @@ const mapStateToProps = (state) => {
         serviceState: state.EachMonthExpenseListReducer.serviceState,
         loaderVisibility: state.EachMonthExpenseListReducer.loaderVisibility,
         expenseListItems: state.EachMonthExpenseListReducer.expenseListItems,
-        errorCode: state.EachMonthExpenseListReducer.errorCode,
+        errorMessage: state.EachMonthExpenseListReducer.errorMessage,
     };
 }
 

@@ -2,7 +2,6 @@ import { GetAvailableYearsMonths, mainURL } from "../../../../Constants/URLConst
 
 export const GetAvailableYearsMonthsData = async () => {
     try {
-        //setLoaderVisibility(true);
         const url = mainURL + GetAvailableYearsMonths;
 
         fetch(url, {
@@ -14,7 +13,6 @@ export const GetAvailableYearsMonthsData = async () => {
                 'Content-Type': 'application/json'
             }
         }).then((response) => {
-            //setLoaderVisibility(false);
             return response.json();
         }).then((responseJSON) => {
             console.log(responseJSON);
@@ -28,7 +26,6 @@ export const GetAvailableYearsMonthsData = async () => {
                 setListItems(listItemsData);
             }
         }).catch((error) => {
-            //setLoaderVisibility(false);
             console.log(error);
             Alert.alert("Error", "Unable to get data from server please try again later", [
                 {
@@ -40,6 +37,5 @@ export const GetAvailableYearsMonthsData = async () => {
     }
     catch (error) {
         console.log(error);
-        setLoaderVisibility(false);
     }
 }

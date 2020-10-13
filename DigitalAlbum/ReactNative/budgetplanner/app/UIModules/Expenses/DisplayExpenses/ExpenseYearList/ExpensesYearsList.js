@@ -6,8 +6,8 @@ import { IMAGE_BACK } from "../../../../Assets/ImageHelper"
 import { EXPENSES_MONTHS_LIST } from "../../../../Constants/PageNameConstants"
 import CustomTouch from "../../../../CustomComponents/CustomTouch"
 import { connect } from "react-redux"
-import { fetchYearsData } from "./ExpenseYearListActions"
-import { ERROR_ALERT_HEADER, OKAY_BUTON_TEXT } from "./../../../../Constants/TextConstants"
+import { fetchYearsData, getYearsMonthsDataReset } from "./ExpenseYearListActions"
+import { POPUP_ERROR_ALERT_HEADER, OKAY_BUTON_TEXT } from "./../../../../Constants/TextConstants"
 
 
 const ExpensesYears_List = (props) => {
@@ -23,7 +23,7 @@ const ExpensesYears_List = (props) => {
         match,
         loaderVisibility,
         listItems,
-        errorCode
+        errorMessage
     } = props;
 
     useEffect(() => {
@@ -31,6 +31,7 @@ const ExpensesYears_List = (props) => {
     }, []);
 
     const moveBack = () => {
+        dispatch(getYearsMonthsDataReset());
         props.navigation.pop();
     }
 
@@ -48,9 +49,9 @@ const ExpensesYears_List = (props) => {
         return inputFiledView;
     };
 
-    if(errorCode !== "")
+    if(errorMessage !== "")
     {
-        Alert.alert(ERROR_ALERT_HEADER, errorCode, [
+        Alert.alert(POPUP_ERROR_ALERT_HEADER, errorMessage, [
             {
                 text: OKAY_BUTON_TEXT,
                 onPress: () => { }
@@ -100,7 +101,7 @@ const mapStateToProps = (state) => {
         serviceState: state.ExpenseYearListReducer.serviceState,
         loaderVisibility: state.ExpenseYearListReducer.loaderVisibility,
         listItems: state.ExpenseYearListReducer.listItems,
-        errorCode: state.ExpenseYearListReducer.errorCode,
+        errorMessage: state.ExpenseYearListReducer.errorMessage,
     };
 }
 
