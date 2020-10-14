@@ -244,7 +244,7 @@ const AddExpense_Page = (props) => {
             if (nameOfPurchase.value === "" || nameOfPurchase.value === undefined) {
                 setNameOfPurchase({ ...nameOfPurchase, isError: true, errorText: "Please Enter a valid Name" });
             }
-            else if (amountSpend.value === "" || amountSpend.value === undefined) {
+            else if (amountSpend.value === "" || amountSpend.value === undefined || isNaN(amountSpend.value)) {
                 setAmountSpend({ ...amountSpend, isError: true, errorText: "Please Enter a valid amount" });
             }
             else if (paidBy.value === "" || paidBy.value === undefined) {

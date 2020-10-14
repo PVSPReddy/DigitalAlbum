@@ -19,8 +19,8 @@ const stack = createStackNavigator();
 
 const IntroNavigation = (params) => {
     const stackNaviComponent = (
-        <stack.Navigator initialRouteName={INTRO_PAGE} headerMode="none">
-            <stack.Screen name={INTRO_PAGE} component={IntroPage} />
+        <stack.Navigator initialRouteName={HOME_PAGE} headerMode="none">
+            {/* <stack.Screen name={INTRO_PAGE} component={IntroPage} /> */}
             <stack.Screen name={HOME_PAGE} component={HomePage} />
             <stack.Screen name={ADD_EXPENSE_PAGE} component={AddExpensePage} />
             <stack.Screen name={EXPENSES_YEARS_LIST} component={ExpensesYearsList} />

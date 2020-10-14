@@ -22,9 +22,9 @@ class HomePage extends React.Component {
                 <SafeAreaView style={styles.safeAreaViewStyle}>
 
                     <View style={styles.mainContainerStyle}>
-                        <CustomModal visible={this.state.isVisibleModal}>
+                        {/* <CustomModal visible={this.state.isVisibleModal}>
                             <CustomButton title="Close Modal Button" style={styles.buttonStyle} fontStyle={styles.buttonFontStyle} onPress={() => { this.setState({ isVisibleModal: false }) }} />
-                        </CustomModal>
+                        </CustomModal> */}
                         <CustomHeader
                             title="Home"
                             hideBackButton={true}
@@ -33,7 +33,7 @@ class HomePage extends React.Component {
                         <View style={styles.buttonContainerStyle}>
                             <CustomButton title="Add Expense" style={styles.buttonStyle} fontStyle={styles.buttonFontStyle} onPress={() => { this.props.navigation.navigate(ADD_EXPENSE_PAGE); }} />
                             <CustomButton title="Display Expenses" style={styles.buttonStyle} fontStyle={styles.buttonFontStyle} onPress={() => { this.props.navigation.navigate(EXPENSES_YEARS_LIST); }} />
-                            <CustomButton title="Show Modal Button" style={styles.buttonStyle} fontStyle={styles.buttonFontStyle} onPress={() => { this.setState({ isVisibleModal: true }) }} />
+                            {/* <CustomButton title="Show Modal Button" style={styles.buttonStyle} fontStyle={styles.buttonFontStyle} onPress={() => { this.setState({ isVisibleModal: true }) }} /> */}
                         </View>
                     </View>
                 </SafeAreaView>
