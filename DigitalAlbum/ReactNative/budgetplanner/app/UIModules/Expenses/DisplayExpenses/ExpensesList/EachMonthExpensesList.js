@@ -8,6 +8,7 @@ import CustomTouch from "../../../../CustomComponents/CustomTouch"
 import { connect } from "react-redux"
 import { fetchEachMonthExpenseList, getEachMonthExpenseListReset } from "./EachMonthExpenseListActions"
 import AppStyleConstants from "../../../../Constants/AppStyleConstants"
+import SpaceView from "../../../../CustomComponents/AppLocalComponents/SpaceView"
 
 
 const EachMonthExpense_List = (props) => {
@@ -66,8 +67,8 @@ const EachMonthExpense_List = (props) => {
                     <View style={styles.bottomSpaceStyle}>
                         {expenseListItems.map(item => getListViews(item))}
                     </View>
+                    <SpaceView />
                 </ScrollView>
-                <View></View>
             </>
         </SafeAreaView>
     )

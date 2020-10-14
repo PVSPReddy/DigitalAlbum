@@ -9,6 +9,7 @@ import { connect } from "react-redux"
 import { fetchYearsData, getYearsMonthsDataReset } from "./ExpenseYearListActions"
 import { POPUP_ERROR_ALERT_HEADER, OKAY_BUTON_TEXT } from "./../../../../Constants/TextConstants"
 import AppStyleConstants from "../../../../Constants/AppStyleConstants"
+import SpaceView from "../../../../CustomComponents/AppLocalComponents/SpaceView"
 
 
 const ExpensesYears_List = (props) => {
@@ -74,8 +75,9 @@ const ExpensesYears_List = (props) => {
                     <View style={styles.bottomSpaceStyle}>
                         {listItems.map(item => getParentListViews(item))}
                     </View>
+
+                    <SpaceView />
                 </ScrollView>
-                <View></View>
             </>
         </SafeAreaView>
     )
