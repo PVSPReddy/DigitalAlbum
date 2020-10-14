@@ -7,6 +7,7 @@ import { DISPLAY_EXPENSE_ITEM } from "../../../../Constants/PageNameConstants"
 import CustomTouch from "../../../../CustomComponents/CustomTouch"
 import { connect } from "react-redux"
 import { fetchEachMonthExpenseList, getEachMonthExpenseListReset } from "./EachMonthExpenseListActions"
+import AppStyleConstants from "../../../../Constants/AppStyleConstants"
 
 
 const EachMonthExpense_List = (props) => {
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
         height: 50,
         flexDirection: "row",
         alignItems: "center",
-        borderBottomColor: "green",
+        borderBottomColor: AppStyleConstants.colors.BORDER_COLOR,
         borderBottomWidth: 2
     },
     expensesTextHolderStyle: {

@@ -8,6 +8,7 @@ import CustomTouch from "../../../../CustomComponents/CustomTouch"
 import { connect } from "react-redux"
 import { fetchYearsData, getYearsMonthsDataReset } from "./ExpenseYearListActions"
 import { POPUP_ERROR_ALERT_HEADER, OKAY_BUTON_TEXT } from "./../../../../Constants/TextConstants"
+import AppStyleConstants from "../../../../Constants/AppStyleConstants"
 
 
 const ExpensesYears_List = (props) => {
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
     listTextContainerStyle: {
         height: 50,
         justifyContent: "center",
-        borderBottomColor: "green",
+        borderBottomColor: AppStyleConstants.colors.BORDER_COLOR,
         borderBottomWidth: 2
     },
     listTextStyle: {

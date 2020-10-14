@@ -46,6 +46,8 @@ const AppStyleConstants = {
 
     POPUP_BACKGROUND_COLOR: "#FFFFFF",
 
+    BORDER_COLOR: "green",
+
     MAIN_CONTAINER_COLOR: "cyan",
     MAIN_HEADER_COLOR: "gray",
     MAIN_BODY_COLOR: "",

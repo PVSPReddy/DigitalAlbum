@@ -1,5 +1,5 @@
 import React from "react"
-import { StyleSheet, Text, TextInput, View } from "react-native"
+import { Dimensions, ScrollView, StyleSheet, Text, TextInput, View } from "react-native"
 import AppStyleConstants from "../Constants/AppStyleConstants";
 import { CANCEL_BUTTON_TEXT } from "../Constants/TextConstants";
 import CustomButton from "./CustomButton";
@@ -53,7 +53,7 @@ class CustomTextInputPickerField extends React.Component {
     getPickerOptionView = (data) => {
         const inputFiledView = (
             <CustomTouch childData={data} isRequiredFeedback={false} onPress={this.onItemSelection}>
-                <View style={{ height: 20, }}>
+                <View style={styles.listTextItemStyle}>
                     <Text>{data}</Text>
                 </View>
             </CustomTouch>
@@ -92,9 +92,15 @@ class CustomTextInputPickerField extends React.Component {
                 isError={isError}
             >
                 <CustomModal visible={this.state.popupVisible}>
+
                     <View style={styles.popupContainerStyle}>
-                        {picker_Data.map(item => this.getPickerOptionView(item))}
+                        <ScrollView style={styles.scrollContainerStyle}>
+                            <View>
+                                {picker_Data.map(item => this.getPickerOptionView(item))}
+                            </View>
+                        </ScrollView>
                         <CustomButton title={CANCEL_BUTTON_TEXT} style={styles.buttonStyle} fontStyle={styles.buttonFontStyle} onPress={() => { this.setState({ popupVisible: false }) }} />
+
                     </View>
                 </CustomModal>
                 <CustomTouch isRequiredFeedback={false} onPress={() => { this.setState({ popupVisible: true }) }}>
@@ -114,6 +120,8 @@ class CustomTextInputPickerField extends React.Component {
     }
 }
 
+const { height, width } = Dimensions.get("window");
+
 const styles = StyleSheet.create({
     textDisplayStyle: {
         fontSize: 20,
@@ -126,15 +134,24 @@ const styles = StyleSheet.create({
         color: "#999",//#636c72
         margin: 10
     },
+    listTextItemStyle: {
+        justifyContent: "center",
+        height: 40,
+        paddingHorizontal: 10,
+        borderBottomWidth: 2,
+        borderBottomColor: AppStyleConstants.colors.BORDER_COLOR
+    },
+    scrollContainerStyle: {
+        maxHeight: ((height / 100)*50)
+    },
     popupContainerStyle: {
         backgroundColor: AppStyleConstants.colors.POPUP_BACKGROUND_COLOR,
         overflow: "hidden",
-        // height: 100,
-        // flex: 1,
-        borderRadius: 10
+        width: ((width / 100) * 80),
+        paddingTop: 10,
+        borderRadius: 10,
     },
     buttonStyle: {
-        marginBottom: 20,
         backgroundColor: AppStyleConstants.colors.BUTTON_COLOR
     },
     buttonFontStyle: {

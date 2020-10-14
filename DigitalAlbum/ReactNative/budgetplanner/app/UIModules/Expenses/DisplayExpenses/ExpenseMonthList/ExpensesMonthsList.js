@@ -5,6 +5,7 @@ import CustomHeader from "../../../../CustomComponents/CustomHeader"
 import { IMAGE_BACK } from "../../../../Assets/ImageHelper"
 import { EACH_MONTH_EXPENSES_LIST } from "../../../../Constants/PageNameConstants"
 import CustomTouch from "../../../../CustomComponents/CustomTouch"
+import AppStyleConstants from "../../../../Constants/AppStyleConstants"
 
 
 const ExpensesMonthsList = (props) => {
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
     listTextContainerStyle: {
         height: 50,
         justifyContent: "center",
-        borderBottomColor: "green",
+        borderBottomColor: AppStyleConstants.colors.BORDER_COLOR,
         borderBottomWidth: 2
     },
     listTextStyle: {
