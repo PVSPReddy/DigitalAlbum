@@ -4,21 +4,36 @@ import AppStyleConstants from "../../Constants/AppStyleConstants";
 import { ADD_EXPENSE_PAGE, EXPENSES_YEARS_LIST } from "../../Constants/PageNameConstants";
 import CustomButton from "../../CustomComponents/CustomButton";
 import CustomHeader from "../../CustomComponents/CustomHeader";
+import CustomModal from "../../CustomComponents/CustomModal";
 
 class HomePage extends React.Component {
+
+    // const [isVisibleModal, setIsVisibleModal] = useSta
+    constructor(props) {
+        super(props);
+        this.state = {
+            isVisibleModal: false
+        }
+    }
+
     render() {
         const mainUIComponent = (
             <>
                 <SafeAreaView style={styles.safeAreaViewStyle}>
+
                     <View style={styles.mainContainerStyle}>
+                        <CustomModal visible={this.state.isVisibleModal}>
+                            <CustomButton title="Close Modal Button" style={styles.buttonStyle} fontStyle={styles.buttonFontStyle} onPress={() => { this.setState({ isVisibleModal: false }) }} />
+                        </CustomModal>
                         <CustomHeader
                             title="Home"
                             hideBackButton={true}
-                            
+
                         />
                         <View style={styles.buttonContainerStyle}>
                             <CustomButton title="Add Expense" style={styles.buttonStyle} fontStyle={styles.buttonFontStyle} onPress={() => { this.props.navigation.navigate(ADD_EXPENSE_PAGE); }} />
                             <CustomButton title="Display Expenses" style={styles.buttonStyle} fontStyle={styles.buttonFontStyle} onPress={() => { this.props.navigation.navigate(EXPENSES_YEARS_LIST); }} />
+                            <CustomButton title="Show Modal Button" style={styles.buttonStyle} fontStyle={styles.buttonFontStyle} onPress={() => { this.setState({ isVisibleModal: true }) }} />
                         </View>
                     </View>
                 </SafeAreaView>

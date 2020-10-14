@@ -1,5 +1,6 @@
 import React from "react"
 import { StyleSheet, Text, View } from "react-native"
+import CustomFieldFrame from "./CustomFieldsFrame";
 
 class CustomTextField extends React.Component {
 
@@ -20,15 +21,18 @@ class CustomTextField extends React.Component {
         } = this.props;
 
         const uiMainComponent = (
-            <View style={{ ...styles.containerStyle, ...style }}>
-                <View style={{ ...styles.textDataContainerStyle }}>
-                    <Text
-                        style={{ ...styles.textDataStyle, ...fontStyle }}
-                        numberOfLines={numberOfLines}
-                    >{value}</Text>
-                    <Text style={{ ...styles.textLegendStyle, ...legendTextStyle }}>{legendTitle}</Text>
-                </View>
-            </View>
+            <CustomFieldFrame
+                style={style}
+                legendTextStyle={legendTextStyle}
+                legendTitle={legendTitle}
+            >
+                <Text
+                    style={{ ...styles.textDataStyle, ...fontStyle }}
+                    numberOfLines={numberOfLines}
+                >
+                    {value}
+                </Text>
+            </CustomFieldFrame>
         )
 
         return uiMainComponent;
@@ -36,29 +40,10 @@ class CustomTextField extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    textLegendStyle: {
-        position: 'absolute',
-        top: -10,
-        left: 10,
-        backgroundColor: "#FFFFFF"
-    },
     textDataStyle: {
         fontSize: 20,
         color: "#000000",
         margin: 10
-    },
-    textDataContainerStyle: {
-        backgroundColor: "#FFFFFF",
-        borderRadius: 8,
-        justifyContent: "center",
-        borderColor: "#000000",
-        borderWidth: 1,
-        margin: 0,
-        padding: 0
-    },
-    containerStyle: {
-        backgroundColor: "#00000000",
-        paddingTop: 10
     },
 });
 

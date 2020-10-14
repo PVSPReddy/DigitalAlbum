@@ -5,7 +5,6 @@ import CustomButton from "../../../CustomComponents/CustomButton"
 import CustomTextInputField from "../../../CustomComponents/CustomTextInputField"
 import CustomActivityIndicator from "../../../CustomComponents/CustomActivityIndicator"
 import { HOME_PAGE } from "../../../Constants/PageNameConstants"
-import { FAILURE, mainURL, PostExpenditureURL, SUCCESS, successStatusCode } from "../../../Constants/URLConstants"
 import { IMAGE_BACK } from "../../../Assets/ImageHelper"
 import CustomHeader from "../../../CustomComponents/CustomHeader"
 import { connect } from "react-redux"
@@ -13,6 +12,10 @@ import SpaceView from "../../../CustomComponents/AppLocalComponents/SpaceView"
 import { fetchAddExpense } from "./AddExpensePageService"
 import { POPUP_OKAY_BUTTON_TEXT, POPUP_HEADER_TEXT, POPUP_ERROR_ALERT_HEADER } from "../../../Constants/TextConstants"
 import { getAddExpenseReset } from "./AddExpensePageActions"
+import CustomTextInputPickerField from "./../../../CustomComponents/CustomTextInputPickerField"
+import { PaymentTypes, ExpenditureTypes } from "./AddExpenseConstants"
+import CustomTextInputDatePickerField from "../../../CustomComponents/CustomTextInputDatePickerField"
+
 
 const AddExpense_Page = (props) => {
 
@@ -41,6 +44,16 @@ const AddExpense_Page = (props) => {
     const [expenditureType, setExpenditureType] = useState({ value: "", isError: false, errorText: "" });
     const [details, setDetails] = useState({ value: "", isError: false, errorText: "" });
 
+    const paymentTypePickerValues = [];
+    PaymentTypes.forEach(element => {
+        paymentTypePickerValues.push(element.displayText);
+    });
+
+    const expenditureTypePickerValues = [];
+    ExpenditureTypes.forEach(element => {
+        expenditureTypePickerValues.push(element.displayText);
+    });
+
     const textFileds = [
         {
             inputID: NAME_OF_PURCHASE,
@@ -65,7 +78,9 @@ const AddExpense_Page = (props) => {
             legendTitle: "Payment Type",
             hintText: paidBy.errorText,
             isError: paidBy.isError,
-            value: paidBy.value
+            value: paidBy.value,
+            isPicker: true,
+            pickerData: paymentTypePickerValues,
         },
         {
             inputID: DATE_OF_PURCHASE,
@@ -73,7 +88,8 @@ const AddExpense_Page = (props) => {
             legendTitle: "Date of Purchase",
             hintText: dateOfPurchase.errorText,
             isError: dateOfPurchase.isError,
-            value: dateOfPurchase.value
+            value: dateOfPurchase.value,
+            isDatePicker: true
         },
         {
             inputID: EXPENDITURE_TYPE,
@@ -81,7 +97,9 @@ const AddExpense_Page = (props) => {
             legendTitle: "Expenditure Type",
             hintText: expenditureType.errorText,
             isError: expenditureType.isError,
-            value: expenditureType.value
+            value: expenditureType.value,
+            isPicker: true,
+            pickerData: expenditureTypePickerValues,
         },
         {
             inputID: DETAILS,
@@ -95,13 +113,25 @@ const AddExpense_Page = (props) => {
     ];
 
     const getInputFileds = (data) => {
+        const {
+            placeHolder,
+            legendTitle,
+            hintText,
+            isError,
+            inputID,
+            isEditor,
+            isPicker,
+            isNumber,
+            isDatePicker,
+            pickerData,
+        } = data;
         let textInputFieldProps =
         {
             style: {
                 marginVertical: 10
             }
         };
-        if (data.isEditor) {
+        if (isEditor) {
             textInputFieldProps = {
                 ...textInputFieldProps,
                 multiline: true,
@@ -111,23 +141,53 @@ const AddExpense_Page = (props) => {
                 }
             };
         }
-        if (data.isNumber) {
+        if (isNumber) {
             textInputFieldProps = {
                 ...textInputFieldProps,
                 keyboardType: "numeric"
             };
         }
-        const inputFiledView = (
-            <CustomTextInputField
-                placeHolder={data.placeHolder}
-                legendTitle={data.legendTitle}
-                hintText={data.hintText}
-                isError={data.isError}
-                inputID={data.inputID}
-                {...textInputFieldProps}
-                onChangeText={onChangeTextHandler}
-            />
-        )
+        let inputFieldView = (<></>);
+        if (isPicker) {
+            inputFiledView = (
+                <CustomTextInputPickerField
+                    pickerData={pickerData}
+                    placeHolder={placeHolder}
+                    legendTitle={legendTitle}
+                    hintText={hintText}
+                    isError={isError}
+                    inputID={inputID}
+                    {...textInputFieldProps}
+                    onItemSelected={onItemSelectedHandler}
+                />
+            )
+        }
+        else if (isDatePicker) {
+            inputFiledView = (
+                <CustomTextInputDatePickerField
+                    placeHolder={placeHolder}
+                    legendTitle={legendTitle}
+                    hintText={hintText}
+                    isError={isError}
+                    inputID={inputID}
+                    {...textInputFieldProps}
+                    onChange={onChangeHandler}
+                />
+            )
+        }
+        else {
+            inputFiledView = (
+                <CustomTextInputField
+                    placeHolder={placeHolder}
+                    legendTitle={legendTitle}
+                    hintText={hintText}
+                    isError={isError}
+                    inputID={inputID}
+                    {...textInputFieldProps}
+                    onChangeText={onChangeTextHandler}
+                />
+            )
+        }
         return inputFiledView;
     };
 
@@ -140,17 +200,37 @@ const AddExpense_Page = (props) => {
                 case AMOUNT_SPEND:
                     setAmountSpend({ ...amountSpend, value: textValue, isError: false, errorText: "" });
                     break;
-                case PAID_BY:
-                    setPaidBy({ ...paidBy, value: textValue, isError: false, errorText: "" });
+                case DETAILS:
+                    setDetails({ ...details, value: textValue, isError: false, errorText: "" });
                     break;
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    const onChangeHandler = (textValue, inputID) => {
+        try {
+            switch (inputID) {
                 case DATE_OF_PURCHASE:
                     setDateOfPurchase({ ...dateOfPurchase, value: textValue, isError: false, errorText: "" });
                     break;
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    const onItemSelectedHandler = (textValue, inputID) => {
+        try {
+            switch (inputID) {
+                case PAID_BY:
+                    setPaidBy({ ...paidBy, value: textValue, isError: false, errorText: "" });
+                    break;
                 case EXPENDITURE_TYPE:
                     setExpenditureType({ ...expenditureType, value: textValue, isError: false, errorText: "" });
-                    break;
-                case DETAILS:
-                    setDetails({ ...details, value: textValue, isError: false, errorText: "" });
                     break;
             }
         }
@@ -165,22 +245,21 @@ const AddExpense_Page = (props) => {
                 setNameOfPurchase({ ...nameOfPurchase, isError: true, errorText: "Please Enter a valid Name" });
             }
             else if (amountSpend.value === "" || amountSpend.value === undefined) {
-                setAmountSpend({ ...amountSpend, value: textValue, isError: true, errorText: "Please Enter a valid amount" });
+                setAmountSpend({ ...amountSpend, isError: true, errorText: "Please Enter a valid amount" });
             }
             else if (paidBy.value === "" || paidBy.value === undefined) {
-                setPaidBy({ ...paidBy, value: textValue, isError: true, errorText: "Please Enter a valid payment type" });
+                setPaidBy({ ...paidBy, isError: true, errorText: "Please Enter a valid payment type" });
             }
             else if (dateOfPurchase.value === "" || dateOfPurchase.value === undefined) {
-                setDateOfPurchase({ ...dateOfPurchase, value: textValue, isError: true, errorText: "Please Enter a valid date" });
+                setDateOfPurchase({ ...dateOfPurchase, isError: true, errorText: "Please Enter a valid date" });
             }
             else if (expenditureType.value === "" || expenditureType.value === undefined) {
-                setExpenditureType({ ...expenditureType, value: textValue, isError: true, errorText: "Please Enter a valid type" });
+                setExpenditureType({ ...expenditureType, isError: true, errorText: "Please Enter a valid type" });
             }
             else if (details.value === "" || details.value === undefined) {
-                setDetails({ ...details, value: textValue, isError: true, errorText: "Please Enter a valid detail" });
+                setDetails({ ...details, isError: true, errorText: "Please Enter a valid detail" });
             }
             else {
-                const url = mainURL + PostExpenditureURL;
                 const postData = {
                     "dateOfPurchase": dateOfPurchase.value,
                     "nameOfPurchase": nameOfPurchase.value,
@@ -211,8 +290,7 @@ const AddExpense_Page = (props) => {
             }
         }]);
     }
-    else if(errorMessage !== "")
-    {
+    else if (errorMessage !== "") {
         Alert.alert(POPUP_ERROR_ALERT_HEADER, errorMessage, [{
             text: POPUP_OKAY_BUTTON_TEXT,
             onPress: () => {
@@ -224,6 +302,7 @@ const AddExpense_Page = (props) => {
         <SafeAreaView>
             <>
                 <CustomActivityIndicator visibility={loaderVisibility} />
+
                 <CustomHeader
                     title="Add Expense"
                     backButtonIconSource={IMAGE_BACK}
@@ -232,6 +311,9 @@ const AddExpense_Page = (props) => {
                 />
                 <ScrollView>
                     <View style={styles.mainContainerStyle}>
+                        {/* <CustomTextInputPickerField 
+                        pickerData={pickerValues}
+                        /> */}
                         {textFileds.map(item => getInputFileds(item))}
                         <CustomButton title="Add Expense" onPress={OnSubmitButtonClickHandler} />
                         <SpaceView />
