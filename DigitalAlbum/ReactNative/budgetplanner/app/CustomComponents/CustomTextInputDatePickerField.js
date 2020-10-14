@@ -44,9 +44,11 @@ class CustomTextInputDatePickerField extends React.Component {
             inputID
         } = this.props;
         var dateTimeStamp = date?.nativeEvent?.timestamp;
-        var selectedDate = new Date(dateTimeStamp).toDateString();
-        this.setState({ popupVisible: false, text: selectedDate, textStyle: fontStyle });
-        onChange(selectedDate, inputID);
+        if (!isNaN(dateTimeStamp)) {
+            var selectedDate = new Date(dateTimeStamp).toDateString();
+            this.setState({ popupVisible: false, text: selectedDate, textStyle: fontStyle });
+            onChange(selectedDate, inputID);
+        }
     }
 
     render() {
@@ -96,8 +98,8 @@ class CustomTextInputDatePickerField extends React.Component {
                             <DateTimePicker
                                 value={new Date()}
                                 mode='default'
-                                display='default' 
-                                onChange={ this.onDateChangeHandler }
+                                display='default'
+                                onChange={this.onDateChangeHandler}
                             />
                         ) :
                         (
