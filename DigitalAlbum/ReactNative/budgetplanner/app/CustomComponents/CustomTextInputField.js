@@ -72,7 +72,7 @@ class CustomTextInputField extends React.Component {
                         onBlur={() => this.setState({ mode: this.NORMAL_MODE })}
                         maxLength={maxLength}
                         keyboardType={keyboardType}
-                        placeHolder={placeHolder}
+                        placeholder={placeHolder}
                         numberOfLines={numberOfLines}
                         multiline={multiline}
                         //value={value}

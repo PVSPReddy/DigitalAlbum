@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { SafeAreaView, View, Text, Alert, StyleSheet, ScrollView } from "react-native"
+import { SafeAreaView, View, Alert, StyleSheet, ScrollView } from "react-native"
 import AppStyleConstants from "../../../Constants/AppStyleConstants"
 import CustomButton from "../../../CustomComponents/CustomButton"
 import CustomTextInputField from "../../../CustomComponents/CustomTextInputField"
@@ -311,9 +311,6 @@ const AddExpense_Page = (props) => {
                 />
                 <ScrollView>
                     <View style={styles.mainContainerStyle}>
-                        {/* <CustomTextInputPickerField 
-                        pickerData={pickerValues}
-                        /> */}
                         {textFileds.map(item => getInputFileds(item))}
                         <CustomButton title="Add Expense" onPress={OnSubmitButtonClickHandler} />
                         <SpaceView />
