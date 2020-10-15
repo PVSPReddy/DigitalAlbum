@@ -1,43 +1,45 @@
-import React from "react"
-import {View, Text, StyleSheet, Platform} from "react-native"
-import CustomTouch from "./CustomTouch"
+import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+import CustomTouch from './CustomTouch';
 
 const CustomButton = (props) => {
+  const {
+    style,
+    fontStyle,
 
-    const {
-        style,
-        fontStyle,
+    title,
 
-        title,
+    onPress,
+    onLongPress,
+  } = props;
 
-        onPress,
-        onLongPress
-    } = props;
-
-    const mainUIMainComponent = (
-        <CustomTouch isRequiredFeedback={true} onPress={onPress} onLongPress={onLongPress}>
-            <View style={{...styles.containerStyle, ...style}}>
-                <Text style={{...styles.textStyle, ...fontStyle}}>{title}</Text>
-            </View>
-        </CustomTouch>
-    )
-    return mainUIMainComponent;
-}
+  const mainUIMainComponent = (
+    <CustomTouch
+      isRequiredFeedback={true}
+      onPress={onPress}
+      onLongPress={onLongPress}>
+      <View style={{...styles.containerStyle, ...style}}>
+        <Text style={{...styles.textStyle, ...fontStyle}}>{title}</Text>
+      </View>
+    </CustomTouch>
+  );
+  return mainUIMainComponent;
+};
 
 const styles = StyleSheet.create({
-    containerStyle: {
-        height: 40,
-        alignContent: "center",
-        justifyContent: "center",
-        backgroundColor: "gray",
-    },
-    textHolderStyle: {
-        alignItems: "center",
-        justifyContent: "center"
-    },
-    textStyle: {
-        textAlign: "center"
-    }
-})
+  containerStyle: {
+    height: 40,
+    alignContent: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'gray',
+  },
+  textHolderStyle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  textStyle: {
+    textAlign: 'center',
+  },
+});
 
 export default CustomButton;
